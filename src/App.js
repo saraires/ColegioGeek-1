@@ -1,10 +1,14 @@
 import React from 'react';
-
-import inicioProfesor from './Pages/Profesor';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Profesor from './Pages/InicioProfesor';
 
 function App() {
   return (
-    <inicioProfesor/>
+    <BrowserRouter>
+        <Switch>
+          <Route exact path="/profesor" component={Profesor} />
+        </Switch>
+    </BrowserRouter>
   );
 }
 

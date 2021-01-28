@@ -4,6 +4,8 @@ import App from './App';
 //Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 //JQuery
+import $ from 'jquery';
+import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 ReactDOM.render(
@@ -12,3 +14,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+

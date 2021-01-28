@@ -1,15 +1,14 @@
 import React from 'react';
-import contenido from './Components/contenido';
 import MenuProfesor from '../Components/menu';
+import Contenido from '../Components/contenido';
 
-
-function inicioProfesor() {
+function Profesor() {
     return (
         <div>
             <MenuProfesor />
-            <contenido/>
+            <Contenido/>
         </div>
     );
 }
 
-export default inicioProfesor();
+export default Profesor;

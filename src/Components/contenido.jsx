@@ -2,7 +2,7 @@ import React from 'react';
 import Profesor from '../Images/Profesor.jpg';
 
 
-function contenidoProfesor() {
+function Contenido() {
     return (
         <>
             <div className="container-fluid" style={{ display: "flex", marginTop: "50px" }}>
@@ -21,4 +21,4 @@ function contenidoProfesor() {
     );
 }
 
-export default contenidoProfesor();
+export default Contenido;

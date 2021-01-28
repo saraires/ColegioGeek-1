@@ -1,7 +1,7 @@
 import React from 'react';
 import LogoAcademia from '../Images/LogoAcademia.jpg';
 
-export default function MenuProfesor() {
+function MenuProfesor() {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light container-fluid">
@@ -25,3 +25,4 @@ export default function MenuProfesor() {
         </div>
     );
 }
+export default MenuProfesor;
