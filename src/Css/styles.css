@@ -1,9 +1,17 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-li {
-    list-style: none;
+.imagen {
+  width: "20vw";
+  display: "block";
+  margin: "auto";
+}
+
+@media (max-width: 400) {
+ .imagen{
+    width: "50vw";
+ }   
 }

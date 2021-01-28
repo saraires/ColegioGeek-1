@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
 
 function Informe() {
-    return(
-        <div>
-            Informe
-        </div>
-    )
+  return (
+   <h1>Informe</h1>
+  );
 }
 
 export default Informe;

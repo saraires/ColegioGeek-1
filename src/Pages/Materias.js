@@ -1,6 +1,5 @@
-import axios from "axios";
-import React, { useEffect, useParams, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React from "react";
+import { Col, Container} from "react-bootstrap";
 import Quote from "../Components/Quote";
 import Student from "../Components/Student";
 import Table from "../Components/Table";
