@@ -1,0 +1,16 @@
+Requerimientos y sprints (2)
+
+Primer sprint (25-28)
+- Hacer maquetacion de peticiones
+- Borador de la base de datos (diagrama de entidad relacion)
+- Hacer borrador de las interfaces
+- Hacer front en react tanto estudiantes
+  como docentes
+- Base de datos
+
+
+Segundo sprint (28-03)
+- Hacer el login y register con validacion
+- Hacer peticiones
+- Relacionar front con el back
+- Hacer despliegue
