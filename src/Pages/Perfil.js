@@ -3,20 +3,6 @@ import axios from "axios";
 import { Card, Container, Button } from "react-bootstrap";
 
 function Perfil() {
-
-    const styles = {
-        imagen: {
-          width: "25vw",
-          display: "block",
-          margin: "auto",
-        },
-        // media queries
-        "@media (max-width: 400px)": {
-          imagen: {
-            width: "50vw",
-          },
-        },
-      };
     
   const [estudiante, setEstudiante] = useState([]);
   const id = 1; //organizar id con la info que se recibe 
