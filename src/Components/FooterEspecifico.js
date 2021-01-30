@@ -1,5 +1,4 @@
 import React from "react";
-import "../Css/styles.css";
 
 function FooterEspecifico() {
   return (
