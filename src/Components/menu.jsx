@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoAcademia from '../Images/LogoAcademia.jpg';
+import LogoAcademia from '../Images/LogoAcademia.png';
 
 function MenuProfesor() {
     return (
@@ -12,6 +12,9 @@ function MenuProfesor() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/profesor" style={{ color: "black" }}>Inicio</a>
+                            </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/profesor-perfil" style={{ color: "black" }}>Ver mi Perfil</a>
                             </li>

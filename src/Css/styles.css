@@ -1,0 +1,33 @@
+.frase {
+    padding-left: 10px;
+    padding-right: 20px;
+    text-align: justify;
+}
+
+.ajuste2{
+    width: 400px;
+    padding-left: 80px;
+}
+
+.ajuste{
+    width: 700px;
+    margin-left: 30px;
+}
+
+@media (max-width:767px){
+    .ajuste{
+        margin-left: 0px;
+        width:360px;
+    }
+
+    .ajuste2{
+        width: 300px;
+        align-items: center;
+    }
+
+    .frase{
+        padding-left: 35px;
+        padding-right: 0px;
+        text-align: center;
+    }
+}
