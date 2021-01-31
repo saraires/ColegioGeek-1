@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios'
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../Images/logo.png";
 
 function Encabezado() {
+
+  const [estudiante, setEstudiante] = useState([]);
+  const id = 1;
+
+  useEffect(() => {
+    axios.get(`http://localhost:3004/estudiantes/${id}`).then((res) => {
+      setEstudiante(res.data);
+      console.log(res.data);
+    });
+  }, []);
+
+
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="info" variant="dark">
@@ -33,8 +46,8 @@ function Encabezado() {
             </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link as={Link} to="/perfil" eventKey={4}>
-              Perfil (cambiarlo por el nombre)
+            <Nav.Link as={Link} to={`/perfil/${id}`} eventKey={4}>
+              {estudiante.nombre} {estudiante.apellido}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

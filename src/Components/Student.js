@@ -6,7 +6,7 @@ import {  Container } from "react-bootstrap";
 
 function Student() {
   const [estudiante, setEstudiante] = useState([]);
-  const id = 1;
+   const id = 1;
 
   useEffect(() => {
     axios.get(`http://localhost:3004/estudiantes/${id}`).then((res) => {

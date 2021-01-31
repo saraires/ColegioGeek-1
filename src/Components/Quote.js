@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuoteLeft, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
+import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
 
 function Quote() {
   const [quote, setQuote] = useState([]);

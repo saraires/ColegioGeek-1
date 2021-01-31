@@ -20,7 +20,7 @@ function Tabla() {
   return (
     <Container className="p-0">
       <Table striped bordered hover size="sm">
-        <thead>
+        <thead className="text-info">
           <tr>
             <th>Código Materia</th>
             <th>Materia</th>
@@ -31,7 +31,7 @@ function Tabla() {
         <tbody>
           {materia.map((item, index) => {
             return (
-              <tr>
+              <tr  key={index} id={index}>
                 <td>{item.codigo}</td>
                 <td>{item.materia}</td>
                 <td>{item.profesor}</td>

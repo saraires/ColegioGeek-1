@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from './Footer';
+import FooterEspecifico from './FooterEspecifico';
 import Encabezado from './Navbar';
 
 function Layout(props) {
@@ -7,7 +7,7 @@ function Layout(props) {
         <>
         <Encabezado />
         {props.children}
-        <Footer/>
+        <FooterEspecifico/>
         </>
     )
 }
