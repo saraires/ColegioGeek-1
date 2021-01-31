@@ -7,8 +7,10 @@ import Notas from './Pages/ProfesorNotas';
 import Layout from "./Components/Layout";
 import Informe from "./Pages/Informe";
 import Materias from "./Pages/Materias";
-import Notas from "./Pages/Notas";
-import Perfil from "./Pages/Perfil";
+import Notas from "./Pages/Notas"
+import SignIn from './Pages/SignIn'
+import SignUp from './Pages/SignUp'
+import PerfilEstudiante from "./Pages/PerfilEstudiante";
 
 function App() {
   return (
@@ -18,11 +20,13 @@ function App() {
           <Route exact path="/informe-final" component={Informe} />
           <Route exact path="/materias" component={Materias} />
           <Route exact path="/notas" component={Notas} />
-          <Route path="/perfil/:id" component={Perfil} />
           <Route exact path="/profesor" component={Profesor} />
           <Route exact path="/profesor-grupos" component={Grupos} />
           <Route exact path="/profesor-perfil" component={Perfil} />
           <Route exact path="/profesor-grado-notas" component={Notas} />
+          <Route exact path="/perfil/:id" component={PerfilEstudiante} />
+          <Route exact path="/SignIn" component={SignIn} />
+          <Route exact path="/SignUp" component={SignUp} />
         </Switch>
       </Layout>
     </BrowserRouter>
