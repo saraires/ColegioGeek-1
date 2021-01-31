@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Layout from "./Components/Layout";
-import Informe from "./Pages/Informe"
+import Informe from "./Pages/Informe";
 import Materias from "./Pages/Materias";
 import Notas from "./Pages/Notas"
 import Perfil from "./Pages/Perfil"
