@@ -4,7 +4,7 @@ import { Card, Container, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import CardPerfil from "../Components/CardPerfil"
 
-function Perfil() {
+function PerfilEstudiante() {
   const { id } = useParams(); //organizar id con la info que se recibe
   console.log(useParams());
 
@@ -15,4 +15,4 @@ function Perfil() {
   );
 }
 
-export default Perfil;
+export default PerfilEstudiante;

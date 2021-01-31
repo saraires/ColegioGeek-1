@@ -4,7 +4,7 @@ import Layout from "./Components/Layout";
 import Informe from "./Pages/Informe";
 import Materias from "./Pages/Materias";
 import Notas from "./Pages/Notas";
-import Perfil from "./Pages/Perfil";
+import PerfilEstudiante from "./Pages/PerfilEstudiante";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <Route exact path="/informe-final" component={Informe} />
           <Route exact path="/materias" component={Materias} />
           <Route exact path="/notas" component={Notas} />
-          <Route path="/perfil/:id" component={Perfil} />
+          <Route path="/perfil/:id" component={PerfilEstudiante} />
            
         </Switch>
       </Layout>
