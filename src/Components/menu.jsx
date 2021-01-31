@@ -1,7 +1,14 @@
 import React from 'react';
+<<<<<<< HEAD
 import LogoAcademia from '../Images/LogoAcademia.png';
 
 function MenuProfesor() {
+=======
+import LogoAcademia from '../images/LogoAcademia.jpg';
+import Profesor from '../images/Profesor.jpg';
+
+export default function MenuProfesor() {
+>>>>>>> feature-student
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light container-fluid">
@@ -13,9 +20,12 @@ function MenuProfesor() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
+<<<<<<< HEAD
                                 <a className="nav-link" href="/profesor" style={{ color: "black" }}>Inicio</a>
                             </li>
                             <li className="nav-item">
+=======
+>>>>>>> feature-student
                                 <a className="nav-link" href="/profesor-perfil" style={{ color: "black" }}>Ver mi Perfil</a>
                             </li>
                             <li className="nav-item">
@@ -25,7 +35,19 @@ function MenuProfesor() {
                     </div>
                 </div>
             </nav>
+<<<<<<< HEAD
         </div>
     );
 }
 export default MenuProfesor;
+=======
+            {/* Termina el Navbar */}
+
+            <div className="container" style={{display: "flex"}}>
+                <img src={Profesor} alt="..." width="600px" />
+                <p></p>
+            </div>
+        </div>
+    )
+}
+>>>>>>> feature-student

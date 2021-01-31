@@ -1,0 +1,53 @@
+Roles
+
+- tabla users
+	- tipo de doc
+	- numero
+	- Nombre
+	- Apellido
+	- sexo
+	- Tipo de documento enum
+	- fecha nacimiento
+	- Dirección residencia
+	- Ciudad de residencia
+	- Teléfono residencia
+	- Teléfono celular
+	- Correo electrónico
+	
+
+- Estudiante
+	- codigo de estudiante
+	- Grado (enum)
+	- Subir Foto del estudiante
+	- Subir PDF con la fotocopia del documento de identidad
+	- estado (enum)
+	- nota promedio 	
+
+- Profesor
+	- grados (Tabla aparte)
+	- materia que dicta (enum)
+
+- grados (tabla auxiliar)
+	- grado (int)
+
+- grupos
+	- codigo grupo
+	- nombre profesor
+	- jornada (enum)
+
+- Materia
+	- codigo de materia
+	- nombre materia
+
+- plandearea
+	- codigo materia
+	- codigo del grupo
+	- codigo estudiante
+	- seguimiento (array)
+
+
+
+
+
+
+
