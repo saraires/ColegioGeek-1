@@ -35,18 +35,18 @@ function Encabezado() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/materias" eventKey={1}>
+            <Nav.Link as={Link} to="/estudiante-materias" eventKey={1}>
               Materias
             </Nav.Link>
-            <Nav.Link as={Link} to="/notas" eventKey={2}>
+            <Nav.Link as={Link} to="/estudiante-notas" eventKey={2}>
               Notas
             </Nav.Link>
-            <Nav.Link as={Link} to="/informe-final" eventKey={3}>
+            <Nav.Link as={Link} to="/estudiante-informe-final" eventKey={3}>
               Informe Final
             </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link as={Link} to={`/perfil/${id}`} eventKey={4}>
+            <Nav.Link as={Link} to={`/estudiante-perfil/${id}`} eventKey={4}>
               {estudiante.nombre} {estudiante.apellido}
             </Nav.Link>
           </Nav>

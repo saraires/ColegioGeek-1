@@ -15,20 +15,20 @@ import PerfilEstudiante from "./Pages/PerfilEstudiante";
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
         <Switch>
+      <Layout>
           <Route exact path="/estudiante-informe-final" component={EstudianteInforme} />
           <Route exact path="/estudiante-materias" component={EstudianteMaterias} />
           <Route exact path="/estudiante-notas" component={EstudianteNotas} />
+          <Route exact path="/estudiante-perfil/:id" component={PerfilEstudiante} />
+      </Layout>
           <Route exact path="/profesor" component={Profesor} />
           <Route exact path="/profesor-grupos" component={Grupos} />
           <Route exact path="/profesor-perfil" component={Perfil} />
           <Route exact path="/profesor-grado-notas" component={Notas} />
-          <Route exact path="/estudiante-perfil/:id" component={PerfilEstudiante} />
           <Route exact path="/" component={SignIn} />
           <Route exact path="/SignUp" component={SignUp} />
         </Switch>
-      </Layout>
     </BrowserRouter>
   );
 }
