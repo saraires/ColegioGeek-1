@@ -1,87 +1,68 @@
-import React, { Component, useState } from "react";
-import { Card, Container, Form, Button } from "react-bootstrap";
+import React from 'react';
+import { useFormik } from 'formik';
+import { Card, Container, Button } from "react-bootstrap";
 import Logo from "../Images/LogoAcademia.png"
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
-function SignIn() {
-  const [data, setData] = useState([]);
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-    rol: "",
-  });
+const signInSchema = Yup.object().shape({
+  email: Yup.string().email('Correo Invalido').required('Ingrese un correo'),
+  password: Yup.string().required('Ingrese contraseña').min(8, "La contraseña debe tener mínimo 8 caracteres"),
+  picked: Yup.number(!1 || !2 || !3).required("Escoja un rol"),
+});
 
-  const handleChange = async (e) => {
-    e.persist();
-    await setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-    console.log(e.target.value);
-    console.log(form);
-  };
+const FormFormik = () => (
+  <div>
+    <Formik
+      initialValues={{
+        email: '',
+        password: '',
+        picked: '',
+      }}
+      validationSchema={signInSchema}
+      onSubmit={async (values) => {
+        // same shape as initial values
+        await new Promise((r) => setTimeout(r, 500));
+        console.log(values);
+      }}
+    >
+      {({ errors, touched, values }) => (
+        <Container className="mt-4">
+          <Card className="d-flex m-auto my-auto pb-5 shadow-lg" style={{ width: "25rem" }}>
+            <Card.Img className="pt-5 d-flex m-auto" variant="top" style={{width: "17rem"}} src={Logo} />
+            <Form className="col-md-6 m-auto align-items-center">
+              <Field className="row-6 mt-5" type="email" name="email" placeholder="Ingresa tu correo" />
+              {errors.email && touched.email ? (
+                <div style={{color: 'red'}}>{errors.email}</div>
+              ) : null}
+              <Field className="mt-5" type="password" name="password" placeholder="Ingresa tu contraseña" />
+              {errors.password && touched.password ? (
+                <div style={{color: 'red'}}>{errors.password}</div>
+              ) : null}
 
-  const handleSubmit = (e) => {
-    //Para que no se recargue la página cuando le de click en guardar
-    e.preventDefault();
-  };
+              <br />
+              <br />
 
-  return (
-    <Container className="mt-5">
-      <Card
-        className="d-flex m-auto my-auto pb-5 align-items-center"
-        style={{ width: "18rem" }}
-      >
-        <Card.Img className="mt-5" variant="top" src={Logo} />
-        <Form className="col-12 m-auto" onSubmit={handleSubmit}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label className="mt-5" onChange={handleChange}>
-              Correo
-            </Form.Label>
-            <Form.Control
-              id="email"
-              name="email"
-              type="email"
-              placeholder="email@example.com"
-              onChange={handleChange}
-              value={form.email}
-            />
-          </Form.Group>
+              <div id="my-radio-group"></div>
+              <div role="group" aria-labelledby="my-radio-group">
+                <p>
+                  <Field type="radio" name="picked" value="1" /> Administrador
+                </p>
+                <p>
+                  <Field type="radio" name="picked" value="2" /> Profesor
+                </p>
+                <p>
+                  <Field type="radio" name="picked" value="3" /> Estudiante
+                </p>
+                <div style={{color: 'red'}}>{errors.picked}</div>
+              </div>
+              <Button className="d-flex m-auto" variant="primary" type="submit">Enviar</Button>
+            </Form>
+          </Card>
+        </Container>
+      )}
+    </Formik>
+  </div>
+)
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Contraseña</Form.Label>
-            <Form.Control
-              onChange={handleChange}
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Contraseña"
-              value={form.password}
-            />
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Rol</Form.Label>
-            <Form.Control
-            className="mb-5"
-              as="select"
-              id="rol"
-              name="rol"
-              onChange={handleChange}
-              value={form.rol}
-            >
-              <option selected>Choose...</option>
-              <option value="1">Administrador</option>
-              <option value="2">Profesor</option>
-              <option value="3">Estudiante</option>
-            </Form.Control>
-          </Form.Group>
-
-          <Button className="d-flex m-auto " variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-      </Card>
-    </Container>
-  );
-}
-
-export default SignIn;
+export default FormFormik;
