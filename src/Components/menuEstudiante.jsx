@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "../Images/logo.png";
+import LogoAcademia from "../Images/LogoAcademia.png";
 
-function Encabezado() {
+function MenuEstudiante() {
 
   const [estudiante, setEstudiante] = useState([]);
   const id = 1;
@@ -23,7 +23,7 @@ function Encabezado() {
         <Navbar.Brand href="#home">
           <Link to="/">
             <img
-              src={logo}
+              src={LogoAcademia}
               width="100"
               height="50"
               className="d-inline-block align-top"
@@ -56,4 +56,4 @@ function Encabezado() {
   );
 }
 
-export default Encabezado;
+export default MenuEstudiante;
