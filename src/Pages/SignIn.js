@@ -28,23 +28,23 @@ const FormFormik = () => (
     >
       {({ errors, touched, values }) => (
         <Container className="mt-4">
-          <Card className="d-flex m-auto my-auto pb-5 shadow-lg" style={{ width: "25rem" }}>
+          <Card className="d-flex m-auto my-auto pb-5 shadow-lg" style={{ width: "20rem" }}>
             <Card.Img className="pt-5 d-flex m-auto" variant="top" style={{width: "17rem"}} src={Logo} />
-            <Form className="col-md-6 m-auto align-items-center">
-              <Field className="row-6 mt-5" type="email" name="email" placeholder="Ingresa tu correo" />
+            <Form className="col-md-8 m-auto align-items-center">
+              
+              <Field className="mt-5 form-control" type="email" name="email" placeholder="Ingresa tu correo" />
               {errors.email && touched.email ? (
                 <div style={{color: 'red'}}>{errors.email}</div>
               ) : null}
-              <Field className="mt-5" type="password" name="password" placeholder="Ingresa tu contraseña" />
+              <Field className="mt-5 form-control" type="password" name="password" placeholder="Ingresa tu contraseña" />
               {errors.password && touched.password ? (
                 <div style={{color: 'red'}}>{errors.password}</div>
               ) : null}
 
-              <br />
-              <br />
+              
 
               <div id="my-radio-group"></div>
-              <div role="group" aria-labelledby="my-radio-group">
+              <div className="mt-4 form-check" role="group" aria-labelledby="my-radio-group">
                 <p>
                   <Field type="radio" name="picked" value="1" /> Administrador
                 </p>
@@ -54,7 +54,7 @@ const FormFormik = () => (
                 <p>
                   <Field type="radio" name="picked" value="3" /> Estudiante
                 </p>
-                <div style={{color: 'red'}}>{errors.picked}</div>
+                <div className="mb-4" style={{color: 'red'}}>{errors.picked}</div>
               </div>
               <Button className="d-flex m-auto" variant="primary" type="submit">Enviar</Button>
             </Form>
