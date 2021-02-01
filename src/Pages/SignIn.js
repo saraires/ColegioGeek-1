@@ -29,7 +29,7 @@ function SignIn() {
     <Container className="mt-5">
       <Card
         className="d-flex m-auto my-auto pb-5 align-items-center"
-        style={{ width: "18rem" }}
+        style={{ width: "20rem" }}
       >
         <Card.Img className="mt-5" variant="top" src={Logo} />
         <Form className="col-12 m-auto" onSubmit={handleSubmit}>
