@@ -4,7 +4,7 @@ import LogoAcademia from '../Images/LogoAcademia.png';
 function MenuProfesor() {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light container-fluid">
+            <nav collapseOnSelect className="navbar navbar-expand-lg navbar-light bg-light container-fluid">
                 <div className="container-fluid">
                     <img src={LogoAcademia} alt="foto" width="120px" href="/profesor" style={{ marginRight: "20px" }} />
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

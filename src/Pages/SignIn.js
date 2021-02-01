@@ -1,32 +1,47 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
-class SignIn extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      form: {
-        email: "",
-        password: "",
-        rol: "",
-      },
-    };
-  }
+function SignIn() {
 
-  handleChange = async (e) => {
+  const [data, setData] = useState([]);
+  const [form, setForm] = useState([]);
+
+  const handleChange = async (e) => {
     e.persist();
-    await this.setState({
+    await setForm({
       form: {
-        ...this.state.form,
+        ...form,
         [e.target.name]: e.target.value,
       },
     });
-    console.log(this.state.form);
+    console.log(form);
   };
 
-  render() {
-    const Dform = this.state.form;
-    const datos = this.state.data;
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     data: [],
+  //     form: {
+  //       email: "",
+  //       password: "",
+  //       rol: "",
+  //     },
+  //   };
+  // }
+
+  // handleChange = async (e) => {
+  //   e.persist();
+  //   await this.setState({
+  //     form: {
+  //       ...this.state.form,
+  //       [e.target.name]: e.target.value,
+  //     },
+  //   });
+  //   console.log(this.state.form);
+  // };
+
+  // render() {
+  //   const Dform = this.state.form;
+  //   const datos = this.state.data;
     return (
       <div className="container-fluid row p-5">
         <div className="card col-10 row mx-auto mt-5">
@@ -34,7 +49,7 @@ class SignIn extends Component {
             <div className="col-8 form-group row">
               <label
                 for="email"
-                onChange={this.handleChange}
+                onChange={handleChange}
                 className="col-sm-4 col-form-label"
               >
                 Email
@@ -43,7 +58,7 @@ class SignIn extends Component {
                 <input
                   type="email"
                   className="form-control"
-                  onChange={this.handleChange}
+                  onChange={handleChange}
                   id="email"
                   name="email"
                 />
@@ -57,7 +72,7 @@ class SignIn extends Component {
                 <input
                   type="password"
                   className="form-control"
-                  onChange={this.handleChange}
+                  onChange={handleChange}
                   id="password"
                   name="password"
                 />
@@ -72,7 +87,7 @@ class SignIn extends Component {
                 className="custom-select col-sm-9"
                 id="rol"
                 name="rol"
-                onChange={this.handleChange}
+                onChange={handleChange}
               >
                 <option selected>Choose...</option>
                 <option value="1">Administrador</option>
@@ -93,6 +108,5 @@ class SignIn extends Component {
       </div>
     );
   }
-}
 
 export default SignIn;

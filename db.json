@@ -2,6 +2,8 @@
   "estudiantes": [
     {
       "id": 1,
+      "nombre": "Juanito",
+      "apellido": "Ramirez",
       "cod_grupo": "11-A",
       "grupo": 11,
       "jornada": "tarde"
