@@ -24,7 +24,7 @@ function MenuEstudiante() {
           <Link to="/">
             <img
               src={LogoAcademia}
-              width="100"
+              width="120"
               height="50"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
