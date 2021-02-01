@@ -41,9 +41,13 @@ const FormFormik = () => (
           email: values.email,
           password: values.password,
           rol: values.rol
-        }).then((res)=>{
-          return res.data
-        })
+        }, {
+          'Access-Control-Allow-Origin': '*',
+      }).then((res)=>{
+          return res
+        }).catch(function (error) {
+          console.log(error);
+        });
         // // same shape as initial values
         // console.log('Se rellenaron todos los campos')
         // console.log(values);
