@@ -5,6 +5,9 @@ import Quote from "./Quote";
 import niño from "../Images/estudiante-nino.jpg";
 import niña from "../Images/estudiante-nina.jpg";
 import profe from "../Images/Profesor.jpg";
+import admin from "../Images/Admin.jpg"
+
+
 function BienvennidaE() {
   const nombre = getFromLocal("nombre_completo");
   const genero = getFromLocal("genero");
@@ -28,7 +31,7 @@ function BienvennidaE() {
       <Row className="col-12 m-auto">
         <Col xs={12} md={6} className="p-0  ">
           {rol === "1" ? (
-            <Image src="" thumbnail style={{ width: "18rem" }} />
+            <Image src={admin} thumbnail style={{ width: "18rem" }} />
           ) : rol === "2" ? (
             <Image src={profe} thumbnail style={{ width: "50rem" }} />
           ) : rol === "3" && genero === "Hombre" ? (

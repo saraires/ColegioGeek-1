@@ -38,7 +38,7 @@ function App() {
           />
           <Route
             exact
-            path="/estudiante-materias"
+            path="/estudiante-materias/:id"
             component={EstudianteMaterias}
           />
           <Route exact path="/estudiante-notas" component={EstudianteNotas} />
@@ -57,9 +57,9 @@ function App() {
           <Route exact path="/SignUp" component={SignUp} />
 
           {/* Rutas Admin */}
-          <Route exact path="/admin" component={Admin} />
-          <Route exact path="/registro-grupo" component={RegistroGrupo} />
-          <Route exact path="/ver-grupos" component={VerGrupos} />
+          <Route exact path="/administrado" component={Admin} />
+          <Route exact path="/administrador-registro-grupo" component={RegistroGrupo} />
+          <Route exact path="/administrador-ver-grupos" component={VerGrupos} />
         </Switch>
       </Layout>
     </BrowserRouter>
