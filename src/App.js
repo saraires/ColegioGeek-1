@@ -15,7 +15,7 @@ import PerfilEstudiante from "./Pages/PerfilEstudiante";
 
 // Sing in - Sing Up
 import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
+import SignUp from "./Pages/SignUp_copy";
 
 function App() {
   return (
@@ -46,7 +46,7 @@ function App() {
         {/* Rutas Sing */}
 
         <Route exact path="/" component={SignIn} />
-        <Route exact path="/SignUp" component={SignUp} />
+        <Route exact path="/signup" component={SignUp} />
       </Switch>
     </BrowserRouter>
   );
