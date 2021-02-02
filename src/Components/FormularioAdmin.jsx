@@ -47,9 +47,9 @@ const FormFormik = () => (
       {({ errors, touched, values }) => (
         <Container className="mt-4">
           <Card className="d-flex m-auto my-auto pb-5 shadow-lg align-content-center" style={{width: "30rem"}}>
-            <Form className="col-8 m-auto">
+            <Form className="col-11 m-auto">
               <div className="form-row mt-5">
-                <div id="my-radio-group " className="col-8">Tipo de Documento
+                <div id="my-radio-group " className="col-11">Tipo de Documento
                 <div className="mt-3 form-check" role="group" aria-labelledby="my-radio-group">
                     <p>
                       <Field type="radio" name="doctype" value="TI" /> Tarjeta de Identidad
@@ -63,27 +63,27 @@ const FormFormik = () => (
                     <div className="mb-4" style={{ color: 'red' }}>{errors.doctype}</div>
                   </div>
                 </div>
-                <Field className="form-control col-8 mt-2" type="number" name="docnum" placeholder="Numero de Documento" />
+                <Field className="form-control col-11 mt-2" type="number" name="docnum" placeholder="Numero de Documento" />
                 {errors.docnum && touched.docnum ? (
                   <div style={{ color: 'red' }}>{errors.docnum}</div>
                 ) : null}
-                <Field className="form-control col-8 mt-3" type="text" name="name" placeholder="Nombre Completo" />
+                <Field className="form-control col-11 mt-3" type="text" name="name" placeholder="Nombre Completo" />
                 {errors.name && touched.name ? (
                   <div style={{ color: 'red' }}>{errors.name}</div>
                 ) : null}
-                <Field className="form-control col-8 mt-3" type="text" name="direccion" placeholder="Direccion de Residencia" />
+                <Field className="form-control col-11 mt-3" type="text" name="direccion" placeholder="Direccion de Residencia" />
                 {errors.direccion && touched.direccion ? (
                   <div style={{ color: 'red' }}>{errors.direccion}</div>
                 ) : null}
-                <Field className="form-control col-8 mt-3" type="text" name="ciudad" placeholder="Ciudad de Residencia" />
+                <Field className="form-control col-11 mt-3" type="text" name="ciudad" placeholder="Ciudad de Residencia" />
                 {errors.ciudad && touched.ciudad ? (
                   <div style={{ color: 'red' }}>{errors.ciudad}</div>
                 ) : null}
-                <Field className="form-control col-8 mt-3" type="date" name="nacimiento" placeholder="Fecha de Nacimiento" />
+                <Field className="form-control col-11 mt-3" type="date" name="nacimiento" placeholder="Fecha de Nacimiento" />
                 {errors.nacimiento && touched.nacimiento ? (
                   <div style={{ color: 'red' }}>{errors.nacimiento}</div>
                 ) : null}
-                <div id="my-radio-group" className=" mt-3 col-8">Selecciona un genero
+                <div id="my-radio-group" className=" mt-3 col-11">Selecciona un genero
                 <div className="mt-3 form-check" role="group" aria-labelledby="my-radio-group">
                     <p>
                       <Field type="radio" name="genero" value="H" /> Masculino
@@ -95,7 +95,7 @@ const FormFormik = () => (
                   </div>
                 </div>
                 <div></div>
-                <div id="my-radio-group" className="mt-3 col-8">Selecciona un rol
+                <div id="my-radio-group" className="mt-3 col-11">Selecciona un rol
                   <div className="mt-3 form-check" role="group" aria-labelledby="my-radio-group">
                     <p>
                       <Field type="radio" name="picked" value="1" /> Administrador
@@ -109,20 +109,20 @@ const FormFormik = () => (
                     <div className="mb-4" style={{ color: 'red' }}>{errors.picked}</div>
                   </div>
                 </div>
-                <Field className="form-control col-8 mt-3" type="email" name="email" placeholder="Direccion de Correo" />
+                <Field className="form-control col-11 mt-3" type="email" name="email" placeholder="Direccion de Correo" />
                 {errors.email && touched.email ? (
                   <div style={{ color: 'red' }}>{errors.email}</div>
                 ) : null}
-                <Field className="form-control col-8 mt-3" type="number" name="telefono" placeholder="Telefono" />
+                <Field className="form-control col-11 mt-3" type="number" name="telefono" placeholder="Telefono" />
                 {errors.telefono && touched.telefono ? (
                   <div style={{ color: 'red' }}>{errors.telefono}</div>
                 ) : null}
-                <Field className="form-control col-8 mt-3" type="number" name="celular" placeholder="Celular" />
+                <Field className="form-control col-11 mt-3" type="number" name="celular" placeholder="Celular" />
                 {errors.celular && touched.celular ? (
                   <div style={{ color: 'red' }}>{errors.celular}</div>
                 ) : null}
 
-                <Field className="form-control col-8 mt-3" type="password" name="password" placeholder="Ingresa tu contraseña" />
+                <Field className="form-control col-11 mt-3" type="password" name="password" placeholder="Ingresa tu contraseña" />
                 {errors.password && touched.password ? (
                   <div style={{ color: 'red' }}>{errors.password}</div>
                 ) : null}

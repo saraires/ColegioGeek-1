@@ -21,7 +21,7 @@ import PerfilEstudiante from "./Pages/PerfilEstudiante";
 
 // Sing in - Sing Up
 import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp_copy";
+import SignUp from "./Pages/SignUp";
 
 function App() {
   return (
