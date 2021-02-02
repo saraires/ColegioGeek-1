@@ -37,12 +37,12 @@ function TablaGrados() {
                         estudiantes.map((estudiantes) => {
                             return (
                                 <tr key={estudiantes._id}>
-                                    <td scope="row">{estudiantes.id}</td>
-                                    <td scope="row">{estudiantes.cod_grupo}
+                                    <td>{estudiantes.id}</td>
+                                    <td>{estudiantes.cod_grupo}
                                     <Link to ="/profesor-grado-notas" style={{ float: "right", color:"#47525E" }}><button type="button" class="btn btn-outline-info">Ver notas</button></Link>                                  
                                     </td>
-                                    <td scope="row">{estudiantes.grupo}</td>
-                                    <td scope="row">{estudiantes.jornada}</td>
+                                    <td>{estudiantes.grupo}</td>
+                                    <td>{estudiantes.jornada}</td>
                                 </tr>
                             )
                         })

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, Container, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
 
 function CardPerfil({id}) {
   const [estudiante, setEstudiante] = useState([]);
@@ -11,7 +10,7 @@ function CardPerfil({id}) {
       setEstudiante(res.data);
       console.log(res.data);
     });
-  }, []);
+  }, [id]);
 
   return (
       <Card style={{ width: "30rem" }}>
