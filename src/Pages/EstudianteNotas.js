@@ -13,7 +13,6 @@ function Notas() {
     <>
       <MenuEstudiante />
       <Container>
-        {/* <MenuEstudiante /> */}
         <Student />
         <TableNotes />
       </Container>

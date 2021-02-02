@@ -6,6 +6,7 @@ import { getFromLocal } from "../functions/localstorage";
 function Student() {
   const [estudiante, setEstudiante] = useState([]);
   const id = getFromLocal("id_usuario");
+  
 
   useEffect(() => {
     axios.get(`http://localhost:5000/estudiante-perfil/${id}`).then((res) => {
