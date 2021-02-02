@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Layout from "./Components/Layout";
+
 //  Profesor
 import Profesor from "./Pages/ProfesorInicio";
 import Grupos from "./Pages/ProfesorGrupos";

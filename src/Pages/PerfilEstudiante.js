@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Card, Container, Button } from "react-bootstrap";
+import React from "react";
+
+import {  Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import CardPerfil from "../Components/CardPerfil"
 import MenuEstudiante from "../Components/menuEstudiante";
