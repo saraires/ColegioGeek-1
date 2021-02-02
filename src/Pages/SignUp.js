@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -33,11 +32,9 @@ class SignUp extends Component {
   };
 
   render() {
-    const Dform = this.state.form;
-    const datos = this.state.data;
     return (
       <div className="container-fluid row p-5">
-        <div className="card col-10 row mx-auto mt-5">
+        <div className="card shadow-lg col-10 row mx-auto mt-5">
           <form className="m-3" >
             <div className="form-row">
               <div className="form-group col-md-6">
