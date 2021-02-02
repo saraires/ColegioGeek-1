@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios'
+import axios from "axios";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LogoAcademia from "../Images/LogoAcademia.png";
+import { getFromLocal } from "../functions/localstorage";
 
 function MenuEstudiante() {
-
-  const [estudiante, setEstudiante] = useState([]);
-  const id = 1;
-
-  useEffect(() => {
-    axios.get(`http://localhost:3004/estudiantes/${id}`).then((res) => {
-      setEstudiante(res.data);
-      console.log(res.data);
-    });
-  }, []);
+  const [estudiante, setEstudiante] = useState({
+    nombre: getFromLocal("nombre_completo"),
+    genero: getFromLocal("genero"),
+    rol: getFromLocal("rol"),
+    id: getFromLocal("id_usuario"),
+    correo: getFromLocal("correo")
+  });
 
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="light" >
+      <Navbar collapseOnSelect expand="lg" bg="light">
         <Navbar.Brand href="#home">
           <Link to="/">
             <img
@@ -46,8 +44,8 @@ function MenuEstudiante() {
             </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link as={Link} to={`/estudiante-perfil/${id}`} eventKey={4}>
-              {estudiante.nombre} {estudiante.apellido}
+            <Nav.Link as={Link} to={`/estudiante-perfil/${estudiante.id}`} eventKey={4}>
+              {estudiante.nombre} 
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

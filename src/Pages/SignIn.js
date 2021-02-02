@@ -42,14 +42,27 @@ const FormFormik = () => (
           })
           .then((res) => {
             if (res.data.rows[0]["correo"] === values.email) {
+
               const id = res.data.rows[0]["id_usuario"];
               saveToLocal("id_usuario", id);
+
+              const nombre = res.data.rows[0]["nombre_completo"];
+              saveToLocal("nombre_completo", nombre );
+
+              const genero = res.data.rows[0]["genero"];
+              saveToLocal("genero", genero );
+
+              const rol = res.data.rows[0]["rol"];
+              saveToLocal("rol", rol );
+
+
+
               if (res.data.rows[0]["rol"] === 1) {
                 window.location.href = "administrado";
               } else if (res.data.rows[0]["rol"] === 2) {
                 window.location.href = "/profesor";
               } else if (res.data.rows[0]["rol"] === 3) {
-                window.location.href = "/estudiante-materias"; //organizar ruta inicial de estudiante
+                window.location.href = "/estudiante"; //organizar ruta inicial de estudiante
               }
             }
           })
@@ -70,7 +83,7 @@ const FormFormik = () => (
         <Container className="mt-4">
           <Card
             className="d-flex m-auto my-auto pb-5 shadow-lg"
-            style={{ width: "20rem" }}
+            style={{ width: "30rem" }}
           >
             <Card.Img
               className="pt-5 d-flex m-auto"
@@ -78,7 +91,7 @@ const FormFormik = () => (
               style={{ width: "17rem" }}
               src={Logo}
             />
-            <Form className="col-md-8 m-auto align-items-center">
+            <Form className="col-md-9 m-auto align-items-center">
               <Field
                 className="mt-5 form-control"
                 type="email"
