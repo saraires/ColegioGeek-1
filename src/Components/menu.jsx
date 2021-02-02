@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import { getFromLocal } from "../functions/localstorage";
 import LogoAcademia from '../Images/LogoAcademia.png';
 
 function MenuProfesor() {
+    const [profesor, setEstudiante] = useState({
+        nombre: getFromLocal("nombre_completo"),
+        genero: getFromLocal("genero"),
+        rol: getFromLocal("rol"),
+        id: getFromLocal("id_usuario"),
+        correo: getFromLocal("correo")
+      });
+
     return (
         <div>
             <nav collapseOnSelect className="navbar navbar-expand-lg navbar-light bg-light container-fluid">
@@ -16,10 +26,10 @@ function MenuProfesor() {
                                 <a className="nav-link" href="/profesor" style={{ color: "black" }}>Inicio</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/profesor-perfil" style={{ color: "black" }}>Ver mi Perfil</a>
+                                <Link to={`/profesor-perfil/${profesor.id}`} className="nav-link" style={{ color: "black" }}>Ver mi Perfil</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/profesor-grupos" style={{ color: "black" }}>Ver Grupos</a>
+                                <Link to={`/profesor-grupos/${profesor.id}`} className="nav-link" style={{ color: "black" }}>Ver Grupos</Link>
                             </li>
                         </ul>
                     </div>

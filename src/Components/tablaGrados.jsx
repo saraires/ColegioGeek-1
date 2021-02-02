@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { getFromLocal } from "../functions/localstorage";
 
 
 function TablaGrados() {
 
-    const [estudiantes, setEstudiantes] = useState([]);
+    const [grupos, setGrupos] = useState([]);
+    const id = getFromLocal("id_usuario");
 
     useEffect(() => {
 
-        axios.get("http://localhost:3001/estudiantes").then((res) => {
-            setEstudiantes(res.data);
+        axios.get(`http://localhost:5000/profesor-grupos/${id}`).then((res) => {
+            setGrupos(res.data);
             console.log(res.data);
 
         }).catch((err) => {
@@ -34,15 +36,15 @@ function TablaGrados() {
                 </thead>
                 <tbody>
                     {
-                        estudiantes.map((estudiantes) => {
+                        grupos.map((grupos) => {
                             return (
-                                <tr key={estudiantes._id}>
-                                    <td>{estudiantes.id}</td>
-                                    <td>{estudiantes.cod_grupo}
+                                <tr key={grupos._id}>
+                                    <td>{grupos.id}</td>
+                                    <td>{grupos.cod_grupo}
                                     <Link to ="/profesor-grado-notas" style={{ float: "right", color:"#47525E" }}><button type="button" class="btn btn-outline-info">Ver notas</button></Link>                                  
                                     </td>
-                                    <td>{estudiantes.grupo}</td>
-                                    <td>{estudiantes.jornada}</td>
+                                    <td>{grupos.grupo}</td>
+                                    <td>{grupos.jornada}</td>
                                 </tr>
                             )
                         })
