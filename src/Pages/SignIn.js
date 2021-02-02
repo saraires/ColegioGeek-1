@@ -52,8 +52,6 @@ const FormFormik = () => (
               const rol = res.data.rows[0]["rol"];
               saveToLocal("rol", rol );
 
-
-
               if (res.data.rows[0]["rol"] === 1) {
                 window.location.href = "administrado";
               } else if (res.data.rows[0]["rol"] === 2) {
@@ -61,6 +59,13 @@ const FormFormik = () => (
               } else if (res.data.rows[0]["rol"] === 3) {
                 window.location.href = "/estudiante"; //organizar ruta inicial de estudiante
               }
+
+              swal.fire({
+                title: 'Bienvenido!',
+                text: 'Se pudo iniciar sesión correctamente',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+              })
             }
           })
           .catch(function (error) {
