@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import axios from "axios";
+import { saveToLocal,getFromLocal } from "../functions/localstorage";
 
 function Tabla() {
-  const [notas, setNotas] = useState([]);
+  const [notas, setNotas] = useState({});
+  const id = getFromLocal("id_usuario");
+const getNota = getFromLocal("nota");
 
   useEffect(() => {
     axios
-      .get("http://localhost:3004/notas")
+      .get(`http://localhost:5000/estudiante-nota/${id}`)
       .then((res) => {
-        setNotas(res.data);
-        console.log(res.data);
+       const nota = saveToLocal("nota", res.data)
+        console.log(res.data.rows);
+        
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   return (
     <Container className="p-0">
@@ -43,30 +47,24 @@ function Tabla() {
           </tr>
         </thead>
         <tbody>
-          {notas.map((item, index) => {
+          
+          {/* {nota.map((item, index) => {
             return (
               <tr key={index} id={index}>
-                  <td>{index.codigo}</td>
-                  <td>{index.materia}</td>
-                  <td>{index.n1}</td>
-                  <td>{index.n2}</td>
-                  <td>{index.n3}</td>
-                  <td>{index.n4}</td>
-                  <td>{index.n5}</td>
-                  <td>{index.n6}</td>
-                  <td>{index.n7}</td>
-                  <td>{index.n8}</td>
-                  <td>{index.n9}</td>
-                  <td>{index.n10}</td>
-                  <td>{index.n11}</td>
-                  <td>{index.n12}</td>
-                  <td>{index.n13}</td>
-                  <td>{index.n14}</td>
-                  <td>{index.n15}</td>
-                  <td>{index.final}</td>
+                  <td>{item.cod_materia}</td>
+                  <td>{item.materia}</td>
+                  <td>{item.nota}</td>
+                  <td>{item.final}</td>
               </tr>
             );
-          })}
+          })} */}
+          <tr>
+          {/* {getNota.map((item,index)=>{
+            return(
+              <td>{item.nota}</td>
+            )
+          })} */}
+          </tr>
         </tbody>
       </Table>
     </Container>

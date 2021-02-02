@@ -38,10 +38,10 @@ function App() {
           />
           <Route
             exact
-            path="/estudiante-materias/:id"
+            path="/estudiante-materia/:id"
             component={EstudianteMaterias}
           />
-          <Route exact path="/estudiante-notas" component={EstudianteNotas} />
+          <Route exact path="/estudiante-nota/:id" component={EstudianteNotas} />
           <Route
             exact
             path="/estudiante-perfil/:id"

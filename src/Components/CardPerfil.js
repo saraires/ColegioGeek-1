@@ -41,7 +41,6 @@ function CardPerfil() {
           </Card.Text>
           <Card.Text className="text-center mb-3">
             <span className="font-weight-bold"> Grupo: </span>{estudiante.descripcion_grupo}
-            {estudiante.grupo}
           </Card.Text>
           <Button className="d-flex m-auto" variant="info">
             Cerrar Sesión

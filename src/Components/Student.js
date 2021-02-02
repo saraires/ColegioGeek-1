@@ -8,8 +8,8 @@ function Student() {
   const id = getFromLocal("id_usuario");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/estudiante-materias/${id}`).then((res) => {
-      setEstudiante(res.data);
+    axios.get(`http://localhost:5000/estudiante-perfil/${id}`).then((res) => {
+      setEstudiante(res.data.rows[0]);
       console.log(res.data);
     });
   }, []);
@@ -17,10 +17,10 @@ function Student() {
   return (
     <Container className="mt-5 mb-5">
       <div className="row  justify-content-center">
-        <h1 text-center>{estudiante.nombre}</h1>
+        <h1 text-center>{estudiante.nombre_completo}</h1>
       </div>
       <div className="row  justify-content-center">
-        <h2>{estudiante.grado}</h2>
+        <h2>{estudiante.descripcion_grupo}</h2>
       </div>
     </Container>
   );

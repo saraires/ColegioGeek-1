@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LogoAcademia from "../Images/LogoAcademia.png";
@@ -33,10 +33,10 @@ function MenuEstudiante() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/estudiante-materias" eventKey={1}>
+            <Nav.Link as={Link} to={`/estudiante-materia/${estudiante.id}`} eventKey={1}>
               Materias
             </Nav.Link>
-            <Nav.Link as={Link} to="/estudiante-notas" eventKey={2}>
+            <Nav.Link as={Link} to={`/estudiante-notas/${estudiante.id}`} eventKey={2}>
               Notas
             </Nav.Link>
             <Nav.Link as={Link} to="/estudiante-informe-final" eventKey={3}>
