@@ -22,14 +22,14 @@ function Tabla() {
   return (
     <Container className="p-0 d-flex justify-content-center row">
       <Table striped bordered hover size="sm" className="col-9">
-        <thead className="text-info">
+        <thead className="text-info text-center">
           <tr>
             <th>Código Materia</th>
             <th>Materia</th>
             <th>Nota Promedio</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-center">
           {materia.map((item, index) => {
             return (
               <tr key={index} id={index}>

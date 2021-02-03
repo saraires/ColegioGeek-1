@@ -39,7 +39,7 @@ function MenuEstudiante() {
             <Nav.Link as={Link} to={`/estudiante-nota/${estudiante.id}`} eventKey={2}>
               Notas
             </Nav.Link>
-            <Nav.Link as={Link} to="/estudiante-informe-final" eventKey={3}>
+            <Nav.Link as={Link} to={`/estudiante-informe-final/${estudiante.id}`} eventKey={3}>
               Informe Final
             </Nav.Link>
           </Nav>

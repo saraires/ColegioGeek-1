@@ -1,7 +1,7 @@
 import React from 'react';
-import { useFormik } from 'formik';
+
 import { Card, Container, Button } from "react-bootstrap";
-import Logo from "../Images/LogoAcademia.png"
+
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 

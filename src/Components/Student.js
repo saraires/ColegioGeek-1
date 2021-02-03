@@ -13,7 +13,7 @@ function Student() {
       setEstudiante(res.data.rows[0]);
       console.log(res.data);
     });
-  }, []);
+  }, [id]);
 
   return (
     <Container className="mt-5 mb-5">

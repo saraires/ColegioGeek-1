@@ -1,7 +1,6 @@
 import React from "react";
 import { getFromLocal } from "../functions/localstorage";
 import {  Container } from "react-bootstrap";
-import { useParams } from "react-router-dom";
 import CardPerfil from "../Components/CardPerfil"
 import MenuEstudiante from "../Components/menuEstudiante";
 
