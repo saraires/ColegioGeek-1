@@ -6,13 +6,14 @@ import { getFromLocal } from "../functions/localstorage";
 function Student() {
   const [estudiante, setEstudiante] = useState([]);
   const id = getFromLocal("id_usuario");
+  
 
   useEffect(() => {
     axios.get(`http://localhost:5000/estudiante-perfil/${id}`).then((res) => {
       setEstudiante(res.data.rows[0]);
       console.log(res.data);
     });
-  }, []);
+  }, [id]);
 
   return (
     <Container className="mt-5 mb-5">

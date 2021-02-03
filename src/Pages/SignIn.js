@@ -6,12 +6,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { saveToLocal } from "../functions/localstorage";
 // ES6 Modules or TypeScript
-import Swal from 'sweetalert2';
-
-// CommonJS
-const swal = require('sweetalert2')
-
-const cors = require('cors')
+import swal from 'sweetalert2';
 
 const signInSchema = Yup.object().shape({
   email: Yup.string().email("Correo Invalido").required("Ingrese un correo"),

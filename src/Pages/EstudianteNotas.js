@@ -13,9 +13,11 @@ function Notas() {
     <>
       <MenuEstudiante />
       <Container>
-        {/* <MenuEstudiante /> */}
         <Student />
+        <Container className="m-0">
+
         <TableNotes />
+        </Container>
       </Container>
     </>
   );

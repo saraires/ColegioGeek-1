@@ -19,7 +19,7 @@ function MenuEstudiante() {
     <>
       <Navbar collapseOnSelect expand="lg" bg="light">
         <Navbar.Brand href="#home">
-          <Link to="/">
+          <Link to="/estudiante">
             <img
               src={LogoAcademia}
               width="120"
@@ -36,10 +36,10 @@ function MenuEstudiante() {
             <Nav.Link as={Link} to={`/estudiante-materia/${estudiante.id}`} eventKey={1}>
               Materias
             </Nav.Link>
-            <Nav.Link as={Link} to={`/estudiante-notas/${estudiante.id}`} eventKey={2}>
+            <Nav.Link as={Link} to={`/estudiante-nota/${estudiante.id}`} eventKey={2}>
               Notas
             </Nav.Link>
-            <Nav.Link as={Link} to="/estudiante-informe-final" eventKey={3}>
+            <Nav.Link as={Link} to={`/estudiante-informe-final/${estudiante.id}`} eventKey={3}>
               Informe Final
             </Nav.Link>
           </Nav>
