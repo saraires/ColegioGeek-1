@@ -27,41 +27,47 @@ import SignUp from "./Pages/SignUp";
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Switch>
-          {/* Rutas Estudiante */}
-          <Route exact path="/estudiante" component={EstudianteInicio} />
-          <Route
-            exact
-            path="/estudiante-informe-final"
-            component={EstudianteInforme}
-          />
+      <Switch>
+        {/* Rutas Estudiante */}
+        <Route exact path="/estudiante" component={EstudianteInicio} />
+        <Route
+          exact
+          path="/estudiante-informe/:id"
+          component={EstudianteInforme}
+        />
           <Route
             exact
             path="/estudiante-materia/:id"
             component={EstudianteMaterias}
           />
-          <Route exact path="/estudiante-nota/:id" component={EstudianteNotas} />
+          <Route
+            exact
+            path="/estudiante-nota/:id"
+            component={EstudianteNotas}
+          />
           <Route
             exact
             path="/estudiante-perfil/:id"
             component={PerfilEstudiante}
           />
-          {/* Rutas profesor */}
-          <Route exact path="/profesor" component={Profesor} />
-          <Route exact path="/profesor-grupos" component={Grupos} />
-          <Route exact path="/profesor-perfil" component={Perfil} />
-          <Route exact path="/profesor-grado-notas" component={Notas} />
-          {/* Rutas Sing */}
-          <Route exact path="/" component={SignIn} />
-          <Route exact path="/SignUp" component={SignUp} />
+        {/* Rutas profesor */}
+        <Route exact path="/profesor" component={Profesor} />
+        <Route exact path="/profesor-grupos" component={Grupos} />
+        <Route exact path="/profesor-perfil" component={Perfil} />
+        <Route exact path="/profesor-grado-notas" component={Notas} />
+        {/* Rutas Sing */}
+        <Route exact path="/" component={SignIn} />
+        <Route exact path="/SignUp" component={SignUp} />
 
-          {/* Rutas Admin */}
-          <Route exact path="/administrado" component={Admin} />
-          <Route exact path="/administrador-registro-grupo" component={RegistroGrupo} />
-          <Route exact path="/administrador-ver-grupos" component={VerGrupos} />
-        </Switch>
-      </Layout>
+        {/* Rutas Admin */}
+        <Route exact path="/administrado" component={Admin} />
+        <Route
+          exact
+          path="/administrador-registro-grupo"
+          component={RegistroGrupo}
+        />
+        <Route exact path="/administrador-ver-grupos" component={VerGrupos} />
+      </Switch>
     </BrowserRouter>
   );
 }

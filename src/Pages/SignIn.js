@@ -83,7 +83,7 @@ const FormFormik = () => (
         <Container className="mt-4">
           <Card
             className="d-flex m-auto my-auto pb-5 shadow-lg"
-            style={{ width: "30rem" }}
+            style={{ width: "25rem" }}
           >
             <Card.Img
               className="pt-5 d-flex m-auto"
@@ -91,7 +91,7 @@ const FormFormik = () => (
               style={{ width: "17rem" }}
               src={Logo}
             />
-            <Form className="col-md-9 m-auto align-items-center">
+            <Form className=" col-12 col-md-9 m-auto align-items-center">
               <Field
                 className="mt-5 form-control"
                 type="email"
