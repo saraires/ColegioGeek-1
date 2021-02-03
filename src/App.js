@@ -51,15 +51,15 @@ function App() {
           <Route exact path="/profesor" component={Profesor} />
           <Route exact path="/profesor-grupos/:id" component={Grupos} />
           <Route exact path="/profesor-perfil/:id" component={Perfil} />
-          <Route exact path="/profesor-grado-notas" component={Notas} />
+          <Route exact path="/profesor-grado-notas/:id_grupo" component={Notas} />
           {/* Rutas Sing */}
           <Route exact path="/" component={SignIn} />
-          <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/signup" component={SignUp} />
 
           {/* Rutas Admin */}
           <Route exact path="/administrado" component={Admin} />
-          <Route exact path="/administrador-registro-grupo" component={RegistroGrupo} />
-          <Route exact path="/administrador-ver-grupos" component={VerGrupos} />
+          <Route exact path="/registro-grupo" component={RegistroGrupo} />
+          <Route exact path="/ver-grupos" component={VerGrupos} />
         </Switch>
       </Layout>
     </BrowserRouter>

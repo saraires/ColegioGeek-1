@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { getFromLocal } from "../functions/localstorage";
+import { getFromLocal, saveToLocal } from "../functions/localstorage";
 
 
 function TablaGrados() {
 
     const [grupos, setGrupos] = useState([]);
     const id = getFromLocal("id_usuario");
+    // const id_grupo = "";
+    const getDatos = getFromLocal("datos_grupo");
+    console.log(getDatos);
+    const [datos, setDatos] = useState(JSON.parse(getDatos));
+    
+
+    console.log(id);
 
     useEffect(() => {
 
         axios.get(`http://localhost:5000/profesor-grupos/${id}`).then((res) => {
-            setGrupos(res.data);
-            console.log(res.data);
+            setGrupos(res.data.rows);
+            console.log(`data ${res.data}`);
+            const datos_grupo = saveToLocal("id_grupo", JSON.stringify(res.data.rows));
+            const cod_grupo = saveToLocal(grupos.cod_grupo);
 
         }).catch((err) => {
             console.log(err);
@@ -41,9 +50,9 @@ function TablaGrados() {
                                 <tr key={grupos._id}>
                                     <td>{grupos.id}</td>
                                     <td>{grupos.cod_grupo}
-                                    <Link to ="/profesor-grado-notas" style={{ float: "right", color:"#47525E" }}><button type="button" class="btn btn-outline-info">Ver notas</button></Link>                                  
+                                    <Link to ={`/profesor-grado-notas/${grupos.cod_grupo}`} style={{ float: "right", color:"#47525E" }}><button type="button" onClick={() => {saveToLocal("cod_grupo", grupos.cod_grupo)}} class="btn btn-outline-info">Ver notas</button></Link>                                  
                                     </td>
-                                    <td>{grupos.grupo}</td>
+                                    <td>{grupos.descripcion_grupo}</td>
                                     <td>{grupos.jornada}</td>
                                 </tr>
                             )
