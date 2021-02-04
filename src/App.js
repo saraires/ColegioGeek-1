@@ -3,7 +3,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Administrador 
 import Admin from "./Pages/AdminInicio";
-import Grupo from "./Pages/AdminGrupos";
+import RegistroGrupo from "./Pages/RegistroGrupo";
+import VerGrupos from "./Pages/AdminGrupos";
 
 //  Profesor
 import Profesor from "./Pages/ProfesorInicio";
@@ -25,7 +26,6 @@ import SignUp from "./Pages/SignUp";
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
         <Switch>
           {/* Rutas Estudiante */}
           <Route exact path="/estudiante" component={EstudianteInicio} />
@@ -50,7 +50,6 @@ function App() {
           <Route exact path="/ver-grupos" component={VerGrupos} />
           
         </Switch>
-      </Layout>
     </BrowserRouter>
   );
 }

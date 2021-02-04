@@ -18,7 +18,7 @@ function TablaGrados() {
             setGrupos(res.data.rows);
             console.log(`data ${res.data}`);
             const datos_grupo = saveToLocal("id_grupo", JSON.stringify(res.data.rows));
-            const cod_grupo = saveToLocal(grupos.cod_grupo);
+            // const cod_grupo = saveToLocal(grupos.cod_grupo);
 
         }).catch((err) => {
             console.log(err);
