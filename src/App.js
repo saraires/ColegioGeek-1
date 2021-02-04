@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 // Administrador
 import Admin from "./Pages/AdminInicio";
-import VerGrupos from "./Pages/VerGrupos";
-import RegistroGrupo from "./Pages/RegistroGrupo";
+import Grupo from "./Pages/AdminGrupos";
 
 //  Profesor
 import Profesor from "./Pages/ProfesorInicio";
@@ -21,6 +21,7 @@ import EstudianteInicio from "./Pages/EstudianteInicio";
 // Sing in - Sing Up
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
+import PerfilAdministrado from "./Pages/PerfilAdministrador";
 
 function App() {
   return (
@@ -58,13 +59,9 @@ function App() {
         <Route exact path="/SignUp" component={SignUp} />
 
         {/* Rutas Admin */}
-        <Route exact path="/administrado" component={Admin} />
-        <Route
-          exact
-          path="/administrador-registro-grupo"
-          component={RegistroGrupo}
-        />
-        <Route exact path="/administrador-ver-grupos" component={VerGrupos} />
+        <Route exact path="/administrador" component={Admin} />
+        <Route exact path="/administrador-grupo" component={Grupo} />
+        <Route exact path="/administrador-perfil/:id" component={PerfilAdministrado} />
       </Switch>
     </BrowserRouter>
   );
