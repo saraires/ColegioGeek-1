@@ -1,71 +1,58 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios'
-import Perfil from '../Images/Perfil.png';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Card, Container, Button } from "react-bootstrap";
+import { getFromLocal, saveToLocal } from "../functions/localstorage";
 
+function CardProfesor() {
+  const [profesor, setProfesor] = useState([]);
+  const grado = JSON.parse(getFromLocal("datos"));
+  const id = getFromLocal("id_usuario");
+  console.log(grado);
 
-function Contenido() {
+  useEffect(() => {
+    axios.get(`http://localhost:5000/profesor-perfil/${id}`).then((res) => {
+      setProfesor(res.data.rows[0]);
+      const grados = saveToLocal("datos", JSON.stringify(res.data.rows));
+    });
+  }, [id]);
 
-    const [profesor, setProfesor] = useState([]);
-
-    useEffect(() => {
-
-        axios.get("http://localhost:3001/profesor").then((res) => {
-            setProfesor(res.data);
-            console.log(res.data);
-
-        }).catch((err) => {
-            console.log(err);
-        });
-
-    }, []);
-
-    return (
-        <>
-            <div className="container-fluid row" style={{ marginTop: "30px" }}>
-                <div>
-                    <img src={Perfil} className="ajuste2" alt="..." />
-                </div>
-
-                <div className="col">
-                    <div className="frase" >
-                        <br />
-                        <br />
-                        <h1 className="card-tittle">Hola profesor</h1> {/* Traer el nombre por prop */}
-                        <br />
-                        <table className="table table-bordered" >
-                            <th>
-                                <tr>
-                                    <td>Nombre: </td>
-                                </tr>
-                                <tr>
-                                    <td>Materia: </td>
-                                </tr>
-                                <tr>
-                                    <td>Correo: </td>
-                                </tr>
-                                <tr>
-                                    <td>Grados: </td>
-                                </tr>
-                            </th>
-                            {
-                                profesor.map((profesor) => {
-                                    return (
-                                        <td key={profesor._id}>
-                                            <tr><td>{profesor.nombre}</td></tr>
-                                            <tr><td>{profesor.materia}</td></tr>
-                                            <tr><td>{profesor.correo}</td></tr>
-                                            <tr><td>{profesor.grados}</td></tr>
-                                        </td>
-                                    )
-                                })
-                            }
-                            
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+  return (
+    <Card style={{ width: "30rem" }}>
+      <Container>
+        <Card.Img
+          variant="top"
+          //src={estudiante.imagen} cambiar el src de abajo por este
+          src="https://img.ecartelera.com/noticias/56800/56825-m.jpg"
+          // alt={id}
+          style={{ width: "50%", display: "block", margin: "auto" }}
+          className="mt-5"
+        />
+      </Container>
+      <Card.Body>
+        <Card.Title className="text-center">
+          {profesor.nombre_completo}
+        </Card.Title>
+        <Card.Text className="text-center m-0">
+          <span className="font-weight-bold">Documento Identidad: </span>{" "}
+          {profesor.documento}
+        </Card.Text>
+        <Card.Text className="text-center m-0">
+          <span className="font-weight-bold">
+          Grupos:
+          </span>
+          {grado.map((item, index) => {
+            return (<span >  {item.descripcion_grupo} -  </span>)
+          })}
+        </Card.Text>
+        <Card.Text className="text-center mb-4">
+          <span className="font-weight-bold"> Materia:</span> {profesor.nombre_materia}
+        </Card.Text>
+        <Button className="d-flex m-auto" variant="info">
+          Cerrar Sesión
+        </Button>
+      </Card.Body>
+    </Card>
+  );
 }
 
-export default Contenido;
+export default CardProfesor;

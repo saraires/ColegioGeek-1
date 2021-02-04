@@ -96,9 +96,6 @@ const FormFormik = () => (
                 <div id="my-radio-group" className="mt-3 col-11">Selecciona un rol
                   <div className="mt-3 form-check" role="group" aria-labelledby="my-radio-group">
                     <p>
-                      <Field type="radio" name="picked" value="1" /> Administrador
-                    </p>
-                    <p>
                       <Field type="radio" name="picked" value="2" /> Profesor
                     </p>
                     <p>

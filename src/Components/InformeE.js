@@ -171,7 +171,7 @@ function MyPdf() {
 
         <View>
           <Text style={styles.text}>
-            El presente certificado se expide solicitud del estudiante.
+            El presente certificado se expide a solicitud del estudiante.
           </Text>
         </View>
         <View style={styles.firmaTop}>

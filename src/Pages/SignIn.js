@@ -29,8 +29,7 @@ const FormFormik = () => (
  
       validationSchema={signInSchema}
       onSubmit={(values) => {
-        axios
-          .post("http://localhost:5000/", {
+        axios.post("http://localhost:5000/", {
             correo: values.email,
             contraseña: values.password,
             rol: values.picked,
@@ -51,7 +50,7 @@ const FormFormik = () => (
               saveToLocal("rol", rol );
 
               if (res.data.rows[0]["rol"] === 1) {
-                window.location.href = "administrado";
+                window.location.href = "administrador";
               } else if (res.data.rows[0]["rol"] === 2) {
                 window.location.href = "/profesor";
               } else if (res.data.rows[0]["rol"] === 3) {

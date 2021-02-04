@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuProfesor from '../Components/menu';
+import MenuProfesor from '../Components/menuProfesor';
 // import Contenido from '../Components/contenido';
 import BienvennidaE from '../Components/BienvenidaE';
 

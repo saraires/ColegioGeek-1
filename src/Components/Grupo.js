@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Container } from "react-bootstrap";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 
 function Grupo() {
@@ -66,10 +67,12 @@ function Grupo() {
 
     return (
         <div className="Container">
-            <h1>Grupos</h1>
-            <br />
+            <Container className="text-center m-5">
+            <h1 className="m-3">Grupos</h1>
+            
             <button className="btn btn-success" onClick={() => abrirModalInsertar()}>Insertar</button>
-            <br /><br />
+            </Container>
+            <Container>
             <table className="table table-bordered">
                 <thead>
                     <tr>
@@ -90,6 +93,7 @@ function Grupo() {
                     ))}
                 </tbody>
             </table>
+            </Container>
             <Modal isOpen={modalEditar}>
                 <ModalHeader>
                     <div>
