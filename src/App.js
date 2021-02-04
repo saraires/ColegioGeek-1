@@ -1,11 +1,9 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Layout from "./Components/Layout";
 
 // Administrador 
 import Admin from "./Pages/AdminInicio";
-import VerGrupos from "./Pages/VerGrupos";
-import RegistroGrupo from "./Pages/RegistroGrupo";
+import Grupo from "./Pages/AdminGrupos";
 
 //  Profesor
 import Profesor from "./Pages/ProfesorInicio";
