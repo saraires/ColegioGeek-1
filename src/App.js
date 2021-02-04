@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Administrador
 import Admin from "./Pages/AdminInicio";
-import Grupo from "./Pages/Grupo";
+import Grupo from "./Pages/AdminGrupos";
 
 //  Profesor
 import Profesor from "./Pages/ProfesorInicio";

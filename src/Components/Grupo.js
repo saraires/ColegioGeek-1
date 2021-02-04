@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import MenuAdmin from "../Components/menuAdmin";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 
 function Grupo() {
@@ -67,7 +66,6 @@ function Grupo() {
 
     return (
         <div className="Container">
-            <MenuAdmin />
             <h1>Grupos</h1>
             <br />
             <button className="btn btn-success" onClick={() => abrirModalInsertar()}>Insertar</button>
