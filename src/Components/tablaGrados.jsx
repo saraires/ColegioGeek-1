@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {getFromLocal, saveToLocal} from "../functions/localstorage"
+import { getFromLocal, saveToLocal } from "../functions/localstorage"
 import axios from 'axios';
 
 
 function TablaGrados() {
-const id = getFromLocal("id_usuario");
-const nombre = getFromLocal("nombre_completo");
+    const id = getFromLocal("id_usuario");
+    const nombre = getFromLocal("nombre_completo");
     const [profesor, setProfesor] = useState([]);
 
     useEffect(() => {
@@ -35,15 +35,16 @@ const nombre = getFromLocal("nombre_completo");
                 </thead>
                 <tbody>
                     {
-                        profesor.map((item,index)=>{
-                            return(
+                        profesor.map((item, index) => {
+                            return (
                                 <tr>
                                     <td>
                                         {item.cod_grupo}
-                                        <Link to ={`/profesor-notas/${id}/${item.id_grupo}/${item.cod_grupo}`} style={{ float: "right", color:"#47525E" }}><button type="button" class="btn btn-outline-info" onClick={()=>{saveToLocal("cod_grupo",item.cod_grupo);
+                                        <Link to={`/profesor-notas/${id}/${item.id_grupo}/${item.cod_grupo}`} style={{ float: "right", color: "#47525E" }}><button type="button" class="btn btn-outline-info" onClick={() => {
+                                            saveToLocal("cod_grupo", item.cod_grupo);
 
-                                        saveToLocal("id_grupo", item.id_grupo)
-                                    }}  >Ver notas</button></Link>  
+                                            saveToLocal("id_grupo", item.id_grupo)
+                                        }}  >Ver notas</button></Link>
                                     </td>
                                     <td>{item.descripcion_grupo}</td>
                                     <td>{item.jornada}</td>
@@ -51,7 +52,7 @@ const nombre = getFromLocal("nombre_completo");
                             )
                         })
                     }
-                    
+
                 </tbody>
             </table>
         </div>

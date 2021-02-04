@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { Card, Container, Button } from "react-bootstrap";
-
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
@@ -44,7 +42,7 @@ const FormFormik = () => (
         console.log(values);
       }}
     >
-      {({ errors, touched, values }) => (
+      {({ errors, touched}) => (
         <Container className="mt-4">
           <Card className="d-flex m-auto my-auto pb-5 shadow-lg align-content-center" style={{width: "30rem"}}>
             <Form className="col-11 m-auto">

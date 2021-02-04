@@ -3,52 +3,58 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { getFromLocal } from "../functions/localstorage";
 import { Container, Table } from "react-bootstrap";
-import {Modal, ModalHeader, ModalFooter} from "reactstrap";
+import { Modal, ModalHeader, ModalFooter } from "reactstrap";
 
 function TablaGrados() {
   const id = getFromLocal("id_usuario");
   const codigo = getFromLocal("cod_grupo");
   const grupo = getFromLocal("id_grupo");
+  const id_grupo = getFromLocal("cod_grupo");
+
   console.log(id);
   console.log(codigo);
 
+  const [notas, setNotas] = useState([]);
+  // const url_grupo =
+  // const grupo =
+  // const desc_grupo = grupo[0];
+
   const dataEstudiante = [
-    {id: 1, nombre: "Santiago",seguimiento: 3.2,conocimiento:3.0,bimensual:4.2,autoevaluacion: 4.3, notafinal: 4.0}
+    {
+      id: 1,
+      nombre: "Santiago",
+      seguimiento: 3.2,
+      conocimiento: 3.0,
+      bimensual: 4.2,
+      autoevaluacion: 4.3,
+      notafinal: 4.0,
+    },
   ];
 
   const [notas, setNotas] = useState([]);
   const [estudianteSeleccionado, setEstudianteSeleccionado] = useState({
-      id: "",
-      nombre: "",
-      seguimiento: "",
-      conocimiento: "",
-      bimensual: "",
-      autoevaluacion: "",
-      notafinal: ""
-    });
+    id: "",
+    nombre: "",
+    seguimiento: "",
+    conocimiento: "",
+    bimensual: "",
+    autoevaluacion: "",
+    notafinal: "",
+  });
   const [modalEditar, setModalEdital] = useState(false);
 
   const seleccionarEstudiante = (elemento, caso) => {
-      setEstudianteSeleccionado(elemento);
-      (caso === "Editar") && setModalEdital(true)
+    setEstudianteSeleccionado(elemento);
+    caso === "Editar" && setModalEdital(true);
   };
 
-  const handleChange = e =>{
-      const {name,value} = e.target;
-      setEstudianteSeleccionado((prevState)=>({
-          ...prevState,
-          [name]: value
-      }));
-  }
-
-  const editar = () =>{
-    var dataNueva = data;
-    dataNueva.map(estudiante =>{
-        if(estudiante.id === estudianteSeleccionado.id){
-            
-        }
-    })      
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEstudianteSeleccionado((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   useEffect(() => {
     axios
@@ -63,7 +69,6 @@ function TablaGrados() {
   }, []);
 
   return (
-      <div>
     <Container>
       <Table striped hover size="md" className="table-responsive ">
         <thead className="text-info text-center table-bordered">
@@ -78,9 +83,7 @@ function TablaGrados() {
             <th scope="col"></th>
           </tr>
         </thead>
-
         <tbody className=" text-center table-bordered">
-          
           {notas.map((notas) => {
             return (
               <tr key={notas._id}>
@@ -96,14 +99,10 @@ function TablaGrados() {
                 </td>
               </tr>
             );
-          })} 
+          })}
         </tbody>
       </Table>
     </Container>
-    <Modal>
-        
-    </Modal>
-    </div>
   );
 }
 
