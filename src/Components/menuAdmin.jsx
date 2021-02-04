@@ -13,13 +13,10 @@ function MenuAdmin() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link" href="/admin" style={{ color: "black" }}>Inicio</a>
+                                <a className="nav-link" href="/administrador" style={{ color: "black" }}>Inicio</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/registro-grupo" style={{ color: "black" }}>Registro Grupo</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/ver-grupos" style={{ color: "black" }}>Ver Grupos</a>
+                                <a className="nav-link" href="/administrador-grupo" style={{ color: "black" }}>Grupo</a>
                             </li>
                         </ul>
                     </div>
