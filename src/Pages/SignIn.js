@@ -26,7 +26,7 @@ const FormFormik = () => (
         password: "",
         picked: "",
       }}
-
+ 
       validationSchema={signInSchema}
       onSubmit={(values) => {
         axios
@@ -79,7 +79,7 @@ const FormFormik = () => (
         console.log(values);
       }}
     >
-      {({ errors, touched, values }) => (
+      {({ errors, touched }) => (
         <Container className="mt-4">
           <Card
             className="d-flex m-auto my-auto pb-5 shadow-lg"

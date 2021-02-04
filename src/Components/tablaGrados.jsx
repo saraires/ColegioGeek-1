@@ -10,11 +10,7 @@ function TablaGrados() {
     const id = getFromLocal("id_usuario");
     // const id_grupo = "";
     const getDatos = getFromLocal("datos_grupo");
-    console.log(getDatos);
     const [datos, setDatos] = useState(JSON.parse(getDatos));
-    
-
-    console.log(id);
 
     useEffect(() => {
 

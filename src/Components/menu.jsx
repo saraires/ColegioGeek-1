@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Nav, Navbar } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { getFromLocal } from "../functions/localstorage";
 import LogoAcademia from '../Images/LogoAcademia.png';
@@ -13,29 +14,36 @@ function MenuProfesor() {
       });
 
     return (
-        <div>
-            <nav collapseOnSelect className="navbar navbar-expand-lg navbar-light bg-light container-fluid">
-                <div className="container-fluid">
-                    <img src={LogoAcademia} alt="foto" width="120px" href="/profesor" style={{ marginRight: "20px" }} />
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <a className="nav-link" href="/profesor" style={{ color: "black" }}>Inicio</a>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={`/profesor-perfil/${profesor.id}`} className="nav-link" style={{ color: "black" }}>Ver mi Perfil</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={`/profesor-grupos/${profesor.id}`} className="nav-link" style={{ color: "black" }}>Ver Grupos</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
+        <>
+      <Navbar collapseOnSelect expand="lg" bg="light">
+        <Navbar.Brand href="#home">
+          <Link to="/profesor">
+            <img
+              src={LogoAcademia}
+              width="120"
+              height="50"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Link>
+        </Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+          <Nav.Link as={Link} to={`/profesor`} eventKey={1}>
+              Inicio
+            </Nav.Link>
+            <Nav.Link as={Link} to={`/profesor-perfil/${profesor.id}`} eventKey={1}>
+              Ver perfil
+            </Nav.Link>
+            <Nav.Link as={Link} to={`/profesor-grupos/${profesor.id}`} eventKey={2}>
+              Ver Grupos
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </>
     );
 }
 export default MenuProfesor;

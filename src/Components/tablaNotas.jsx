@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import {getFromLocal, saveToLocal} from '../functions/localstorage'
+import { getFromLocal } from '../functions/localstorage'
 
 function TablaGrados() {
 
@@ -14,7 +14,8 @@ function TablaGrados() {
 
     useEffect(() => {
 
-        axios.post(`http://localhost:5000/profesor-grado-notas/${id}`,{"cod_grupo": id_grupo}).then((res) => {
+        axios.post(`http://localhost:5000/profesor-grado-notas/${id}`,{"cod_grupo": id_grupo})
+        .then((res) => {
             setNotas(res.data);
             console.log(res.data);
 
