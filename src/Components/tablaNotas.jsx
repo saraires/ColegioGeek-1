@@ -2,19 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { getFromLocal } from '../functions/localstorage';
+import { Container, Table } from 'react-bootstrap';
 
 
 function TablaGrados() {
 const id = getFromLocal("id_usuario");
 const codigo = getFromLocal("cod_grupo");
+const grupo = getFromLocal("id_grupo")
 console.log(id);
 console.log(codigo);
     const [notas, setNotas] = useState([]);
 
     useEffect(() => {
 
-        axios.get(`http://localhost:5000/profesor-notas/${id}/${codigo}`).then((res) => {
-            // setNotas(res.data);
+        axios.get(`http://localhost:5000/profesor-notas/${id}/${grupo}/${codigo}`).then((res) => {
+            setNotas(res.data.rows);
             console.log(res.data);
 
         }).catch((err) => {
@@ -24,36 +26,49 @@ console.log(codigo);
     }, []);
 
     return (
-        <div className="container" style={{ marginTop: "40px" }}>
-            <h3 className="card-tittle">{}Estos son tus grupos</h3>
-            <br />
-            <table className="table table-bordered">
-                <thead>
+        <Container>
+            <Table striped hover size="md" className="table-responsive ">
+            <thead className="text-info text-center table-bordered">
                     <tr className="table-info">
-                        <th scope="col">#</th>
-                        <th scope="col">Codigo de grupo</th>
-                        <th scope="col">Grupo</th>
-                        <th scope="col">Jornada</th>
+                        <th scope="col">Codigo Estudiante</th>
+                        <th scope="col">Nombre Estudiante</th>
+                        <th scope="col">Seguimiento</th>
+                        <th scope="col">Conocimiento</th>
+                        <th scope="col">Bimensual</th>
+                        <th scope="col">Autoevaluación</th>
+                        <th scope="col">Nota Final</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody>
+
+                <tbody className=" text-center table-bordered">
                     {
                         notas.map((notas) => {
                             return (
                                 <tr key={notas._id}>
-                                    <td>{notas.id}</td>
-                                    <td>{notas.cod_grupo}
-                                    <Link to ="/profesor-grado-notas" style={{ float: "right", color:"#47525E" }}><button type="button" class="btn btn-outline-info">Ver notas</button></Link>                                  
+                                    <td>{notas.cod_estudiante}</td>
+                                    <td>{notas.nombre_completo}
                                     </td>
-                                    <td>{notas.grupo}</td>
-                                    <td>{notas.jornada}</td>
+                                    <td>{Number(notas.seguimiento).toFixed(2)}</td>
+                                    <td>{Number(notas.bimensual_1).toFixed(2)}</td>
+                                    <td>{Number(notas.bimensual_2).toFixed(2)}</td>
+                                    <td>{Number(notas.autoevaluacion).toFixed(2)}</td>
+                                    <td>{Number(notas.nota_promedio).toFixed(2)}</td>
+                                    <td>
+                                        <button className="btn btn-success">
+                                            Editar Notas
+                                        </button>
+                                    </td>
                                 </tr>
                             )
                         })
                     }
+
+                  
                 </tbody>
-            </table>
-        </div>
+
+            </Table>
+        </Container>
     );
 }
 

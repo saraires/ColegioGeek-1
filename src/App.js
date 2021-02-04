@@ -53,7 +53,7 @@ function App() {
         <Route exact path="/profesor" component={Profesor} />
         <Route exact path="/profesor-grupos/:id" component={Grupos} />
         <Route exact path="/profesor-perfil/:id" component={Perfil} />
-        <Route exact path="/profesor-notas/:id/:cod_grupo" component={Notas} />
+        <Route exact path="/profesor-notas/:id/:id_grupo/:cod_grupo" component={Notas} />
         {/* Rutas Sing */}
         <Route exact path="/" component={SignIn} />
         <Route exact path="/SignUp" component={SignUp} />

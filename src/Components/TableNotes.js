@@ -22,7 +22,7 @@ function Tabla() {
   return (
     <Container className="  ">
       <Table striped hover size="md" className="table-responsive ml-5 pl-5">
-        <thead className="text-info text-center">
+        <thead className="text-info text-center table-bordered">
           <tr>
             <th>Código Materia</th>
             <th>Materia</th>
@@ -33,7 +33,7 @@ function Tabla() {
             <th>Nota Final </th>
           </tr>
         </thead>
-        <tbody className="text-center">
+        <tbody className="text-center table-bordered">
           {notas.map((item, index) => {
             return (
               <tr key={index} id={index}>

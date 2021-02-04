@@ -7,7 +7,6 @@ import axios from 'axios';
 function TablaGrados() {
 const id = getFromLocal("id_usuario");
 const nombre = getFromLocal("nombre_completo");
-const codigo = getFromLocal("cod_grupo");
     const [profesor, setProfesor] = useState([]);
 
     useEffect(() => {
@@ -41,7 +40,10 @@ const codigo = getFromLocal("cod_grupo");
                                 <tr>
                                     <td>
                                         {item.cod_grupo}
-                                        <Link to ={`/profesor-notas/${id}/${item.cod_grupo}`} style={{ float: "right", color:"#47525E" }}><button type="button" class="btn btn-outline-info" onClick={()=>{saveToLocal("cod_grupo",item.cod_grupo)}}  >Ver notas</button></Link>  
+                                        <Link to ={`/profesor-notas/${id}/${item.id_grupo}/${item.cod_grupo}`} style={{ float: "right", color:"#47525E" }}><button type="button" class="btn btn-outline-info" onClick={()=>{saveToLocal("cod_grupo",item.cod_grupo);
+
+                                        saveToLocal("id_grupo", item.id_grupo)
+                                    }}  >Ver notas</button></Link>  
                                     </td>
                                     <td>{item.descripcion_grupo}</td>
                                     <td>{item.jornada}</td>
