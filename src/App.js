@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Layout from "./Components/Layout";
-
 // Administrador
 import Admin from "./Pages/AdminInicio";
 import VerGrupos from "./Pages/VerGrupos";
@@ -52,9 +50,9 @@ function App() {
           />
         {/* Rutas profesor */}
         <Route exact path="/profesor" component={Profesor} />
-        <Route exact path="/profesor-grupos" component={Grupos} />
-        <Route exact path="/profesor-perfil" component={Perfil} />
-        <Route exact path="/profesor-grado-notas" component={Notas} />
+        <Route exact path="/profesor-grupos/:id" component={Grupos} />
+        <Route exact path="/profesor-perfil/:id" component={Perfil} />
+        <Route exact path="/profesor-notas/:id/:cod_grupo" component={Notas} />
         {/* Rutas Sing */}
         <Route exact path="/" component={SignIn} />
         <Route exact path="/SignUp" component={SignUp} />

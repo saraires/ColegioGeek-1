@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuProfesor from '../Components/menu';
+import MenuProfesor from '../Components/menuProfesor';
 import TablaNotas from '../Components/tablaNotas';
 
 function Notas() {

@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import { getFromLocal } from '../functions/localstorage';
 
 
 function TablaGrados() {
-
+const id = getFromLocal("id_usuario");
+const codigo = getFromLocal("cod_grupo");
+console.log(id);
+console.log(codigo);
     const [notas, setNotas] = useState([]);
 
     useEffect(() => {
 
-        axios.get("http://localhost:3001/notas").then((res) => {
-            setNotas(res.data);
+        axios.get(`http://localhost:5000/profesor-notas/${id}/${codigo}`).then((res) => {
+            // setNotas(res.data);
             console.log(res.data);
 
         }).catch((err) => {
@@ -21,7 +25,7 @@ function TablaGrados() {
 
     return (
         <div className="container" style={{ marginTop: "40px" }}>
-            <h3 className="card-tittle">Estos son tus grupos</h3>
+            <h3 className="card-tittle">{}Estos son tus grupos</h3>
             <br />
             <table className="table table-bordered">
                 <thead>

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import LogoAcademia from "../Images/LogoAcademia.png";
 import { getFromLocal } from "../functions/localstorage";
 
-function MenuEstudiante() {
-  const estudiante = {
+function MenuProfesor() {
+  const profesor = {
     nombre: getFromLocal("nombre_completo"),
     genero: getFromLocal("genero"),
     rol: getFromLocal("rol"),
@@ -18,7 +18,7 @@ function MenuEstudiante() {
     <>
       <Navbar collapseOnSelect expand="lg" bg="light">
         <Navbar.Brand href="#home">
-          <Link to="/estudiante">
+          <Link to="/profesor">
             <img
               src={LogoAcademia}
               width="120"
@@ -34,34 +34,20 @@ function MenuEstudiante() {
           <Nav className="mr-auto">
             <Nav.Link
               as={Link}
-              to={`/estudiante-materia/${estudiante.id}`}
+              to={`/profesor-grupos/${profesor.id}`}
               eventKey={1}
             >
-              Materias
+              Ver Grupos
             </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to={`/estudiante-nota/${estudiante.id}`}
-              eventKey={2}
-            >
-              Notas
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              target="_blank"
-              to={`/estudiante-informe/${estudiante.id}`}
-              eventKey={3}
-            >
-              Informe Final
-            </Nav.Link>
+           
           </Nav>
           <Nav>
             <Nav.Link
               as={Link}
-              to={`/estudiante-perfil/${estudiante.id}`}
+              to={`/profesor-perfil/${profesor.id}`}
               eventKey={4}
             >
-              {estudiante.nombre}
+              {profesor.nombre}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -70,4 +56,4 @@ function MenuEstudiante() {
   );
 }
 
-export default MenuEstudiante;
+export default MenuProfesor;
