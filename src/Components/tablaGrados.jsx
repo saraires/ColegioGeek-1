@@ -8,12 +8,14 @@ function TablaGrados() {
     const id = getFromLocal("id_usuario");
     const nombre = getFromLocal("nombre_completo");
     const [profesor, setProfesor] = useState([]);
+    const id_materia = saveToLocal("id_materia", profesor.id_materia);
 
     useEffect(() => {
 
         axios.get(`http://localhost:5000/profesor-grupos/${id}`).then((res) => {
             setProfesor(res.data.rows);
             console.log(res.data.rows);
+            console.log(id_materia);
 
         }).catch((err) => {
             console.log(err);
