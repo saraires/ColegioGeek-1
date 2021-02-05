@@ -47,7 +47,6 @@ function TablaGrados() {
                       class="btn btn-outline-info"
                       onClick={() => {
                         saveToLocal("cod_grupo", item.cod_grupo);
-                        saveToLocal("id_estudiante", item.id_estudiante);
                         saveToLocal("id_grupo", item.id_grupo);
                       }}
                     >

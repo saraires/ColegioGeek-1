@@ -42,7 +42,7 @@ function MenuAdministrador() {
 
             <Nav.Link
               as={Link}
-              to={`/administrador-grupo/`}
+              to={`/administrador-materia/`}
               eventKey={2}
             >
              Registrar Materia

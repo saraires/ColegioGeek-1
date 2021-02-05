@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "axios"; 
 import { Card, Container, Button } from "react-bootstrap";
 import { getFromLocal } from "../functions/localstorage";
 
@@ -31,13 +31,13 @@ function CardPerfil() {
             {estudiante.nombre_completo} 
           </Card.Title>
           <Card.Text className="text-center m-0">
-            <span className="font-weight-bold">Documento Identidad: </span> {" "}{estudiante.documento}
+            <span className="font-weight-bold">Documento Identidad: </span>{" "}{estudiante.documento}
           </Card.Text>
           <Card.Text className="text-center m-0">
-            <span className="font-weight-bold"> Codigo Estudiante: </span> {estudiante.cod_estudiante}
+            <span className="font-weight-bold"> Codigo Estudiante: </span>{estudiante.cod_estudiante}
           </Card.Text>
           <Card.Text className="text-center m-0">
-            <span className="font-weight-bold"> Estado:</span> {estudiante.estado}
+            <span className="font-weight-bold"> Estado:</span>{estudiante.estado}
           </Card.Text>
           <Card.Text className="text-center mb-3">
             <span className="font-weight-bold"> Grupo: </span>{estudiante.descripcion_grupo}
