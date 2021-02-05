@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { getFromLocal } from "../functions/localstorage";
 import { Container, Table } from "react-bootstrap";
-import { Modal, ModalHeader, ModalFooter } from "reactstrap";
+import { Modal,ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 
 function TablaGrados() {
+
   const id = getFromLocal("id_usuario");
   const codigo = getFromLocal("cod_grupo");
   const grupo = getFromLocal("id_grupo");
@@ -18,43 +19,6 @@ function TablaGrados() {
   // const url_grupo =
   // const grupo =
   // const desc_grupo = grupo[0];
-
-  const dataEstudiante = [
-    {
-      id: 1,
-      nombre: "Santiago",
-      seguimiento: 3.2,
-      conocimiento: 3.0,
-      bimensual: 4.2,
-      autoevaluacion: 4.3,
-      notafinal: 4.0,
-    },
-  ];
-
-  const [notas, setNotas] = useState([]);
-  const [estudianteSeleccionado, setEstudianteSeleccionado] = useState({
-    id: "",
-    nombre: "",
-    seguimiento: "",
-    conocimiento: "",
-    bimensual: "",
-    autoevaluacion: "",
-    notafinal: "",
-  });
-  const [modalEditar, setModalEdital] = useState(false);
-
-  const seleccionarEstudiante = (elemento, caso) => {
-    setEstudianteSeleccionado(elemento);
-    caso === "Editar" && setModalEdital(true);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEstudianteSeleccionado((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
 
   useEffect(() => {
     axios
@@ -95,13 +59,28 @@ function TablaGrados() {
                 <td>{Number(notas.autoevaluacion).toFixed(2)}</td>
                 <td>{Number(notas.nota_promedio).toFixed(2)}</td>
                 <td>
-                  <button className="btn btn-success">Editar Notas</button>
+                  <button className="btn btn-success" >Editar Notas</button>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </Table>
+      
+      <Modal >
+        <ModalHeader>
+          <label>Editar</label>
+          <input className="form-control" type="text" />
+        </ModalHeader>
+        <ModalBody>
+          <label>Seguimiento</label>
+          <input className="form-control" type="text" />
+        </ModalBody>
+        <ModalFooter>
+          <button className="btn btn-primary" >Aceptar</button>
+          <button className="btn btn-danger" >Cerrar</button>
+        </ModalFooter>
+      </Modal>
     </Container>
   );
 }

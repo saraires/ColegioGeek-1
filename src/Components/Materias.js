@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import MenuAdmin from "../Components/menuAdmin";
+import MenuAdmin from "./menuAdmin";
 
-class VerGrupos extends Component {
+class Materias extends Component {
     
     render() {
 
@@ -9,7 +9,7 @@ class VerGrupos extends Component {
             <div className="">
                 <MenuAdmin />
 
-                <h1 className="ml-5 pl-5 pt-5">Listado de grupos</h1>
+                <h1 className="ml-5 pl-5 pt-5">Listado de materias</h1>
                 <div className="card col-10 row mx-auto mt-5">
                     
                 </div>
@@ -18,4 +18,4 @@ class VerGrupos extends Component {
     }
 }
 
-export default VerGrupos;
+export default Materias;
