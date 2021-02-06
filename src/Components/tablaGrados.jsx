@@ -18,7 +18,7 @@ function TablaGrados() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="container" style={{ marginTop: "40px" }}>
@@ -35,7 +35,7 @@ function TablaGrados() {
         <tbody>
           {profesor.map((item, index) => {
             return (
-              <tr>
+              <tr key={`${index}-${id}`}>
                 <td>
                   {item.cod_grupo}
                   <Link

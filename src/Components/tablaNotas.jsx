@@ -21,7 +21,7 @@ function TablaGrados() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id, grupo, codigo]);
 
   return (
     <Container>
