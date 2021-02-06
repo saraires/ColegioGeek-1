@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
-import axios from 'axios'
-import { getFromLocal, saveToLocal } from '../functions/localstorage';
-import { Container, Table } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { getFromLocal, saveToLocal } from "../functions/localstorage";
+import { Container, Table } from "react-bootstrap";
+import EditarNotas from "./EditarNotas";
 
 /* NOTAS
 En el boton editar notas: Guardar el codigo de estudiante (preferiblemente id_estudiante) 
@@ -40,45 +39,21 @@ No se si me hice entender, perdon no haber podido hacer mas :c
 function TablaGrados() {
   const id = getFromLocal("id_usuario");
   const codigo = getFromLocal("cod_grupo");
-  const grupo = getFromLocal("id_grupo")
-  const id_grupo = getFromLocal("cod_grupo")
-
-  console.log(id);
-  console.log(codigo);
-
-  // const [estudianteSeleccionado, setEstudianteSeleccionado] = useState();
-  // const url_grupo = 
-  // const grupo = 
-  // const desc_grupo = grupo[0];
-
-  const [modalEditar, setModalEditar] = useState(false);
+  const grupo = getFromLocal("id_grupo");
   const [notas, setNotas] = useState([]);
-  // const [estudianteSeleccionado, setEstudianteSeleccionado] = useState({})
-  const seleccionarEstudiante = (caso) => {
-    (caso === "Editar") && setModalEditar(true);
-    axios.put(`http://localhost:5000/profesor-notas/${id}/${grupo}/${codigo}`)
-  }
 
-  // const editarRegistro = () => {//Hacer peticion en backend
-
-  // const nuevosDatos = notas;
-  // nuevosDatos.map(nuevo => {
-  //     nuevo.seguimiento = nuevoSeleccionado.profesor;
-  //     nuevo.bimensual_1 = nuevoSeleccionado.jornada;
-  //     nuevo.bimensual_2 = nuevoSeleccionado.jornada;
-  //     nuevo.autoevaluacion = nuevoSeleccionado.jornada;
-
-  // });
-
-  // setData(dataNueva);
-  // setModalEditar(false);
-
-  // const nuevosDatos = notas;
-  // nuevosDatos.map(nuevo => {
-  //     if (nuevosDatos.cod_estudiante === id) {
-
-  //     }
-  // })
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/profesor-notas/${id}/${grupo}/${codigo}`)
+      .then((res) => {
+        setNotas(res.data.rows);
+        saveToLocal("id_estudiante", res.data.rows[0].id_estudiante);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <Container>
@@ -107,39 +82,15 @@ function TablaGrados() {
                 <td>{Number(notas.autoevaluacion).toFixed(2)}</td>
                 <td>{Number(notas.nota_promedio).toFixed(2)}</td>
                 <td>
-                  <button className="btn btn-success">Editar Notas</button>
+                  <EditarNotas notas={notas} />
                 </td>
               </tr>
             );
           })}
         </tbody>
       </Table>
-
-      <Modal isOpen={modalEditar}>
-        <ModalHeader>
-          <div><h1>Editar notas</h1></div>
-        </ModalHeader>
-        <ModalBody>
-          <div>
-            <label>Seguimiento</label>
-            <input type="text" value={notas.seguimiento} />
-            <label>Conocimiento</label>
-            <input type="text" value={notas.conocimiento} />
-            <label>Bimensual</label>
-            <input type="text" value={notas.bimensual} />
-            <label>Autoevaluación</label>
-            <input type="text" value={notas.autoevaluacion} />
-          </div>
-        </ModalBody>
-        <ModalFooter>
-          <button className="btn btn-success">Aceptar</button>
-          {/* <button className="btn btn-success" onClick={() => nuevosDatos()}>Aceptar</button> */}
-          <button clasName="btn btn-danger">Cancelar</button>
-        </ModalFooter>
-      </Modal>
     </Container>
   );
 }
-
 
 export default TablaGrados;
