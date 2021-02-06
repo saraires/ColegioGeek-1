@@ -7,12 +7,12 @@ function CardProfesor() {
   const [profesor, setProfesor] = useState([]);
   const grado = JSON.parse(getFromLocal("datos"));
   const id = getFromLocal("id_usuario");
-  console.log(grado);
+ 
 
   useEffect(() => {
     axios.get(`http://localhost:5000/profesor-perfil/${id}`).then((res) => {
       setProfesor(res.data.rows[0]);
-      const grados = saveToLocal("datos", JSON.stringify(res.data.rows));
+      saveToLocal("datos", JSON.stringify(res.data.rows));
     });
   }, [id]);
 
@@ -23,7 +23,7 @@ function CardProfesor() {
           variant="top"
           //src={estudiante.imagen} cambiar el src de abajo por este
           src="https://img.ecartelera.com/noticias/56800/56825-m.jpg"
-          // alt={id}
+          alt={id}
           style={{ width: "50%", display: "block", margin: "auto" }}
           className="mt-5"
         />

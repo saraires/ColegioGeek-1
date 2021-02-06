@@ -1,34 +1,35 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { getFromLocal, saveToLocal } from "../functions/localstorage";
+import { getFromLocal } from "../functions/localstorage";
+import { Form, Row, Col } from "react-bootstrap";
 
-const EditarNotas = ({ notas }) => {
+function EditarNotas({ notas }) {
   const [seguimiento, setSeguimiento] = useState(notas.seguimiento);
+  const [conocimiento, setConocimiento] = useState(notas.bimensual_1);
+  const [bimensual, setBimensual] = useState(notas.bimensual_2);
+  const [autoevaluacion, setAutoevaluacion] = useState(notas.autoevaluacion);
 
-  const updateNotas = async () => {
-    // e.preventDefault();
+  const id = getFromLocal("id_usuario");
+  const codigo = getFromLocal("cod_grupo");
+  const grupo = getFromLocal("id_grupo");
 
-    try {
-        
-      await fetch(
-        `http://localhost:5000/profesor-editar-notas/${notas.id_estudiante}/${notas.id_notas}/${notas.id_materia}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-              "id_notas":10,
-              "id_materia": 3,
-              "id_estudiante": 3,
-             "seguimiento": seguimiento,
-             "bimensual_1":3.0,
-             "bimensual_2":2.0,
-             "autoevaluacion": 5.0
-          })
-        }
-      );
-    } catch (error) {
-      console.log(error.message);
-    }
+  const updateNotas = async (e) => {
+    e.preventDefault();
+
+    axios
+      .patch(`http://localhost:5000/editar-notas/`, {
+        seguimiento: seguimiento,
+        id_notas: notas.id_notas,
+        id_estudiante: notas.id_estudiante,
+        id_materia: notas.id_materia,
+        bimensual_1: conocimiento,
+        bimensual_2: bimensual,
+        autoevaluacion: autoevaluacion,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+    window.location = `/profesor-notas/${id}/${grupo}/${codigo}`;
   };
 
   return (
@@ -37,18 +38,19 @@ const EditarNotas = ({ notas }) => {
         type="button"
         className="btn btn-success"
         data-toggle="modal"
-        data-target={`#id${notas.id_estudiante}`}
+        data-target={`#id${notas.id_notas}`}
       >
         Editar Notas
       </button>
-
-      {/*
-           Example => id = id10
-        */}
       <div
         className="modal"
-        id={`id${notas.id_estudiante}`}
-        onClick={() => setSeguimiento(notas.seguimiento)}
+        id={`id${notas.id_notas}`}
+        onClick={() => {
+          setSeguimiento(notas.seguimiento);
+          setConocimiento(notas.bimensual_1);
+          setBimensual(notas.bimensual_2);
+          setAutoevaluacion(notas.autoevaluacion);
+        }}
       >
         <div className="modal-dialog">
           <div className="modal-content">
@@ -58,7 +60,12 @@ const EditarNotas = ({ notas }) => {
                 type="button"
                 className="close"
                 data-dismiss="modal"
-                onClick={() => setSeguimiento(notas.seguimiento)}
+                onClick={() => {
+                  setSeguimiento(notas.seguimiento);
+                  setConocimiento(notas.bimensual_1);
+                  setBimensual(notas.bimensual_2);
+                  setAutoevaluacion(notas.autoevaluacion);
+                }}
               >
                 &times;
               </button>
@@ -66,16 +73,81 @@ const EditarNotas = ({ notas }) => {
 
             <div className="modal-body">
               <h3>{notas.nombre_completo}</h3>
-              <h6>Codigo Estudiante: {notas.cod_estudiante}</h6>
-              <label>Seguimiento</label>
-              <input
-                type="text"
-                className="form-control"
-                value={seguimiento}
-                onChange={(e) => {
-                  setSeguimiento(e.target.value);
-                }}
-              />
+              <h6 className="mb-5">
+                Codigo Estudiante: {notas.cod_estudiante}
+              </h6>
+
+              <Form>
+                <Form.Group
+                  as={Row}
+                  controlId="formPlaintextPassword"
+                  className="d-flex justify-content-center"
+                >
+                  <Form.Label column sm="3">
+                    Seguimiento
+                  </Form.Label>
+                  <Col sm="4">
+                    <Form.Control
+                      type="number"
+                      placeholder="Seguimiento"
+                      value={seguimiento}
+                      onChange={(e) => setSeguimiento(e.target.value)}
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group
+                  as={Row}
+                  controlId="formPlaintextPassword"
+                  className="d-flex justify-content-center"
+                >
+                  <Form.Label column sm="3">
+                    Conocimiento
+                  </Form.Label>
+                  <Col sm="4">
+                    <Form.Control
+                      type="number"
+                      placeholder="Conocimiento"
+                      value={conocimiento}
+                      onChange={(e) => setConocimiento(e.target.value)}
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group
+                  as={Row}
+                  controlId="formPlaintextPassword"
+                  className="d-flex justify-content-center"
+                >
+                  <Form.Label column sm="3">
+                    Bimensual
+                  </Form.Label>
+                  <Col sm="4">
+                    <Form.Control
+                      type="number"
+                      placeholder="Bimensual"
+                      value={bimensual}
+                      onChange={(e) => setBimensual(e.target.value)}
+                    />
+                  </Col>
+                </Form.Group>
+
+                <Form.Group
+                  as={Row}
+                  controlId="formPlaintextPassword"
+                  className="d-flex justify-content-center"
+                >
+                  <Form.Label column sm="3">
+                    Autoevaluación
+                  </Form.Label>
+                  <Col sm="4">
+                    <Form.Control
+                      type="number"
+                      placeholder="Autoevaluacion"
+                      value={autoevaluacion}
+                      onChange={(e) => setAutoevaluacion(e.target.value)}
+                    />
+                  </Col>
+                </Form.Group>
+              </Form>
             </div>
 
             <div className="modal-footer">
@@ -94,7 +166,12 @@ const EditarNotas = ({ notas }) => {
                 type="button"
                 className="btn btn-danger"
                 data-dismiss="modal"
-                onClick={() => setSeguimiento(notas.seguimiento)}
+                onClick={() => {
+                  setSeguimiento(notas.seguimiento);
+                  setConocimiento(notas.bimensual_1);
+                  setBimensual(notas.bimensual_2);
+                  setAutoevaluacion(notas.autoevaluacion);
+                }}
               >
                 Close
               </button>
@@ -104,6 +181,6 @@ const EditarNotas = ({ notas }) => {
       </div>
     </>
   );
-};
+}
 
 export default EditarNotas;
