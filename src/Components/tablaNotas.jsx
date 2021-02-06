@@ -37,13 +37,10 @@ No se si me hice entender, perdon no haber podido hacer mas :c
 (lo de las rutas creo que es mas facil enviarlo por params)
  */
 
-
-
-
 function TablaGrados() {
   const id = getFromLocal("id_usuario");
   const codigo = getFromLocal("cod_grupo");
-  const grupo = getFromLo / cal("id_grupo")
+  const grupo = getFromLocal("id_grupo")
   const id_grupo = getFromLocal("cod_grupo")
 
   console.log(id);
@@ -110,7 +107,7 @@ function TablaGrados() {
                 <td>{Number(notas.autoevaluacion).toFixed(2)}</td>
                 <td>{Number(notas.nota_promedio).toFixed(2)}</td>
                 <td>
-                  <button className="btn btn-success" >Editar Notas</button>
+                  <button className="btn btn-success">Editar Notas</button>
                 </td>
               </tr>
             );
