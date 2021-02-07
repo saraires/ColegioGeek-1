@@ -4,11 +4,17 @@
 
 const Pool = require('pg').Pool
 const poolConnection = new Pool({
-  host: "localhost",
+  host: "104.196.49.247",
   user: "postgres",
-  password: "2704775123.",
-  database: "Colegio_Geek",
+  password: "colegiogeek",
+  database: "postgres",
   port: 5432
+
+  // host: "localhost",
+  // user: "postgres",
+  // password: "2704775123.",
+  // database: "Colegio_Geek",
+  // port: 5432
 
   // host: 'bh8bpuyytnjeozxdfrej-postgresql.services.clever-cloud.com',
   // user: 'uq2emsrhwkmvecsyktll',

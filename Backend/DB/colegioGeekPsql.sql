@@ -82,6 +82,7 @@ CREATE TABLE Grupo(
 "cod_grupo" int4 NOT NULL,
 "cod_profesor" int4 NOT NULL,
 "jornada" enum_jornada NOT NULL,
+"descripcion" varchar(50) NOT NULL,
 CONSTRAINT fk_profesor_grupo FOREIGN KEY (cod_profesor) REFERENCES Profesor(cod_profesor) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -120,7 +121,7 @@ CONSTRAINT fk_profesor_materia FOREIGN KEY (cod_profesor) REFERENCES  Profesor(c
 );
 
 CREATE TABLE Grupo_Materia(
-"id_grupo_materia" int4 PRIMARY KEY NOT NULL DEFAULT NEXTVAL('grado_materia_id_seq'),
+"id_grupo_materia" int4 PRIMARY KEY NOT NULL DEFAULT NEXTVAL('grupo_materia_id_seq'),
 "id_grupo" int4 NOT NULL,
 "id_materia" int4 NOT NULL,
 CONSTRAINT fk_grupo_gm FOREIGN KEY (id_grupo) REFERENCES Grupo(id_grupo) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -138,7 +139,3 @@ create table Notas (
 CONSTRAINT fk_materia_notas FOREIGN KEY (id_materia) REFERENCES  Materia(id_materia) ON DELETE RESTRICT ON UPDATE CASCADE,
 CONSTRAINT fk_estudiante_notas FOREIGN KEY (id_estudiante) REFERENCES Estudiante(id_estudiante) ON DELETE RESTRICT ON UPDATE CASCADE
 );
-
--- insert 
-
-INSERT INTO grado_cursado VALUES (nextval('id_grado_cursado'), 1, 1, 2021, 'En curso');
