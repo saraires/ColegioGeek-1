@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { getFromLocal } from "../functions/localstorage";
+import { getFromLocal } from "../../functions/localstorage";
 import { Form, Row, Col } from "react-bootstrap";
 
-function EditarNotas({ notas }) {
+function InsertarGrupo({ notas }) {
   const [seguimiento, setSeguimiento] = useState(notas.seguimiento);
   const [conocimiento, setConocimiento] = useState(notas.bimensual_1);
   const [bimensual, setBimensual] = useState(notas.bimensual_2);
@@ -39,7 +39,7 @@ function EditarNotas({ notas }) {
         data-toggle="modal"
         data-target={`#id${notas.id_notas}`}
       >
-        Editar Notas
+        Insertar Grupo
       </button>
       <div
         className="modal"
@@ -48,7 +48,7 @@ function EditarNotas({ notas }) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Editar Notas</h4>
+              <h4 className="modal-title">Insertar Grupo</h4>
               <button
                 type="button"
                 className="close"
@@ -65,11 +65,6 @@ function EditarNotas({ notas }) {
             </div>
 
             <div className="modal-body">
-              <h3>{notas.nombre_completo}</h3>
-              <h6 className="mb-5">
-                Codigo Estudiante: {notas.cod_estudiante}
-              </h6>
-
               <Form>
                 <Form.Group
                   as={Row}
@@ -77,7 +72,7 @@ function EditarNotas({ notas }) {
                   className="d-flex justify-content-center"
                 >
                   <Form.Label column sm="3">
-                    Seguimiento
+                    Profesor
                   </Form.Label>
                   <Col sm="4">
                     <Form.Control
@@ -176,4 +171,4 @@ function EditarNotas({ notas }) {
   );
 }
 
-export default EditarNotas;
+export default InsertarGrupo;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { getFromLocal, saveToLocal } from "../functions/localstorage";
 import { Container, Table } from "react-bootstrap";
-import EditarNotas from "./EditarNotas";
+import EditarNotas from "./Modals/EditarNotas";
 
 function TablaGrados() {
   const id = getFromLocal("id_usuario");

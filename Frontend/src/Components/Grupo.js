@@ -87,7 +87,7 @@ function Grupo() {
                             <td>{elemento.id}</td>
                             <td>{elemento.profesor}</td>
                             <td>{elemento.jornada}</td>
-                            <td><button className="btn btn-primary" onClick={() => seleccionarGrupo(elemento, "Editar")}>Editar</button>{"   "}
+                            <td><button className="btn btn-success" onClick={() => seleccionarGrupo(elemento, "Editar")}>Editar Grupo</button>{"   "}
                                 <button className="btn btn-danger" onClick={() => seleccionarGrupo(elemento, "Eliminar")}>Eliminar</button></td>
                         </tr>
                     ))}
