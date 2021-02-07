@@ -15,7 +15,6 @@ function EditarNotas({ notas }) {
 
   const updateNotas = async (e) => {
     e.preventDefault();
-
     axios
       .patch(`http://localhost:5000/editar-notas/`, {
         seguimiento: seguimiento,
@@ -45,12 +44,6 @@ function EditarNotas({ notas }) {
       <div
         className="modal"
         id={`id${notas.id_notas}`}
-        onClick={() => {
-          setSeguimiento(notas.seguimiento);
-          setConocimiento(notas.bimensual_1);
-          setBimensual(notas.bimensual_2);
-          setAutoevaluacion(notas.autoevaluacion);
-        }}
       >
         <div className="modal-dialog">
           <div className="modal-content">
@@ -153,14 +146,14 @@ function EditarNotas({ notas }) {
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-warning"
+                className="btn btn-success"
                 data-dismiss="modal"
                 onClick={(e) => {
                   updateNotas(e);
                   console.log("Nota actualizada");
                 }}
               >
-                Editar
+                Editar Notas
               </button>
               <button
                 type="button"
@@ -173,7 +166,7 @@ function EditarNotas({ notas }) {
                   setAutoevaluacion(notas.autoevaluacion);
                 }}
               >
-                Close
+                Cerrar
               </button>
             </div>
           </div>

@@ -6,7 +6,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { saveToLocal } from "../functions/localstorage";
 // ES6 Modules or TypeScript
-import swal from 'sweetalert2';
+import swal from "sweetalert2";
 
 const signInSchema = Yup.object().shape({
   email: Yup.string().email("Correo Invalido").required("Ingrese un correo"),
@@ -26,28 +26,27 @@ const FormFormik = () => (
         password: "",
         picked: "",
       }}
- 
       validationSchema={signInSchema}
       onSubmit={(values) => {
-        axios.post("http://localhost:5000/", {
+        axios
+          .post("http://localhost:5000/", {
             correo: values.email,
             contraseña: values.password,
             rol: values.picked,
           })
           .then((res) => {
             if (res.data.rows[0]["correo"] === values.email) {
-
               const id = res.data.rows[0]["id_usuario"];
               saveToLocal("id_usuario", id);
 
               const nombre = res.data.rows[0]["nombre_completo"];
-              saveToLocal("nombre_completo", nombre );
+              saveToLocal("nombre_completo", nombre);
 
               const genero = res.data.rows[0]["genero"];
-              saveToLocal("genero", genero );
+              saveToLocal("genero", genero);
 
               const rol = res.data.rows[0]["rol"];
-              saveToLocal("rol", rol );
+              saveToLocal("rol", rol);
 
               if (res.data.rows[0]["rol"] === 1) {
                 window.location.href = "administrador";
@@ -58,21 +57,21 @@ const FormFormik = () => (
               }
 
               swal.fire({
-                title: 'Bienvenido!',
-                text: 'Se pudo iniciar sesión correctamente',
-                icon: 'success',
-                confirmButtonText: 'Ok'
-              })
+                title: "Bienvenido!",
+                text: "Se pudo iniciar sesión correctamente",
+                icon: "success",
+                confirmButtonText: "Ok",
+              });
             }
           })
           .catch(function (error) {
             console.log(error);
             swal.fire({
-              title: 'Error!',
-              text: 'Correo, contraseña y/o rol erroneos',
-              icon: 'error',
-              confirmButtonText: 'Ok'
-            })
+              title: "Error!",
+              text: "Correo, contraseña y/o rol erroneos",
+              icon: "error",
+              confirmButtonText: "Ok",
+            });
           });
 
         console.log(values);
