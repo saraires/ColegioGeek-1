@@ -5,9 +5,17 @@ import { Form, Row, Col } from "react-bootstrap";
 
 function EditarNotas({ notas }) {
   const [seguimiento, setSeguimiento] = useState(notas.seguimiento);
-  const [conocimiento, setConocimiento] = useState(notas.bimensual_1);
-  const [bimensual, setBimensual] = useState(notas.bimensual_2);
+  const [conocimiento, setConocimiento] = useState(notas.conocimiento);
+  const [bimensual, setBimensual] = useState(notas.bimensual);
   const [autoevaluacion, setAutoevaluacion] = useState(notas.autoevaluacion);
+
+  console.log(seguimiento)
+  
+  console.log(conocimiento)
+  
+  console.log(bimensual)
+  
+  console.log(notas)
 
   const id = getFromLocal("id_usuario");
   const codigo = getFromLocal("cod_grupo");
@@ -18,11 +26,11 @@ function EditarNotas({ notas }) {
     axios
       .patch(`http://localhost:5000/editar-notas/`, {
         seguimiento: seguimiento,
-        id_notas: notas.id_notas,
+        id_nota: notas.id_nota,
         id_estudiante: notas.id_estudiante,
         id_materia: notas.id_materia,
-        bimensual_1: conocimiento,
-        bimensual_2: bimensual,
+        conocimiento: conocimiento,
+        bimensual: bimensual,
         autoevaluacion: autoevaluacion,
       })
       .then((res) => {
@@ -37,13 +45,13 @@ function EditarNotas({ notas }) {
         type="button"
         className="btn btn-success"
         data-toggle="modal"
-        data-target={`#id${notas.id_notas}`}
+        data-target={`#id${notas.id_nota}`}
       >
         Editar Notas
       </button>
       <div
         className="modal"
-        id={`id${notas.id_notas}`}
+        id={`id${notas.id_nota}`}
       >
         <div className="modal-dialog">
           <div className="modal-content">
@@ -55,8 +63,8 @@ function EditarNotas({ notas }) {
                 data-dismiss="modal"
                 onClick={() => {
                   setSeguimiento(notas.seguimiento);
-                  setConocimiento(notas.bimensual_1);
-                  setBimensual(notas.bimensual_2);
+                  setConocimiento(notas.conocimiento);
+                  setBimensual(notas.bimensual);
                   setAutoevaluacion(notas.autoevaluacion);
                 }}
               >
@@ -161,8 +169,8 @@ function EditarNotas({ notas }) {
                 data-dismiss="modal"
                 onClick={() => {
                   setSeguimiento(notas.seguimiento);
-                  setConocimiento(notas.bimensual_1);
-                  setBimensual(notas.bimensual_2);
+                  setConocimiento(notas.conocimiento);
+                  setBimensual(notas.bimensual);
                   setAutoevaluacion(notas.autoevaluacion);
                 }}
               >

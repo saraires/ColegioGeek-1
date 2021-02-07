@@ -54,7 +54,7 @@ function TablaGrados() {
                     </button>
                   </Link>
                 </td>
-                <td>{item.descripcion_grupo}</td>
+                <td>{item.descripcion}</td>
                 <td>{item.jornada}</td>
               </tr>
             );

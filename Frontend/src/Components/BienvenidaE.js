@@ -16,7 +16,7 @@ function BienvennidaE() {
   return (
     <Container>
       <div className="text-center">
-        {genero === "Hombre" ? (
+        {genero === "Masculino" ? (
           <h1 className="d-flex justify-content-center mt-5 mb-5">
             {" "}
             Bienvenido {nombre}!
@@ -34,9 +34,9 @@ function BienvennidaE() {
             <Image src={admin} thumbnail style={{ width: "50rem" }} />
           ) : rol === "2" ? (
             <Image src={profe} thumbnail style={{ width: "50rem" }} />
-          ) : rol === "3" && genero === "Hombre" ? (
+          ) : rol === "3" && genero === "Masculino" ? (
             <Image src={niño} thumbnail style={{ width: "50rem" }} />
-          ) : rol === "3" && genero === "Mujer" ? (
+          ) : rol === "3" && genero === "Femenino" ? (
             <Image src={niña} thumbnail style={{ width: "50rem" }} />
           ) : null}
         </Col>
