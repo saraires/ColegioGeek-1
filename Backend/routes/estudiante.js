@@ -23,7 +23,7 @@ estudiante.get("/estudiante-perfil/:id", (req, res) => {
   const id = req.params.id;
   console.log(id);
   cnn_postgreSQL.query(
-    `SELECT U.nombre_completo, U.documento, G.descripcion_grupo, E.cod_estudiante, GC.estado FROM usuario U INNER JOIN estudiante E ON U.id_usuario = E.id_usuario INNER JOIN grado_cursado GC ON E.id_estudiante = GC.id_estudiante INNER JOIN grupo G on G.id_grupo = E.id_grupo WHERE U.id_usuario='${id}';`,
+    `SELECT U.nombre_completo, U.documento, G.descripcion, E.cod_estudiante, GC.estado FROM usuario U INNER JOIN estudiante E ON U.id_usuario = E.id_usuario INNER JOIN grado_cursado GC ON E.id_estudiante = GC.id_estudiante INNER JOIN grupo G on G.id_grupo = E.id_grupo WHERE U.id_usuario='${id}';`,
     (err, rows, fields) => {
       if (err) {
         return res.status(500).json({ message: "Información Incorrecta" });
@@ -39,7 +39,7 @@ estudiante.get("/estudiante-materia/:id", (req, res) => {
   const id = req.params.id;
   console.log(id);
   cnn_postgreSQL.query(
-    `select cod_materia,nombre_materia, id_profesor, round(avg(seguimiento) + avg(bimensual_1) + avg(bimensual_2) + avg(autoevaluacion))/4 nota_promedio from estudiante inner join notas on estudiante.id_estudiante = notas.id_estudiante INNER JOIN materia on materia.id_materia=notas.id_materia INNER JOIN usuario on usuario.id_usuario=estudiante.id_usuario where estudiante.id_usuario='${id}' GROUP BY materia.cod_materia, materia.nombre_materia, materia.id_profesor;`,
+    `select cod_materia,nombre_materia, cod_profesor, (avg(seguimiento) + avg(conocimiento) + avg(bimensual) + avg(autoevaluacion))/4 nota_promedio from estudiante inner join notas on estudiante.id_estudiante = notas.id_estudiante INNER JOIN materia on materia.id_materia=notas.id_materia INNER JOIN usuario on usuario.id_usuario=estudiante.id_usuario where estudiante.id_usuario='${id}' GROUP BY materia.cod_materia, materia.nombre_materia, materia.cod_profesor;`,
     (err, rows, fields) => {
       if (err) {
         return res.status(500).json({ message: "Información Incorrecta" });
@@ -55,7 +55,7 @@ estudiante.get("/estudiante-nota/:id", (req, res) => {
   const id = req.params.id;
   console.log(id);
   cnn_postgreSQL.query(
-    `select estudiante.id_usuario, cod_materia, nombre_materia, avg(seguimiento) seguimiento, avg(bimensual_1) as "bimensual_1", avg(bimensual_2) as "bimensual_2", avg(notas.autoevaluacion) autoevaluacion, (avg(seguimiento) + avg(bimensual_1) + avg(bimensual_2) + avg(autoevaluacion))/4 nota_final from notas INNER JOIN materia on materia.id_materia=notas.id_materia inner join estudiante on estudiante.id_estudiante=notas.id_estudiante where estudiante.id_usuario='${id}' GROUP BY cod_materia, nombre_materia, estudiante.id_usuario;`,
+    `select estudiante.id_usuario, cod_materia, nombre_materia, avg(seguimiento) seguimiento, avg(conocimiento) as "conocimiento", avg(bimensual) as "bimensual", avg(notas.autoevaluacion) autoevaluacion, (avg(seguimiento) + avg(conocimiento) + avg(bimensual) + avg(autoevaluacion))/4 nota_final from notas INNER JOIN materia on materia.id_materia=notas.id_materia inner join estudiante on estudiante.id_estudiante=notas.id_estudiante where estudiante.id_usuario='${id}' GROUP BY cod_materia, nombre_materia, estudiante.id_usuario;`,
     (err, rows, fields) => {
       if (err) {
         return res.status(500).json({ message: "Información Incorrecta" });
@@ -71,7 +71,7 @@ estudiante.get("/estudiante-informe/:id", (req, res) => {
   const id = req.params.id;
   console.log(id);
   cnn_postgreSQL.query(
-    `select cod_materia,nombre_materia,  materia.id_profesor, estudiante.cod_estudiante, descripcion_grupo, avg(seguimiento) seguimiento, avg(bimensual_1) as "bimensual_1", avg(bimensual_2) as "bimensual_2", avg(notas.autoevaluacion) autoevaluacion, round(avg(seguimiento) + avg(bimensual_1) + avg(bimensual_2) + avg(autoevaluacion))/4 nota_promedio from estudiante inner join notas on estudiante.id_estudiante = notas.id_estudiante INNER JOIN materia on materia.id_materia=notas.id_materia INNER JOIN usuario on usuario.id_usuario=estudiante.id_usuario inner join grupo on grupo.id_grupo=estudiante.id_grupo where estudiante.id_usuario='${id}' GROUP BY materia.cod_materia, materia.nombre_materia, materia.id_profesor, estudiante.cod_estudiante, descripcion_grupo;`,
+    `select cod_materia,nombre_materia,  materia.cod_profesor, estudiante.cod_estudiante, descripcion, avg(seguimiento) seguimiento, avg(conocimiento) as "conocimiento", avg(bimensual) as "bimensual", avg(notas.autoevaluacion) autoevaluacion, (avg(seguimiento) + avg(conocimiento) + avg(bimensual) + avg(autoevaluacion))/4 nota_promedio from estudiante inner join notas on estudiante.id_estudiante = notas.id_estudiante INNER JOIN materia on materia.id_materia=notas.id_materia INNER JOIN usuario on usuario.id_usuario=estudiante.id_usuario inner join grupo on grupo.id_grupo=estudiante.id_grupo where estudiante.id_usuario='${id}' GROUP BY materia.cod_materia, materia.nombre_materia, materia.cod_profesor, estudiante.cod_estudiante, descripcion;`,
     (err, rows, fields) => {
       if (err) {
         return res.status(500).json({ message: "Información Incorrecta" });

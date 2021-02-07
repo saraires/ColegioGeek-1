@@ -40,8 +40,8 @@ function Tabla() {
                 <td>{item.cod_materia}</td>
                 <td>{item.nombre_materia}</td>
                 <td>{Number(item.seguimiento).toFixed(2)}</td>
-                <td>{Number(item.bimensual_1).toFixed(2)}</td>
-                <td>{Number(item.bimensual_2).toFixed(2)}</td>
+                <td>{Number(item.conocimiento).toFixed(2)}</td>
+                <td>{Number(item.bimensual).toFixed(2)}</td>
                 <td>{Number(item.autoevaluacion).toFixed(2)}</td>
                 <td>{Number(item.nota_final).toFixed(2)}</td>
               </tr>

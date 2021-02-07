@@ -80,7 +80,7 @@ function MyPdf() {
       .then((res) => {
         setInforme(res.data.rows);
         saveToLocal("cod_estudiante", res.data.rows[0]["cod_estudiante"]);
-       saveToLocal("grupo", res.data.rows[0]["descripcion_grupo"])
+       saveToLocal("grupo", res.data.rows[0]["descripcion"])
       })
       .catch((err) => {
         console.log(err);
@@ -102,10 +102,10 @@ function MyPdf() {
 
         <View>
           <Text style={styles.text}>
-            Que {genero === "Mujer" ? "la " : "el "}estudiante {nombre},{" "}
-            {genero === "Mujer" ? "identificada" : "identificado"} con código{" "}
+            Que {genero === "Femenino" ? "la " : "el "}estudiante {nombre},{" "}
+            {genero === "Femenino" ? "identificada" : "identificado"} con código{" "}
             {cod_estudiante} se encuentra{" "}
-            {genero === "Mujer" ? "matriculada" : "matriculado"} en nuestro
+            {genero === "Femenino" ? "matriculada" : "matriculado"} en nuestro
             colegio en el grupo {grupo}. A continuación se describen el
             rendimiento academico, dando a conocer las notas por materia que se
             llevan del año activo 2021.
@@ -146,12 +146,12 @@ function MyPdf() {
                 </View>
                 <View style={styles.tableCol}>
                   <Text style={styles.tableCell}>
-                    {Number(item.seguimiento).toFixed(2)}
+                    {Number(item.conocimiento).toFixed(2)}
                   </Text>
                 </View>
                 <View style={styles.tableCol}>
                   <Text style={styles.tableCell}>
-                    {Number(item.bimensual_2).toFixed(2)}
+                    {Number(item.bimensual).toFixed(2)}
                   </Text>
                 </View>
                 <View style={styles.tableCol}>

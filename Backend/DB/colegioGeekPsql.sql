@@ -81,6 +81,7 @@ CREATE TABLE Grupo(
 "id_grupo" int4 PRIMARY KEY NOT NULL DEFAULT NEXTVAL('grupo_id_seq'),
 "cod_grupo" int4 NOT NULL,
 "cod_profesor" int4 NOT NULL,
+"descripcion" varchar(50) not null,
 "jornada" enum_jornada NOT NULL,
 "descripcion" varchar(50) NOT NULL,
 CONSTRAINT fk_profesor_grupo FOREIGN KEY (cod_profesor) REFERENCES Profesor(cod_profesor) ON DELETE RESTRICT ON UPDATE CASCADE

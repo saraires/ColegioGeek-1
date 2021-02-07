@@ -45,8 +45,8 @@ function TablaGrados() {
                 <td>{notas.cod_estudiante}</td>
                 <td>{notas.nombre_completo}</td>
                 <td>{Number(notas.seguimiento).toFixed(2)}</td>
-                <td>{Number(notas.bimensual_1).toFixed(2)}</td>
-                <td>{Number(notas.bimensual_2).toFixed(2)}</td>
+                <td>{Number(notas.conocimiento).toFixed(2)}</td>
+                <td>{Number(notas.bimensual).toFixed(2)}</td>
                 <td>{Number(notas.autoevaluacion).toFixed(2)}</td>
                 <td>{Number(notas.nota_promedio).toFixed(2)}</td>
                 <td>
