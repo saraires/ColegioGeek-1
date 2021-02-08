@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import InsertarGrupo from "./Modals/InsertarGrupo";
 import axios from "axios";
 import EditarGrupo from "./Modals/EditarGrupo";
+import EliminarGrupo from "./Modals/EliminarGrupo";
 
 function Grupo() {
   const [grupos, setGrupos] = useState([]);
@@ -16,13 +17,13 @@ function Grupo() {
 
   return (
     <div className="Container">
-      <Container className="text-center m-5">
-        <h1 className="m-3">Grupos</h1>
+      <Container className="text-center">
+        <h1 className="m-5">Grupos</h1>
 
         <InsertarGrupo />
       </Container>
       <Container>
-        <table className="table table-bordered">
+        <table className="table table-bordered table-responsive">
           <thead>
             <tr>
               <th>Codigo Grupo</th>
@@ -37,9 +38,12 @@ function Grupo() {
                 <td>{item.cod_grupo}</td>
                 <td>{item.descripcion}</td>
                 <td>{item.jornada}</td>
-                <td>
-                  <EditarGrupo grupo={item} />
+                <td className="text-center">
+                  <EditarGrupo grupo={item}/>
+                  {" "}
+                  <EliminarGrupo grupo={item} />
                 </td>
+                
               </tr>
             ))}
           </tbody>

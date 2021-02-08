@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { getFromLocal } from "../../functions/localstorage";
 import { Form, Row, Col } from "react-bootstrap";
 
-function InsertarGrupo({ notas }) {
-  const [codigo, setCodigo] = useState();
-  const [descripcion, setDescripcion] = useState();
-  const [jornada, setJornada] = useState();
+function EliminarGrupo({ grupo }) {
+  const [codigo, setCodigo] = useState(grupo.cod_grupo);
+  const [jornada, setJornada] = useState(grupo.jornada);
+  const [descripcion, setDescripcion] = useState(grupo.descripcion);
 
-  const InsertGrupo = async (e) => {
+  console.log(grupo.id_grupo);
+
+  const udpateGrupo = async (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:5000/registro-grupo/`, {
+      .patch(`http://localhost:5000/editar-grupo/`, {
         codigo: codigo,
-        descripcion: descripcion,
         jornada: jornada,
+        descripcion: descripcion,
+        id_grupo: grupo.id_grupo,
       })
       .then((res) => {
         console.log(res);
+        console.log(codigo, jornada, descripcion, grupo.id_grupo)
       });
     window.location = `/administrador-grupo/`;
   };
@@ -25,25 +30,25 @@ function InsertarGrupo({ notas }) {
     <>
       <button
         type="button"
-        className="btn btn-success m-5"
+        className="btn btn-danger"
         data-toggle="modal"
-        data-target={`#id`}
+        data-target={`#id${grupo.id_grupo}`}
       >
-        Insertar Grupo
+        Eliminar Grupo
       </button>
-      <div className="modal" id={`id`}>
+      <div className="modal" id={`id${grupo.id_grupo}`}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Insertar Grupo</h4>
+              <h4 className="modal-title">Eliminar Grupo</h4>
               <button
                 type="button"
                 className="close"
                 data-dismiss="modal"
                 onClick={() => {
-                  setCodigo();
-                  setDescripcion();
-                  setJornada();
+                  setJornada(grupo.jornada);
+                  setCodigo(grupo.cod_grupo);
+                  setDescripcion(grupo.descripcion);
                 }}
               >
                 &times;
@@ -58,16 +63,14 @@ function InsertarGrupo({ notas }) {
                   className="d-flex justify-content-center"
                 >
                   <Form.Label column sm="4">
-                    Codigo Grupo
+                    Código Grupo
                   </Form.Label>
                   <Col sm="5">
                     <Form.Control
                       type="number"
-                      placeholder="Cod Grupo"
-                      onChange={(e) => {
-                        setCodigo(e.target.value);
-                        console.log(codigo);
-                      }}
+                      placeholder="Código Grupo"
+                      value={codigo}
+                      onChange={(e) => setCodigo(e.target.value)}
                     />
                   </Col>
                 </Form.Group>
@@ -83,10 +86,8 @@ function InsertarGrupo({ notas }) {
                     <Form.Control
                       type="text"
                       placeholder="Descripción Grupo"
-                      onChange={(e) => {
-                        setDescripcion(e.target.value);
-                        console.log(codigo);
-                      }}
+                      value={descripcion}
+                      onChange={(e) => setDescripcion(e.target.value)}
                     />
                   </Col>
                 </Form.Group>
@@ -101,10 +102,11 @@ function InsertarGrupo({ notas }) {
                   <Col sm="5">
                     <Form.Control
                       as="select"
+                      value={jornada}
                       onChange={(e) => {
                         setJornada(e.target.value);
-                        console.log(e.target.value);
                       }}
+                      placeholder="Jornada"
                     >
                       <option value="" selected>
                         Seleccione...
@@ -123,20 +125,20 @@ function InsertarGrupo({ notas }) {
                 className="btn btn-success"
                 data-dismiss="modal"
                 onClick={(e) => {
-                  InsertGrupo(e);
-                  console.log("Nota actualizada");
+                  udpateGrupo(e);
+                  console.log("Grupo actualizado");
                 }}
               >
-                Insertar Grupo
+                Editar Notas
               </button>
               <button
                 type="button"
                 className="btn btn-danger"
                 data-dismiss="modal"
                 onClick={() => {
-                  setCodigo();
-                  setDescripcion();
-                  setJornada();
+                  setJornada(grupo.jornada);
+                  setCodigo(grupo.cod_grupo);
+                  setDescripcion(grupo.descripcion);
                 }}
               >
                 Cerrar
@@ -149,4 +151,4 @@ function InsertarGrupo({ notas }) {
   );
 }
 
-export default InsertarGrupo;
+export default EliminarGrupo;
