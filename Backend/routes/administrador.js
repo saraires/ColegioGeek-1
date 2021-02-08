@@ -40,18 +40,33 @@ administrador.post("/registro-grupo", (req, res) => {
 });
 
 administrador.get("/administrador-grupo/", (req, res) => {
-
-  cnn_postgreSQL.query(
-    `select * from grupo`,
-    (err, rows, fields) => {
-      if (err) {
-        return res.status(500).json({ message: "Información Incorrecta" });
-      } else {
-        console.log(rows);
-        return res.json(rows);
-      }
+  cnn_postgreSQL.query(`select * from grupo`, (err, rows, fields) => {
+    if (err) {
+      return res.status(500).json({ message: "Información Incorrecta" });
+    } else {
+      console.log(rows);
+      return res.json(rows);
     }
-  );
+  });
+});
+
+administrador.patch("/editar-grupo/", (req, res) => {
+  console.log(req.body);
+
+  try {
+    const { codigo, jornada, descripcion, id_grupo } = req.body;
+
+    console.log(req.body);
+
+    const updateNotas = cnn_postgreSQL.query(
+      "UPDATE grupo SET cod_grupo = $1, jornada = $2, descripcion = $3 WHERE id_grupo = $4;",
+      [codigo, jornada, descripcion, id_grupo]
+    );
+
+    res.json("Grupo actualizado con éxito");
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 module.exports = administrador;

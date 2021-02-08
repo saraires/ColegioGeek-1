@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import InsertarGrupo from "./Modals/InsertarGrupo";
-import axios from "axios"
+import axios from "axios";
+import EditarGrupo from "./Modals/EditarGrupo";
 
 function Grupo() {
+  const [grupos, setGrupos] = useState([]);
 
-    const [grupo, setGrupo]=useState([]);
-
-    useEffect(()=>{
-        axios.get(`http://localhost:5000/administrador-grupo`).then((res)=>{
-            setGrupo(res.data.rows)
-            console.log(res.data)
-        })
-    },[])
+  useEffect(() => {
+    axios.get(`http://localhost:5000/administrador-grupo/`).then((res) => {
+      setGrupos(res.data.rows);
+      console.log(res.data);
+    });
+  }, []);
 
   return (
     <div className="Container">
@@ -25,38 +25,20 @@ function Grupo() {
         <table className="table table-bordered">
           <thead>
             <tr>
-              <th>Cod grupo</th>
+              <th>Codigo Grupo</th>
               <th>Descripción Grupo</th>
               <th>Jornada</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {grupo.map((item,index) => (
-              <tr key={`${index-item.id}`}>
+            {grupos.map((item, index) => (
+              <tr key={`${index - item.id}`}>
+                <td>{item.cod_grupo}</td>
+                <td>{item.descripcion}</td>
+                <td>{item.jornada}</td>
                 <td>
-                    {item.cod_grupo}
-                </td>
-                <td>
-                    {item.descripcion}
-                </td>
-                <td>
-                    {item.jornada}
-                </td>
-                <td>
-                  <button
-                    className="btn btn-success"
-                   
-                  >
-                    Editar Grupo
-                  </button>
-                  {"   "}
-                  <button
-                    className="btn btn-danger"
-               
-                  >
-                    Eliminar
-                  </button>
+                  <EditarGrupo grupo={item} />
                 </td>
               </tr>
             ))}
