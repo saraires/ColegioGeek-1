@@ -8,19 +8,22 @@ function EditarNotas({ notas }) {
   const [conocimiento, setConocimiento] = useState(notas.conocimiento);
   const [bimensual, setBimensual] = useState(notas.bimensual);
   const [autoevaluacion, setAutoevaluacion] = useState(notas.autoevaluacion);
+  const id_notas = notas.id_nota;
+  const id_estudiante= notas.id_estudiante;
+  const id_materia= notas.id_materia;
+
+  console.log(notas)
+
 
   const id = getFromLocal("id_usuario");
   const codigo = getFromLocal("cod_grupo");
   const grupo = getFromLocal("id_grupo");
 
-  console.log(bimensual)
+  const updateNotas = () => {
 
-  const updateNotas = async (e) => {
-    e.preventDefault();
-    axios
-      .patch(`http://localhost:5000/editar-notas/`, {
+    axios.patch(`http://localhost:5000/editar-notas/`, {
         seguimiento: seguimiento,
-        id_notas: notas.id_nota,
+        id_nota: notas.id_nota,
         id_estudiante: notas.id_estudiante,
         id_materia: notas.id_materia,
         conocimiento: conocimiento,
@@ -29,6 +32,7 @@ function EditarNotas({ notas }) {
       })
       .then((res) => {
         console.log(res);
+        console.log(seguimiento, conocimiento, bimensual, autoevaluacion, id_notas, id_estudiante, id_materia)
       });
     window.location = `/profesor-notas/${id}/${grupo}/${codigo}`;
   };
@@ -150,8 +154,8 @@ function EditarNotas({ notas }) {
                 type="button"
                 className="btn btn-success"
                 data-dismiss="modal"
-                onClick={(e) => {
-                  updateNotas(e);
+                onClick={() => {
+                  updateNotas();
                   console.log("Nota actualizada");
                 }}
               >

@@ -5,38 +5,53 @@ const { cnn_postgreSQL } = require("../DB/conexion");
 const administrador = Router();
 
 administrador.get("/administrador-perfil/:id", (req, res) => {
-    const id = req.params.id;
-    console.log(id);
-    cnn_postgreSQL.query(
-      `SELECT U.nombre_completo, U.documento FROM usuario U WHERE U.id_usuario='${id}';`,
-      (err, rows, fields) => {
-        if (err) {
-          return res.status(500).json({ message: "Información Incorrecta" });
-        } else {
-          console.log(rows);
-          return res.json(rows);
-        }
+  const id = req.params.id;
+  console.log(id);
+  cnn_postgreSQL.query(
+    `SELECT U.nombre_completo, U.documento FROM usuario U WHERE U.id_usuario='${id}';`,
+    (err, rows, fields) => {
+      if (err) {
+        return res.status(500).json({ message: "Información Incorrecta" });
+      } else {
+        console.log(rows);
+        return res.json(rows);
       }
-    );
-  });
+    }
+  );
+});
 
-  // RUTAS INSCRIPCIÓN DE GRUPO
+// RUTAS INSCRIPCIÓN DE GRUPO
 
-  administrador.get("/registro-grupo", (req, res) => {
-    // const id = req.params.id;
-    // console.log(id);
-    cnn_postgreSQL.query(
-      `SELECT grupo.cod_grupo, grupo.id_profesor FROM grupo;`,
-      (err, rows, fields) => {
-        if (err) {
-          return res.status(500).json({ message: "Información Incorrecta" });
-        } else {
-          console.log(rows);
-          return res.json(rows);
-        }
+administrador.post("/registro-grupo", (req, res) => {
+  const { codigo, descripcion, jornada } = req.body;
+
+  cnn_postgreSQL.query(
+    `insert into grupo values (nextval('grupo_id_seq'), $1, $2, $3)`,
+    [codigo, jornada, descripcion],
+    (err, rows, fields) => {
+      if (err) {
+        return res.status(500).json({ message: "Información Incorrecta" });
+      } else {
+        console.log(rows);
+        return res.json(rows);
       }
-    );
-  });
+    }
+  );
+});
 
+administrador.get("/administrador-grupo/", (req, res) => {
 
-  module.exports = administrador;
+  cnn_postgreSQL.query(
+    `select * from grupo`,
+    (err, rows, fields) => {
+      if (err) {
+        return res.status(500).json({ message: "Información Incorrecta" });
+      } else {
+        console.log(rows);
+        return res.json(rows);
+      }
+    }
+  );
+});
+
+module.exports = administrador;

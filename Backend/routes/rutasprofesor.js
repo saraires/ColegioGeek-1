@@ -39,7 +39,7 @@ profesor.get("/profesor-notas/:id/:id_grupo/:cod_grupo", async (req, res) => {
   const { id, id_grupo, cod_grupo } = req.params;
   console.log(req.params)
   console.log(req.body);
-  cnn_postgreSQL.query(`SELECT cod_estudiante, n.id_nota, nombre_completo, seguimiento, conocimiento, bimensual, autoevaluacion, (seguimiento + conocimiento + bimensual + autoevaluacion)/4 as nota_promedio, p.cod_profesor, e.id_grupo, cod_grupo FROM estudiante e INNER JOIN usuario u ON e.id_usuario=u.id_usuario INNER JOIN notas n ON n.id_estudiante = e.id_estudiante INNER JOIN materia m ON m.id_materia = n.id_materia INNER JOIN profesor p ON p.cod_profesor = m.cod_profesor INNER JOIN grupo_materia gm on gm.id_materia=m.id_materia INNER JOIN grupo g on g.id_grupo=gm.id_grupo WHERE p.id_usuario='${id}' and e.id_grupo='${id_grupo}' and g.cod_grupo='${cod_grupo}' ;`,
+  cnn_postgreSQL.query(`SELECT cod_estudiante, n.id_nota, nombre_completo, seguimiento, conocimiento, bimensual, autoevaluacion, (seguimiento + conocimiento + bimensual + autoevaluacion)/4 as nota_promedio, p.cod_profesor, e.id_grupo, cod_grupo, e.id_estudiante, m.id_materia FROM estudiante e INNER JOIN usuario u ON e.id_usuario=u.id_usuario INNER JOIN notas n ON n.id_estudiante = e.id_estudiante INNER JOIN materia m ON m.id_materia = n.id_materia INNER JOIN profesor p ON p.cod_profesor = m.cod_profesor INNER JOIN grupo_materia gm on gm.id_materia=m.id_materia INNER JOIN grupo g on g.id_grupo=gm.id_grupo WHERE p.id_usuario='${id}' and e.id_grupo='${id_grupo}' and g.cod_grupo='${cod_grupo}' ;`,
     (err, rows, fields) => {
       if (err) {
         return res.status(500).json({ message: "Información Incorrecta" });
@@ -57,7 +57,7 @@ profesor.patch("/editar-notas/", (req, res) => {
   try {
     const {
       seguimiento,
-      id_notas,
+      id_nota,
       id_estudiante,
       id_materia,
       conocimiento,
@@ -74,7 +74,7 @@ profesor.patch("/editar-notas/", (req, res) => {
         conocimiento,
         bimensual,
         autoevaluacion,
-        id_notas,
+        id_nota,
         id_materia,
         id_estudiante,
       ]

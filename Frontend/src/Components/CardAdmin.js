@@ -8,10 +8,12 @@ function CardAdmin() {
   const id = getFromLocal("id_usuario");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/administrador-perfil/${id}`).then((res) => {
-      setAdministrador(res.data.rows[0]);
-      console.log(res);
-    });
+    axios
+      .get(`http://localhost:5000/administrador-perfil/${id}`)
+      .then((res) => {
+        setAdministrador(res.data.rows[0]);
+        console.log(res);
+      });
   }, [id]);
 
   return (
@@ -35,7 +37,14 @@ function CardAdmin() {
           {administrador.documento}
         </Card.Text>
 
-        <Button className="d-flex m-auto" variant="info">
+        <Button
+          className="d-flex m-auto"
+          variant="info"
+          onClick={() => {
+            localStorage.clear();
+            window.location.href = "/";
+          }}
+        >
           Cerrar Sesión
         </Button>
       </Card.Body>
