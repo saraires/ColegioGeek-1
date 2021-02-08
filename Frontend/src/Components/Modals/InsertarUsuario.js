@@ -39,14 +39,13 @@ function InsertarUsuario() {
         foto: foto,
         pdf_documento: pdf,
         id_usuario: id_usuario,
-        id_grupo: id_grupo
+        id_grupo: id_grupo,
       })
       .then((res) => {
         console.log(res);
       });
     window.location = `/administrador-usuario/`;
   };
-
 
   return (
     <>
@@ -327,13 +326,35 @@ function InsertarUsuario() {
                     </Form.Control>
                   </Col>
                 </Form.Group>
+
+                <Form.Group
+                  as={Row}
+                  controlId="formPlaintextPassword"
+                  className="d-flex justify-content-center"
+                >
+                  
+                  <Col sm="9">
+                    <Form.File id="foto" label="Foto" />
+                  </Col>
+                </Form.Group>
+
+                <Form.Group
+                  as={Row}
+                  controlId="formPlaintextPassword"
+                  className="d-flex justify-content-center"
+                >
+                 
+                  <Col sm="9">
+                    <Form.File id="pdf-documento" label=" Pdf Documento" />
+                  </Col>
+                </Form.Group>
+
                 <h6 className="text-center m-3">Solo para estudiantes</h6>
                 <Form.Group
                   as={Row}
                   controlId="formPlaintextPassword"
                   className="d-flex justify-content-center"
                 >
-                    
                   <Form.Label column sm="4">
                     Ingrese el id del grupo
                   </Form.Label>
