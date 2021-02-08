@@ -126,4 +126,51 @@ administrador.get("/administrador-materias/", (req, res) => {
   });
 });
 
+administrador.delete("/eliminar-materia/:id", (req, res) => {
+  console.log(req.params);
+  try {
+    const id_materia = req.params.id;
+
+    console.log(req.body);
+
+    const deleteMateria = cnn_postgreSQL.query(
+      "delete from materia where id_materia = $1 ",
+      [id_materia]
+    );
+
+    res.json("Materia borrado con éxito");
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+administrador.patch("/editar-materia", (req, res) => {
+  console.log(req.body)
+  const {
+    codigo,
+    nombreMateria,
+    codProfesor,
+    seis,
+    siete,
+    ocho,
+    nueve,
+    diez,
+    once,
+    id_materia
+  } = req.body;
+
+  cnn_postgreSQL.query(
+    `update  materia set cod_materia = $1, nombre_materia = $2, cod_profesor = $3, sexto = $4, septimo = $5, octavo = $6, noveno = $7, decimo = $8, once = $9 where id_materia = $10`,
+    [codigo, nombreMateria, codProfesor, seis, siete, ocho, nueve, diez, once, id_materia],
+    (err, rows, fields) => {
+      if (err) {
+        return res.status(500).json({ message: "Información Incorrecta" });
+      } else {
+        console.log(rows);
+        return res.json(rows);
+      }
+    }
+  );
+});
+
 module.exports = administrador;

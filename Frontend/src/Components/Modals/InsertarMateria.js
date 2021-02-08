@@ -61,7 +61,7 @@ function InsertarMateria({ notas }) {
       .then((res) => {
         console.log(res);
       });
-    window.location = `/administrador-grupo/`;
+    window.location = `/administrador-materia/`;
   };
 
   return (

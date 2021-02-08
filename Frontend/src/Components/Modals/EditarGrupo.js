@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { getFromLocal } from "../../functions/localstorage";
 import { Form, Row, Col } from "react-bootstrap";
 
 function EditarGrupo({ grupo }) {
   const [codigo, setCodigo] = useState(grupo.cod_grupo);
   const [jornada, setJornada] = useState(grupo.jornada);
   const [descripcion, setDescripcion] = useState(grupo.descripcion);
-
-  console.log(grupo.id_grupo);
 
   const udpateGrupo = async (e) => {
     e.preventDefault();
@@ -21,7 +18,6 @@ function EditarGrupo({ grupo }) {
       })
       .then((res) => {
         console.log(res);
-        console.log(codigo, jornada, descripcion, grupo.id_grupo)
       });
     window.location = `/administrador-grupo/`;
   };
