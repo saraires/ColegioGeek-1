@@ -43,6 +43,12 @@ function InsertarUsuario() {
       })
       .then((res) => {
         console.log(res);
+
+        fetch(`/subida`, {
+          method: "POST",
+          action: "/subida",
+          enctype: "multipart/form-data",
+        });
       });
     window.location = `/administrador-usuario/`;
   };
@@ -332,7 +338,6 @@ function InsertarUsuario() {
                   controlId="formPlaintextPassword"
                   className="d-flex justify-content-center"
                 >
-                  
                   <Col sm="9">
                     <Form.File id="foto" label="Foto" />
                   </Col>
@@ -343,7 +348,6 @@ function InsertarUsuario() {
                   controlId="formPlaintextPassword"
                   className="d-flex justify-content-center"
                 >
-                 
                   <Col sm="9">
                     <Form.File id="pdf-documento" label=" Pdf Documento" />
                   </Col>
