@@ -58,12 +58,30 @@ administrador.patch("/editar-grupo/", (req, res) => {
 
     console.log(req.body);
 
-    const updateNotas = cnn_postgreSQL.query(
+    const updateGrupo = cnn_postgreSQL.query(
       "UPDATE grupo SET cod_grupo = $1, jornada = $2, descripcion = $3 WHERE id_grupo = $4;",
       [codigo, jornada, descripcion, id_grupo]
     );
 
     res.json("Grupo actualizado con éxito");
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+administrador.delete("/eliminar-grupo/:id", (req, res) => {
+  console.log(req.params)
+  try {
+    const id_grupo = req.params.id;
+
+    console.log(req.body);
+
+    const deleteGrupo = cnn_postgreSQL.query(
+      "delete from grupo where id_grupo = $1 ",
+      [id_grupo]
+    );
+
+    res.json("Grupo borrado con éxito");
   } catch (error) {
     console.error(error.message);
   }

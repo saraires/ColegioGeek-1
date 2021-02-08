@@ -28,14 +28,7 @@ function EliminarGrupo({ grupo }) {
 
   return (
     <>
-      <button
-        type="button"
-        className="btn btn-danger"
-        data-toggle="modal"
-        data-target={`#id${grupo.id_grupo}`}
-      >
-        Eliminar Grupo
-      </button>
+     
       <div className="modal" id={`id${grupo.id_grupo}`}>
         <div className="modal-dialog">
           <div className="modal-content">

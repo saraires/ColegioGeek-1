@@ -34,7 +34,7 @@ function EditarGrupo({ grupo }) {
         data-toggle="modal"
         data-target={`#id${grupo.id_grupo}`}
       >
-        Editar Grupo
+        Editar
       </button>
       <div className="modal" id={`id${grupo.id_grupo}`}>
         <div className="modal-dialog">
