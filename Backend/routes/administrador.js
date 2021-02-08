@@ -88,7 +88,7 @@ administrador.delete("/eliminar-grupo/:id", (req, res) => {
 });
 
 administrador.post("/registro-materia", (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   const {
     codigo,
     nombreMateria,
@@ -115,7 +115,7 @@ administrador.post("/registro-materia", (req, res) => {
   );
 });
 
-administrador.get("/administrador-materias/", (req, res) => {
+administrador.get("/administrador-materia/", (req, res) => {
   cnn_postgreSQL.query(`select * from materia`, (err, rows, fields) => {
     if (err) {
       return res.status(500).json({ message: "Información Incorrecta" });
@@ -138,7 +138,7 @@ administrador.get("/administrador-usuario/", (req, res) => {
 });
 
 administrador.post("/registro-usuario", (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   const {
     codigousuario,
     documento,
@@ -153,32 +153,49 @@ administrador.post("/registro-usuario", (req, res) => {
     contraseña,
     rol,
     foto,
-    pdf
+    pdf,
   } = req.body;
 
   cnn_postgreSQL.query(
     `insert into materia values (nextval('grupo_id_seq'), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
-    [codigousuario, documento, nombreCompleto, sexo, fechaNacimiento, direccion, ciudad, telefono, celular, correo, contraseña, rol, foto, pdf],
-administrador.delete("/eliminar-materia/:id", (req, res) => {
-  console.log(req.params);
-  try {
-    const id_materia = req.params.id;
+    [
+      codigousuario,
+      documento,
+      nombreCompleto,
+      sexo,
+      fechaNacimiento,
+      direccion,
+      ciudad,
+      telefono,
+      celular,
+      correo,
+      contraseña,
+      rol,
+      foto,
+      pdf,
+    ],
+    administrador.delete("/eliminar-materia/:id", (req, res) => {
+      console.log(req.params);
+      try {
+        const id_materia = req.params.id;
 
-    console.log(req.body);
+        console.log(req.body);
 
-    const deleteMateria = cnn_postgreSQL.query(
-      "delete from materia where id_materia = $1 ",
-      [id_materia]
-    );
+        const deleteMateria = cnn_postgreSQL.query(
+          "delete from materia where id_materia = $1 ",
+          [id_materia]
+        );
 
-    res.json("Materia borrado con éxito");
-  } catch (error) {
-    console.error(error.message);
-  }
+        res.json("Materia borrado con éxito");
+      } catch (error) {
+        console.error(error.message);
+      }
+    })
+  );
 });
 
 administrador.patch("/editar-materia", (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   const {
     codigo,
     nombreMateria,
@@ -189,12 +206,23 @@ administrador.patch("/editar-materia", (req, res) => {
     nueve,
     diez,
     once,
-    id_materia
+    id_materia,
   } = req.body;
 
   cnn_postgreSQL.query(
     `update  materia set cod_materia = $1, nombre_materia = $2, cod_profesor = $3, sexto = $4, septimo = $5, octavo = $6, noveno = $7, decimo = $8, once = $9 where id_materia = $10`,
-    [codigo, nombreMateria, codProfesor, seis, siete, ocho, nueve, diez, once, id_materia],
+    [
+      codigo,
+      nombreMateria,
+      codProfesor,
+      seis,
+      siete,
+      ocho,
+      nueve,
+      diez,
+      once,
+      id_materia,
+    ],
     (err, rows, fields) => {
       if (err) {
         return res.status(500).json({ message: "Información Incorrecta" });
