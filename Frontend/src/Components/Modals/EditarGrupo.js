@@ -1,31 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { getFromLocal } from "../functions/localstorage";
+import { getFromLocal } from "../../functions/localstorage";
 import { Form, Row, Col } from "react-bootstrap";
 
-function EditarNotas({ notas }) {
-  const [seguimiento, setSeguimiento] = useState(notas.seguimiento);
-  const [conocimiento, setConocimiento] = useState(notas.conocimiento);
-  const [bimensual, setBimensual] = useState(notas.bimensual);
-  const [autoevaluacion, setAutoevaluacion] = useState(notas.autoevaluacion);
+function InsertarGrupo({ notas }) {
+  const [cod_grupo, setCod_grupo] = useState();
+  const [jornada, setJornada] = useState();
+  const [bimensual, setBimensual] = useState();
 
   const id = getFromLocal("id_usuario");
   const codigo = getFromLocal("cod_grupo");
   const grupo = getFromLocal("id_grupo");
 
-  console.log(bimensual)
-
   const updateNotas = async (e) => {
     e.preventDefault();
     axios
-      .patch(`http://localhost:5000/editar-notas/`, {
-        seguimiento: seguimiento,
-        id_notas: notas.id_nota,
+      .patch(`http://localhost:5000/editar-grupo/`, {
+        cod_grupo: cod_grupo,
+        id_notas: notas.id_notas,
         id_estudiante: notas.id_estudiante,
-        id_materia: notas.id_materia,
-        conocimiento: conocimiento,
-        bimensual: bimensual,
-        autoevaluacion: autoevaluacion
       })
       .then((res) => {
         console.log(res);
@@ -39,26 +32,26 @@ function EditarNotas({ notas }) {
         type="button"
         className="btn btn-success"
         data-toggle="modal"
-        data-target={`#id${notas.id_nota}`}
+        data-target={`#id${notas.id_notas}`}
       >
-        Editar Notas
+        Insertar Grupo
       </button>
       <div
         className="modal"
-        id={`id${notas.id_nota}`}
+        id={`id${notas.id_notas}`}
       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Editar Notas</h4>
+              <h4 className="modal-title">Insertar Grupo</h4>
               <button
                 type="button"
                 className="close"
                 data-dismiss="modal"
                 onClick={() => {
                   setSeguimiento(notas.seguimiento);
-                  setConocimiento(notas.conocimiento);
-                  setBimensual(notas.bimensual);
+                  setjornada(notas.bimensual_1);
+                  setBimensual(notas.bimensual_2);
                   setAutoevaluacion(notas.autoevaluacion);
                 }}
               >
@@ -67,11 +60,6 @@ function EditarNotas({ notas }) {
             </div>
 
             <div className="modal-body">
-              <h3>{notas.nombre_completo}</h3>
-              <h6 className="mb-5">
-                Codigo Estudiante: {notas.cod_estudiante}
-              </h6>
-
               <Form>
                 <Form.Group
                   as={Row}
@@ -79,14 +67,14 @@ function EditarNotas({ notas }) {
                   className="d-flex justify-content-center"
                 >
                   <Form.Label column sm="3">
-                    Seguimiento
+                    Profesor
                   </Form.Label>
                   <Col sm="4">
                     <Form.Control
                       type="number"
                       placeholder="Seguimiento"
                       value={seguimiento}
-                      onChange={(e) => setSeguimiento(e.value)}
+                      onChange={(e) => setSeguimiento(e.target.value)}
                     />
                   </Col>
                 </Form.Group>
@@ -163,8 +151,8 @@ function EditarNotas({ notas }) {
                 data-dismiss="modal"
                 onClick={() => {
                   setSeguimiento(notas.seguimiento);
-                  setConocimiento(notas.conocimiento);
-                  setBimensual(notas.bimensual);
+                  setConocimiento(notas.bimensual_1);
+                  setBimensual(notas.bimensual_2);
                   setAutoevaluacion(notas.autoevaluacion);
                 }}
               >
@@ -178,4 +166,4 @@ function EditarNotas({ notas }) {
   );
 }
 
-export default EditarNotas;
+export default InsertarGrupo;

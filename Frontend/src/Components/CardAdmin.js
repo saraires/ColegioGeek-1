@@ -35,7 +35,7 @@ function CardAdmin() {
           {administrador.documento}
         </Card.Text>
 
-        <Button className="d-flex m-auto" variant="info">
+        <Button onClick={() => (localStorage.clear(), window.location.href="/")} className="d-flex m-auto" variant="info">
           Cerrar Sesión
         </Button>
       </Card.Body>
