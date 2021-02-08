@@ -57,13 +57,15 @@ profesor.patch("/editar-notas/", (req, res) => {
   try {
     const {
       seguimiento,
-      id_nota,
+      id_notas,
       id_estudiante,
       id_materia,
       conocimiento,
       bimensual,
       autoevaluacion,
     } = req.body;
+
+    console.log(req.body)
 
     const updateNotas = cnn_postgreSQL.query(
       "UPDATE notas SET seguimiento = $1, conocimiento = $2, bimensual = $3, autoevaluacion = $4 WHERE id_nota = $5 and id_materia = $6 and id_estudiante = $7",
@@ -72,7 +74,7 @@ profesor.patch("/editar-notas/", (req, res) => {
         conocimiento,
         bimensual,
         autoevaluacion,
-        id_nota,
+        id_notas,
         id_materia,
         id_estudiante,
       ]

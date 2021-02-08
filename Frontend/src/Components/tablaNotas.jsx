@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { getFromLocal, saveToLocal } from "../functions/localstorage";
 import { Container, Table } from "react-bootstrap";
-import EditarNotas from "./Modals/EditarNotas";
+import EditarNotas from "./EditarNotas";
 
 function TablaGrados() {
   const id = getFromLocal("id_usuario");
   const codigo = getFromLocal("cod_grupo");
   const grupo = getFromLocal("id_grupo");
   const [notas, setNotas] = useState([]);
+
+  console.log(notas)
 
   useEffect(() => {
     axios

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { getFromLocal } from "../../functions/localstorage";
+import { getFromLocal } from "../functions/localstorage";
 import { Form, Row, Col } from "react-bootstrap";
 
 function EditarNotas({ notas }) {
@@ -13,17 +13,19 @@ function EditarNotas({ notas }) {
   const codigo = getFromLocal("cod_grupo");
   const grupo = getFromLocal("id_grupo");
 
+  console.log(bimensual)
+
   const updateNotas = async (e) => {
     e.preventDefault();
     axios
       .patch(`http://localhost:5000/editar-notas/`, {
         seguimiento: seguimiento,
-        id_nota: notas.id_nota,
+        id_notas: notas.id_nota,
         id_estudiante: notas.id_estudiante,
         id_materia: notas.id_materia,
         conocimiento: conocimiento,
         bimensual: bimensual,
-        autoevaluacion: autoevaluacion,
+        autoevaluacion: autoevaluacion
       })
       .then((res) => {
         console.log(res);
@@ -67,7 +69,7 @@ function EditarNotas({ notas }) {
             <div className="modal-body">
               <h3>{notas.nombre_completo}</h3>
               <h6 className="mb-5">
-                Codigo Estudiante: {notas.cod_estudiante} 
+                Codigo Estudiante: {notas.cod_estudiante}
               </h6>
 
               <Form>
@@ -88,7 +90,7 @@ function EditarNotas({ notas }) {
                     />
                   </Col>
                 </Form.Group>
-                {/* <Form.Group
+                <Form.Group
                   as={Row}
                   controlId="formPlaintextPassword"
                   className="d-flex justify-content-center"
@@ -139,7 +141,7 @@ function EditarNotas({ notas }) {
                       onChange={(e) => setAutoevaluacion(e.target.value)}
                     />
                   </Col>
-                </Form.Group> */}
+                </Form.Group>
               </Form>
             </div>
 
