@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   firmaTop: {
-   marginTop:50
+    marginTop: 50
   },
   title: {
     fontSize: 16,
@@ -80,12 +80,15 @@ function MyPdf() {
       .then((res) => {
         setInforme(res.data.rows);
         saveToLocal("cod_estudiante", res.data.rows[0]["cod_estudiante"]);
-       saveToLocal("grupo", res.data.rows[0]["descripcion"])
+        saveToLocal("grupo", res.data.rows[0]["descripcion"])
+        console.log(informe);
+        // console.log(res.data.rows[0].nombre_materia);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [id]);
+  }, []);
+
   return (
     <Document>
       <Page size="A4" style={styles.body}>
@@ -133,6 +136,7 @@ function MyPdf() {
             </View>
           </View>
 
+          
           {informe.map((item, index) => {
             return (
               <View style={styles.tableRow} key={index}>

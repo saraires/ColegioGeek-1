@@ -1,8 +1,6 @@
 const express = require('express');
 const smtpTransport = require('nodemailer-smtp-transport');
 const router = express.Router();
-
-require('dotenv').config();
 // Nodemailer
 
 // smtpTransport = require('nodemailer-smtp-transport');
@@ -20,7 +18,7 @@ let transporter = nodemailer.createTransport(smtpTransport({
 
 router.post('/send', (req, res) => {
     
-    let {to, subject, full_name} = req.body;
+    let {to, full_name} = req.body;
 
     // var to = req.body.to,
     // subject = req.body.subject,
@@ -30,7 +28,7 @@ router.post('/send', (req, res) => {
     const mailOptions = {
         from: '<academiageek@gmail.com>',
         to: to,
-        subject: subject,
+        subject: "Bienvenido a Colegio Geek",
         html: `<!DOCTYPE html>
         <html lang="en">
         

@@ -4,7 +4,7 @@ import { Card, Container, Button } from "react-bootstrap";
 import Logo from "../Images/LogoAcademia.png";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { saveToLocal } from "../functions/localstorage";
+import { saveToLocal, getFromLocal } from "../functions/localstorage";
 // ES6 Modules or TypeScript
 import swal from "sweetalert2";
 
@@ -47,6 +47,17 @@ const FormFormik = () => (
 
               const rol = res.data.rows[0]["rol"];
               saveToLocal("rol", rol);
+
+
+              saveToLocal("email", values.email);
+              saveToLocal("full_name", nombre);
+
+  
+              axios
+                .post("http://localhost:5000/send", {
+                  to: getFromLocal("email"),
+                  full_name: getFromLocal("full_name")
+                })
 
               if (res.data.rows[0]["rol"] === 1) {
                 window.location.href = "administrador";

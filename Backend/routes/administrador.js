@@ -69,4 +69,15 @@ administrador.patch("/editar-grupo/", (req, res) => {
   }
 });
 
+administrador.get("/administrador-informe-final", (req, res) => {
+  cnn_postgreSQL.query(`select * from grupo`, (err, rows, fields) => {
+    if (err) {
+      return res.status(500).json({ message: "Información Incorrecta" });
+    } else {
+      console.log(rows);
+      return res.json(rows);
+    }
+  });
+});
+
 module.exports = administrador;
