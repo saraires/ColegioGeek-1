@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getFromLocal, saveToLocal } from "../functions/localstorage";
 import axios from "axios";
+import { Container, Table } from "react-bootstrap";
 
 function TablaGrados() {
   const id = getFromLocal("id_usuario");
@@ -29,20 +30,22 @@ function TablaGrados() {
       <h3 className="card-tittle text-center">{nombre} </h3>
       <h4 className="card-tittle text-center">{materia}</h4>
       <br />
-      <table className="table table-bordered">
-        <thead>
+      <Table striped hover size="s">
+        <thead className="text-info text-center table-bordered">
           <tr className="table-info">
             <th scope="col">Codigo de grupo</th>
             <th scope="col">Grupo</th>
             <th scope="col">Jornada</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className=" text-center table-bordered">
           {profesor.map((item, index) => {
             return (
               <tr key={`${index}-${id}`}>
-                <td>
+                <td width={"30%"}>
+                  <span>
                   {item.cod_grupo}
+                  </span>
                   <Link
                     to={`/profesor-notas/${id}/${item.id_grupo}/${item.cod_grupo}`}
                     style={{ float: "right", color: "#47525E" }}
@@ -51,9 +54,9 @@ function TablaGrados() {
                       type="button"
                       class="btn btn-outline-info"
                       onClick={() => {
-                        saveToLocal("cod_grupo",  item.cod_grupo);
+                        saveToLocal("cod_grupo", item.cod_grupo);
                         saveToLocal("id_grupo", item.id_grupo);
-                        saveToLocal("cod_profesor", item.cod_profesor) 
+                        saveToLocal("cod_profesor", item.cod_profesor);
                       }}
                     >
                       Ver notas
@@ -61,14 +64,16 @@ function TablaGrados() {
                   </Link>
                 </td>
                 <td>{item.descripcion}</td>
-                <td>{item.jornada}</td>
+                <td >{item.jornada}</td>
               </tr>
             );
           })}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }
 
 export default TablaGrados;
+
+

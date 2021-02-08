@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuAdmin from '../Components/menuAdmin';
-import FormularioAdmin from '../Components/FormularioAdmin';
+import FormularioAdmin from '../Components/FormularioUsuario';
 
 function SingUp() {
     return (

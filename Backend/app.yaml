@@ -1,0 +1,10 @@
+# [START gae_flex_storage_yaml]
+runtime: nodejs
+env: flex
+
+// Conexion Bucket GCP
+
+env_variables:
+  GOOGLE_CLOUD_PROJECT: imagescolegiogeek
+  GCLOUD_STORAGE_BUCKET: colegio_geek
+# [END gae_flex_storage_yaml]

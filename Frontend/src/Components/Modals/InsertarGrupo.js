@@ -25,7 +25,7 @@ function InsertarGrupo({ notas }) {
     <>
       <button
         type="button"
-        className="btn btn-success m-5"
+        className="btn btn-success mb-5"
         data-toggle="modal"
         data-target={`#id`}
       >

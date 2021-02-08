@@ -23,6 +23,7 @@ import EstudianteInicio from "./Pages/EstudianteInicio";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import PerfilAdministrado from "./Pages/PerfilAdministrador";
+import RegistroMaterias from "./Pages/RegistrarMateria";
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
         {/* Rutas Admin */}
         <Route exact path="/administrador" component={Admin} />
         <Route exact path="/administrador-grupo" component={VerGrupos} />
-        {/* <Route exact path="/administrador-grupo" component={RegistroGrupos} /> */}
+        <Route exact path="/administrador-materia" component={RegistroMaterias} />
         <Route exact path="/administrador-perfil/:id" component={PerfilAdministrado} />
         <Route exact path="/administrador-usuario" component={SignUp} />
       </Switch>

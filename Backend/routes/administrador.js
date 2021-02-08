@@ -58,7 +58,7 @@ administrador.patch("/editar-grupo/", (req, res) => {
 
     console.log(req.body);
 
-    const updateNotas = cnn_postgreSQL.query(
+    const updateGrupo = cnn_postgreSQL.query(
       "UPDATE grupo SET cod_grupo = $1, jornada = $2, descripcion = $3 WHERE id_grupo = $4;",
       [codigo, jornada, descripcion, id_grupo]
     );
@@ -69,8 +69,54 @@ administrador.patch("/editar-grupo/", (req, res) => {
   }
 });
 
-administrador.get("/administrador-informe-final", (req, res) => {
-  cnn_postgreSQL.query(`select * from grupo`, (err, rows, fields) => {
+administrador.delete("/eliminar-grupo/:id", (req, res) => {
+  console.log(req.params);
+  try {
+    const id_grupo = req.params.id;
+
+    console.log(req.body);
+
+    const deleteGrupo = cnn_postgreSQL.query(
+      "delete from grupo where id_grupo = $1 ",
+      [id_grupo]
+    );
+
+    res.json("Grupo borrado con éxito");
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+administrador.post("/registro-materia", (req, res) => {
+  console.log(req.body)
+  const {
+    codigo,
+    nombreMateria,
+    codProfesor,
+    seis,
+    siete,
+    ocho,
+    nueve,
+    diez,
+    once,
+  } = req.body;
+
+  cnn_postgreSQL.query(
+    `insert into materia values (nextval('grupo_id_seq'), $1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+    [codigo, nombreMateria, codProfesor, seis, siete, ocho, nueve, diez, once],
+    (err, rows, fields) => {
+      if (err) {
+        return res.status(500).json({ message: "Información Incorrecta" });
+      } else {
+        console.log(rows);
+        return res.json(rows);
+      }
+    }
+  );
+});
+
+administrador.get("/administrador-materias/", (req, res) => {
+  cnn_postgreSQL.query(`select * from materia`, (err, rows, fields) => {
     if (err) {
       return res.status(500).json({ message: "Información Incorrecta" });
     } else {
@@ -78,6 +124,50 @@ administrador.get("/administrador-informe-final", (req, res) => {
       return res.json(rows);
     }
   });
+});
+
+administrador.get("/administrador-usuario/", (req, res) => {
+  cnn_postgreSQL.query(`select * from usuario`, (err, rows, fields) => {
+    if (err) {
+      return res.status(500).json({ message: "Información Incorrecta" });
+    } else {
+      console.log(rows);
+      return res.json(rows);
+    }
+  });
+});
+
+administrador.post("/registro-usuario", (req, res) => {
+  console.log(req.body)
+  const {
+    codigousuario,
+    documento,
+    nombreCompleto,
+    sexo,
+    fechaNacimiento,
+    direccion,
+    ciudad,
+    telefono,
+    celular,
+    correo,
+    contraseña,
+    rol,
+    foto,
+    pdf
+  } = req.body;
+
+  cnn_postgreSQL.query(
+    `insert into materia values (nextval('grupo_id_seq'), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+    [codigousuario, documento, nombreCompleto, sexo, fechaNacimiento, direccion, ciudad, telefono, celular, correo, contraseña, rol, foto, pdf],
+    (err, rows, fields) => {
+      if (err) {
+        return res.status(500).json({ message: "Información Incorrecta" });
+      } else {
+        console.log(rows);
+        return res.json(rows);
+      }
+    }
+  );
 });
 
 module.exports = administrador;
