@@ -13,29 +13,31 @@ function EditarMateria({ materias }) {
   const [nueve, setNueve] = useState(materias.Nueve);
   const [diez, setDiez] = useState(materias.Diez);
   const [once, setOnce] = useState(materias.Once);
-  const [id_materia, setId_Materia] = useState(materias.id_materia);
+  const [id_materia, setId_Materia] = useState(materias.id_materia)
 
   console.log(materias);
 
-  //   const Checkbox = ({ initialState, id, onChange }) => {
-  //     const [checked, setChecked] = useState(true);
+  const Checkbox = ({ initialState, id, onChange }) => {
+    const [checked, setChecked] = useState(initialState);
 
-  //     const onClick = (checked) => {
-  //       setChecked(checked);
-  //       onChange(id, checked);
-  //     };
+    const onClick = (checked) => {
+      setChecked(checked);
+      onChange(id, checked);
+    };
 
-  //     return (
-  //       <>
-  //         <input
-  //           type="checkbox"
-  //           onClick={(e) => onClick(e.target.value)}
-  //           value={checked}
-
-  //         />
-  //       </>
-  //     );
-  //   };
+    return (
+      <>
+        <input
+          type="checkbox"
+          onClick={(e) => onClick(e.target.checked)}
+          checked={checked}
+          id ={id}
+          name = {id}
+          for
+        />
+      </>
+    );
+  };
 
   const onCheckboxClicked = (idx, isChecked) => {
     console.log(`${idx} --> ${isChecked}`);
@@ -61,7 +63,7 @@ function EditarMateria({ materias }) {
         nueve: nueve,
         diez: diez,
         once: once,
-        id_materia: materias.id_materia,
+        id_materia: materias.id_materia
       })
       .then((res) => {
         console.log(res);
@@ -175,7 +177,7 @@ function EditarMateria({ materias }) {
                     Seleccione los grupos
                   </Form.Label>
                   <Col sm="5">
-                    {/* <div>
+                    <div>
                       {[6 , 7, 8 ,9 ,10, 11].map(
                         (checkbox, i) => (
                           <>
@@ -185,78 +187,16 @@ function EditarMateria({ materias }) {
                               id={`${i}-${checkbox}`}
                               onChange={onCheckboxClicked}
                               inline
+                              name={`id-${checkbox}`}
+                              value={checkbox}
+                              for={`${i}-${checkbox}`}
+
                             />
                             {"  "}
                           </>
                         )
                       )}
-                    </div> */}
-
-                    {["checkbox"].map((type) => (
-                      <div key={`inline-${type}`} className="mb-3">
-                        <Form.Check
-                          inline
-                          label="6"
-                          type={type}
-                          id={`inline-${type}-1`}
-                          value={seis}
-                          onChange={(e) => {
-                            setSeis(e.target.value);
-                          }}
-                        />
-                        <Form.Check
-                          inline
-                          label="7"
-                          type={type}
-                          id={`inline-${type}-2`}
-                          value={siete}
-                          onChange={(e) => {
-                            setSiete(e.target.value);
-                          }}
-                        />
-                        <Form.Check
-                          inline
-                          label="8"
-                          type={type}
-                          id={`inline-${type}-2`}
-                          value={ocho}
-                          onChange={(e) => {
-                            setOcho(e.target.value);
-                          }}
-                        />
-                        <Form.Check
-                          inline
-                          label="9"
-                          type={type}
-                          id={`inline-${type}-2`}
-                          value={nueve}
-                          onChange={(e) => {
-                            setNueve(e.target.value);
-                          }}
-                        />
-                        <Form.Check
-                          inline
-                          label="10"
-                          type={type}
-                          id={`inline-${type}-2`}
-                          value={diez}
-                          onChange={(e) => {
-                            setDiez(e.target.value);
-                          }}
-                        />
-                        <Form.Check
-                          inline
-                          label="11"
-                          type={type}
-                          id={`inline-${type}-2`}
-                          value={once}
-                          onChange={(e) => {
-                            setOnce(e.target.value);
-                            console.log(e.target.value);
-                          }}
-                        />
-                      </div>
-                    ))}
+                    </div>
                   </Col>
                 </Form.Group>
               </Form>
@@ -279,16 +219,16 @@ function EditarMateria({ materias }) {
                 className="btn btn-danger"
                 data-dismiss="modal"
                 onClick={() => {
-                  setCodigo(materias.cod_materia);
-                  setNombreMateria(materias.nombre_materia);
-                  setCodProfesor(materias.cod_profesor);
-                  setSeis(materias.Seis);
-                  setSiete(materias.Siete);
-                  setOcho(materias.Ocho);
-                  setNueve(materias.Nueve);
-                  setDiez(materias.Diez);
-                  setOnce(materias.Once);
-                }}
+                    setCodigo(materias.cod_materia);
+                    setNombreMateria(materias.nombre_materia);
+                    setCodProfesor(materias.cod_profesor);
+                    setSeis(materias.Seis);
+                    setSiete(materias.Siete);
+                    setOcho(materias.Ocho);
+                    setNueve(materias.Nueve);
+                    setDiez(materias.Diez);
+                    setOnce(materias.Once);
+                  }}
               >
                 Cerrar
               </button>
