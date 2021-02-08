@@ -67,7 +67,7 @@ function EditarNotas({ notas }) {
             <div className="modal-body">
               <h3>{notas.nombre_completo}</h3>
               <h6 className="mb-5">
-                Codigo Estudiante: {notas.cod_estudiante}
+                Codigo Estudiante: {notas.cod_estudiante} 
               </h6>
 
               <Form>
@@ -88,7 +88,7 @@ function EditarNotas({ notas }) {
                     />
                   </Col>
                 </Form.Group>
-                <Form.Group
+                {/* <Form.Group
                   as={Row}
                   controlId="formPlaintextPassword"
                   className="d-flex justify-content-center"
@@ -139,7 +139,7 @@ function EditarNotas({ notas }) {
                       onChange={(e) => setAutoevaluacion(e.target.value)}
                     />
                   </Col>
-                </Form.Group>
+                </Form.Group> */}
               </Form>
             </div>
 
