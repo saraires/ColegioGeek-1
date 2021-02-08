@@ -24,6 +24,7 @@ import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import PerfilAdministrado from "./Pages/PerfilAdministrador";
 import RegistroMaterias from "./Pages/RegistrarMateria";
+import InformeGeneral from "./Pages/InformeGeneral"
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
         <Route exact path="/administrador-materia" component={RegistroMaterias} />
         <Route exact path="/administrador-perfil/:id" component={PerfilAdministrado} />
         <Route exact path="/administrador-usuario" component={SignUp} />
+        <Route exact path="/administrador-informe" component={InformeGeneral} />
       </Switch>
     </BrowserRouter>
   );
