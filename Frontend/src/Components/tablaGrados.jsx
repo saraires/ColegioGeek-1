@@ -14,7 +14,7 @@ function TablaGrados() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/profesor-grupos/${codigo}`)
+      .get(`http://34.75.240.23:5000/profesor-grupos/${codigo}`)
       .then((res) => {
         setProfesor(res.data.rows);
         console.log(res.data.rows);

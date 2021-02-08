@@ -9,7 +9,7 @@ function Student() {
   
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/estudiante-perfil/${id}`).then((res) => {
+    axios.get(`http://34.75.240.23:5000/estudiante-perfil/${id}`).then((res) => {
       setEstudiante(res.data.rows[0]);
       console.log(res.data);
     });

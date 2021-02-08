@@ -9,7 +9,7 @@ function CardAdmin() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/administrador-perfil/${id}`)
+      .get(`http://34.75.240.23:5000/administrador-perfil/${id}`)
       .then((res) => {
         setAdministrador(res.data.rows[0]);
         console.log(res);

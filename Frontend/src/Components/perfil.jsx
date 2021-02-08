@@ -10,7 +10,7 @@ function CardProfesor() {
   const codigo = getFromLocal("codigo");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/profesor-perfil/${id}`).then((res) => {
+    axios.get(`http://34.75.240.23:5000/profesor-perfil/${id}`).then((res) => {
       setProfesor(res.data.rows[0]);
       setGrados(res.data.rows);
       saveToLocal("codigo", res.data.rows[0]["cod_profesor"]);

@@ -10,7 +10,7 @@ function FeedMateria() {
   console.log(materias)
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/administrador-materia/`).then((res) => {
+    axios.get(`http://34.75.240.23:5000/administrador-materia/`).then((res) => {
       setMaterias(res.data.rows);
       console.log(res.data);
     });
@@ -18,7 +18,7 @@ function FeedMateria() {
 
   const deleteMateria = (id) => {
     try {
-      axios.delete(`http://localhost:5000/eliminar-materia/${id}`);
+      axios.delete(`http://34.75.240.23:5000/eliminar-materia/${id}`);
 
       setMaterias(materias.filter((materia) => materia.id_materia !== id));
       window.location = "/administrador-materia/";

@@ -10,7 +10,7 @@ function EditarGrupo({ grupo }) {
   const udpateGrupo = async (e) => {
     e.preventDefault();
     axios
-      .patch(`http://localhost:5000/editar-grupo/`, {
+      .patch(`http://34.75.240.23:5000/editar-grupo/`, {
         codigo: codigo,
         jornada: jornada,
         descripcion: descripcion,

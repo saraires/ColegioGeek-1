@@ -76,7 +76,7 @@ function MyFinalPdf() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/administrador-informe-final/`)
+      .get(`http://34.75.240.23:5000/administrador-informe-final/`)
       .then((res) => {
         setInforme(res.data.rows);
         saveToLocal("cod_estudiante", res.data.rows[0]["cod_estudiante"]);

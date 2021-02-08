@@ -53,7 +53,7 @@ function EditarMateria({ materias }) {
   const udpateMaterias = async (e) => {
     e.preventDefault();
     axios
-      .patch(`http://localhost:5000/editar-materia/`, {
+      .patch(`http://34.75.240.23:5000/editar-materia/`, {
         codigo: codigo,
         nombreMateria: nombreMateria,
         codProfesor: codProfesor,

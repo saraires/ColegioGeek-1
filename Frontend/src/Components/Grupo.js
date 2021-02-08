@@ -8,7 +8,7 @@ function Grupo() {
   const [grupos, setGrupos] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/administrador-grupo/`).then((res) => {
+    axios.get(`http://34.75.240.23:5000/administrador-grupo/`).then((res) => {
       setGrupos(res.data.rows);
       console.log(res.data);
     });
@@ -16,7 +16,7 @@ function Grupo() {
   
   const deleteGrupo =(id)=>{
     try {
-      axios.delete(`http://localhost:5000/eliminar-grupo/${id}`)
+      axios.delete(`http://34.75.240.23:5000/eliminar-grupo/${id}`)
 
       setGrupos(grupos.filter(grupo=>grupo.id_grupo !== id));
       window.location = "/administrador-grupo/"

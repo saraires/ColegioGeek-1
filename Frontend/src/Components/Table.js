@@ -9,7 +9,7 @@ function Tabla() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/estudiante-materia/${id}`)
+      .get(`http://34.75.240.23:5000/estudiante-materia/${id}`)
       .then((res) => {
         setMateria(res.data.rows);
         console.log(res);

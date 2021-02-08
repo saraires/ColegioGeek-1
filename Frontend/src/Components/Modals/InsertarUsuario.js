@@ -24,7 +24,7 @@ function InsertarUsuario() {
   const InsertUsuario = async (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:5000/registro-usuario/`, {
+      .post(`http://34.75.240.23:5000/registro-usuario/`, {
         tipo_documento: tipoDocumento,
         documento: documento,
         nombre_completo: nombreCompleto,
@@ -45,11 +45,11 @@ function InsertarUsuario() {
       .then((res) => {
         console.log(res);
 
-        axios
-          .post("http://localhost:5000/send", {
-            to: correo,
-            full_name: nombreCompleto
-          })
+        fetch(`/subida`, {
+          method: "POST",
+          action: "/subida",
+          enctype: "multipart/form-data",
+        });
       });
     window.location = `/administrador-usuario/`;
   };
@@ -338,7 +338,6 @@ function InsertarUsuario() {
                   controlId="formPlaintextPassword"
                   className="d-flex justify-content-center"
                 >
-                  
                   <Col sm="9">
                     <Form.File id="foto" label="Foto" name="foto"/>
                   </Col>
@@ -349,7 +348,6 @@ function InsertarUsuario() {
                   controlId="formPlaintextPassword"
                   className="d-flex justify-content-center"
                 >
-                 
                   <Col sm="9">
                     <Form.File id="pdf-documento" label=" Pdf Documento" name="pdf" />
                   </Col>

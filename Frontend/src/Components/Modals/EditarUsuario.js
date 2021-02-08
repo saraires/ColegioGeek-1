@@ -26,7 +26,7 @@ function EditarUsuario({ usuario }) {
   const EditarUsuario = async (e) => {
     e.preventDefault();
     axios
-      .patch(`http://localhost:5000/editar-usuario/`, {
+      .patch(`http://34.75.240.23:5000/editar-usuario/`, {
         id_usuario: usuario.id_usuario,
         tipo_documento: tipoDocumento,
         documento: documento,
@@ -55,7 +55,7 @@ function EditarUsuario({ usuario }) {
     e.preventDefault();
     if (usuario.rol === 2) {
       axios
-        .post(`http://localhost:5000/registro-profesor/`, {
+        .post(`http://34.75.240.23:5000/registro-profesor/`, {
           id_usuario: usuario.id_usuario,
         })
         .then((res) => {
@@ -64,7 +64,7 @@ function EditarUsuario({ usuario }) {
       // window.location = `/administrador-usuario/`;
     } else if (usuario.rol === 3) {
       axios
-        .post(`http://localhost:5000/registro-estudiante/`, {
+        .post(`http://34.75.240.23:5000/registro-estudiante/`, {
           id_usuario: usuario.id_usuario,
           id_grupo: id_grupo,
         })

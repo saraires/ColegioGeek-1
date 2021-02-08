@@ -10,7 +10,7 @@ function InsertarGrupo({ notas }) {
   const InsertGrupo = async (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:5000/registro-grupo/`, {
+      .post(`http://34.75.240.23:5000/registro-grupo/`, {
         codigo: codigo,
         descripcion: descripcion,
         jornada: jornada,

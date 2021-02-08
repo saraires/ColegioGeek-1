@@ -47,7 +47,7 @@ function InsertarMateria({ notas }) {
   const InsertMateria = async (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:5000/registro-materia/`, {
+      .post(`http://34.75.240.23:5000/registro-materia/`, {
         codigo: codigo,
         nombreMateria: nombreMateria,
         codProfesor: codProfesor,

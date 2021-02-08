@@ -21,7 +21,7 @@ function EditarNotas({ notas }) {
 
   const updateNotas = () => {
 
-    axios.patch(`http://localhost:5000/editar-notas/`, {
+    axios.patch(`http://34.75.240.23:5000/editar-notas/`, {
         seguimiento: seguimiento,
         id_nota: notas.id_nota,
         id_estudiante: notas.id_estudiante,

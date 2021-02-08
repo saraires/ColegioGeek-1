@@ -8,7 +8,7 @@ function FormularioGrupo() {
   const [usuarios, setUsuarios] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/administrador-usuario/`).then((res) => {
+    axios.get(`http://34.75.240.23:5000/administrador-usuario/`).then((res) => {
       setUsuarios(res.data.rows);
       console.log(res.data);
     });
@@ -16,7 +16,7 @@ function FormularioGrupo() {
 
     const deleteUsuario =(id)=>{
       try {
-        axios.delete(`http://localhost:5000/eliminar-usuario/${id}`)
+        axios.delete(`http://34.75.240.23:5000/eliminar-usuario/${id}`)
 
         setUsuarios(usuarios.filter(usuario=>usuario.id_usuario !== id));
         window.location = "/administrador-usuario/"

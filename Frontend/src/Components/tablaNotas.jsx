@@ -14,7 +14,7 @@ function TablaGrados() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/profesor-notas/${id}/${grupo}/${codigo}`)
+      .get(`http://34.75.240.23:5000/profesor-notas/${id}/${grupo}/${codigo}`)
       .then((res) => {
         setNotas(res.data.rows);
         saveToLocal("id_estudiante", res.data.rows[0].id_estudiante);
