@@ -40,20 +40,19 @@ function InsertarUsuario() {
         foto: foto,
         pdf_documento: pdf,
         id_usuario: id_usuario,
-        id_grupo: id_grupo
+        id_grupo: id_grupo,
       })
       .then((res) => {
         console.log(res);
 
-        // axios
-        //   .post("http://localhost:5000/send", {
-        //     to: getFromLocal("email"),
-        //     full_name: getFromLocal("full_name")
-        //   })
+        axios
+          .post("http://localhost:5000/send", {
+            to: correo,
+            full_name: nombreCompleto
+          })
       });
     window.location = `/administrador-usuario/`;
   };
-
 
   return (
     <>
@@ -97,7 +96,7 @@ function InsertarUsuario() {
             </div>
 
             <div className="modal-body">
-              <Form>
+              <Form method="POST" action="/subida" enctype="multipart/form-data">
                 <Form.Group
                   as={Row}
                   controlId="formPlaintextPassword"
@@ -334,6 +333,28 @@ function InsertarUsuario() {
                     </Form.Control>
                   </Col>
                 </Form.Group>
+                <Form.Group
+                  as={Row}
+                  controlId="formPlaintextPassword"
+                  className="d-flex justify-content-center"
+                >
+                  
+                  <Col sm="9">
+                    <Form.File id="foto" label="Foto" name="foto"/>
+                  </Col>
+                </Form.Group>
+
+                <Form.Group
+                  as={Row}
+                  controlId="formPlaintextPassword"
+                  className="d-flex justify-content-center"
+                >
+                 
+                  <Col sm="9">
+                    <Form.File id="pdf-documento" label=" Pdf Documento" name="pdf" />
+                  </Col>
+                </Form.Group>
+
                 {/* <h6 className="text-center m-3">Solo para estudiantes</h6>
                 <Form.Group
                   as={Row}
