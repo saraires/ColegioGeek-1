@@ -7,12 +7,15 @@ function CardProfesor() {
   const [profesor, setProfesor] = useState([]);
   const grado = JSON.parse(getFromLocal("datos"));
   const id = getFromLocal("id_usuario");
- 
+  const codigo = getFromLocal("codigo");
 
   useEffect(() => {
     axios.get(`http://localhost:5000/profesor-perfil/${id}`).then((res) => {
       setProfesor(res.data.rows[0]);
       saveToLocal("datos", JSON.stringify(res.data.rows));
+     saveToLocal("codigo", res.data.rows[0]["cod_profesor"]);
+     saveToLocal("materia", res.data.rows[0]["nombre_materia"])
+
     });
   }, [id]);
 
@@ -31,6 +34,9 @@ function CardProfesor() {
       <Card.Body>
         <Card.Title className="text-center">
           {profesor.nombre_completo}
+          <div>
+          {codigo}
+          </div>
         </Card.Title>
         <Card.Text className="text-center m-0">
           <span className="font-weight-bold">Documento Identidad: </span>{" "}
@@ -41,7 +47,7 @@ function CardProfesor() {
           Grupos:
           </span>
           {grado.map((item, index) => {
-            return (<span >  {item.descripcion_grupo} -  </span>)
+            return (<span >  {item.descripcion} -  </span>)
           })}
         </Card.Text>
         <Card.Text className="text-center mb-4">

@@ -7,13 +7,17 @@ function TablaGrados() {
   const id = getFromLocal("id_usuario");
   const nombre = getFromLocal("nombre_completo");
   const [profesor, setProfesor] = useState([]);
+  const codigo = getFromLocal("codigo");
+  const materia = getFromLocal('materia')
+  console.log(codigo)
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/profesor-grupos/${id}`)
+      .get(`http://localhost:5000/profesor-grupos/${codigo}`)
       .then((res) => {
         setProfesor(res.data.rows);
         console.log(res.data.rows);
+        
       })
       .catch((err) => {
         console.log(err);
@@ -23,6 +27,7 @@ function TablaGrados() {
   return (
     <div className="container" style={{ marginTop: "40px" }}>
       <h3 className="card-tittle text-center">{nombre} </h3>
+      <h4 className="card-tittle text-center">{materia}</h4>
       <br />
       <table className="table table-bordered">
         <thead>
@@ -46,8 +51,9 @@ function TablaGrados() {
                       type="button"
                       class="btn btn-outline-info"
                       onClick={() => {
-                        saveToLocal("cod_grupo", item.cod_grupo);
+                        saveToLocal("cod_grupo",  item.cod_grupo);
                         saveToLocal("id_grupo", item.id_grupo);
+                        saveToLocal("cod_profesor", item.cod_profesor) 
                       }}
                     >
                       Ver notas

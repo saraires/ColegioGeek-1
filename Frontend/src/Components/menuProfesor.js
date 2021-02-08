@@ -12,6 +12,7 @@ function MenuProfesor() {
     rol: getFromLocal("rol"),
     id: getFromLocal("id_usuario"),
     correo: getFromLocal("correo"),
+    codigo: getFromLocal("codigo")
   };
 
   return (
@@ -34,7 +35,7 @@ function MenuProfesor() {
           <Nav className="mr-auto">
             <Nav.Link
               as={Link}
-              to={`/profesor-grupos/${profesor.id}`}
+              to={`/profesor-grupos/${profesor.codigo}`}
               eventKey={1}
             >
               Ver Grupos

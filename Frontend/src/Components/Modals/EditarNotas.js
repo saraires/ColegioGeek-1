@@ -9,14 +9,6 @@ function EditarNotas({ notas }) {
   const [bimensual, setBimensual] = useState(notas.bimensual);
   const [autoevaluacion, setAutoevaluacion] = useState(notas.autoevaluacion);
 
-  console.log(seguimiento)
-  
-  console.log(conocimiento)
-  
-  console.log(bimensual)
-  
-  console.log(notas)
-
   const id = getFromLocal("id_usuario");
   const codigo = getFromLocal("cod_grupo");
   const grupo = getFromLocal("id_grupo");
