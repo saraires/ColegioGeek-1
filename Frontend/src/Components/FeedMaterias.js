@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 import InsertarMateria from "./Modals/InsertarMateria";
 import axios from "axios";
-import EditarGrupo from "./Modals/EditarGrupo";
+import EditarMateria from "./Modals/EditarMateria";
 
 function FeedMateria() {
   const [materias, setMaterias] = useState([]);
+
+  console.log(materias)
 
   useEffect(() => {
     axios.get(`http://localhost:5000/administrador-materias/`).then((res) => {
@@ -14,11 +16,11 @@ function FeedMateria() {
     });
   }, []);
 
-  const deleteGrupo = (id) => {
+  const deleteMateria = (id) => {
     try {
-      axios.delete(`http://localhost:5000/eliminar-grupo/${id}`);
+      axios.delete(`http://localhost:5000/eliminar-materia/${id}`);
 
-      setMaterias(materias.filter((grupo) => grupo.id_grupo !== id));
+      setMaterias(materias.filter((materia) => materia.id_materia !== id));
       window.location = "/administrador-materia/";
     } catch (error) {
       console.log(error.message);
@@ -55,26 +57,27 @@ function FeedMateria() {
           </thead>
           <tbody className="text-center table-bordered">
             {materias.map((item, index) => {
-              console.log(item.id_grupo);
               return (
                 <tr key={`${index - item.id}`}>
                   <td width="10%">{item.cod_materia}</td>
                   <td width="10%">{item.nombre_materia}</td>
                   <td width="10%">{item.cod_profesor}</td>
-                  <td >{item.sexto}</td>
-                  <td >{item.septimo}</td>
-                  <td >{item.octavo}</td>
-                  <td >{item.noveno}</td>
-                  <td >{item.decimo}</td>
-                  <td >{item.once}</td>
-                  <td><EditarGrupo grupo={item} />{" "}
-                  <button
-                    type="button"
-                    className="btn btn-danger"
-                    onClick={() => deleteGrupo(item.id_grupo)}
-                  >
-                    Eliminar
-                  </button></td>
+                  <td>{item.sexto}</td>
+                  <td>{item.septimo}</td>
+                  <td>{item.octavo}</td>
+                  <td>{item.noveno}</td>
+                  <td>{item.decimo}</td>
+                  <td>{item.once}</td>
+                  <td>
+                    <EditarMateria materias={item} />{" "}
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      onClick={() => deleteMateria(item.id_materia)}
+                    >
+                      Eliminar
+                    </button>
+                  </td>
                 </tr>
               );
             })}
