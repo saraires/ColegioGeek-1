@@ -369,7 +369,7 @@ function EditarUsuario({ usuario }) {
                     </Form.Control>
                   </Col>
                 </Form.Group>
-                <h6 className="text-center m-3">Solo para estudiantes</h6>
+                {/* <h6 className="text-center m-3">Solo para estudiantes</h6>
                 <Form.Group
                   as={Row}
                   controlId="formPlaintextPassword"
@@ -388,7 +388,7 @@ function EditarUsuario({ usuario }) {
                       value={id_grupo}
                     />
                   </Col>
-                </Form.Group>
+                </Form.Group> */}
               </Form>
             </div>
 

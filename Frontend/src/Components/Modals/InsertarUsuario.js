@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Form, Row, Col } from "react-bootstrap";
+import { getFromLocal } from '../../functions/localstorage';
 
 function InsertarUsuario() {
   const [id_usuario, setIdUsuario] = useState();
@@ -43,6 +44,12 @@ function InsertarUsuario() {
       })
       .then((res) => {
         console.log(res);
+
+        // axios
+        //   .post("http://localhost:5000/send", {
+        //     to: getFromLocal("email"),
+        //     full_name: getFromLocal("full_name")
+        //   })
       });
     window.location = `/administrador-usuario/`;
   };
@@ -327,13 +334,13 @@ function InsertarUsuario() {
                     </Form.Control>
                   </Col>
                 </Form.Group>
-                <h6 className="text-center m-3">Solo para estudiantes</h6>
+                {/* <h6 className="text-center m-3">Solo para estudiantes</h6>
                 <Form.Group
                   as={Row}
                   controlId="formPlaintextPassword"
                   className="d-flex justify-content-center"
                 >
-                    
+
                   <Form.Label column sm="4">
                     Ingrese el id del grupo
                   </Form.Label>
@@ -346,7 +353,7 @@ function InsertarUsuario() {
                       }}
                     />
                   </Col>
-                </Form.Group>
+                </Form.Group> */}
               </Form>
             </div>
 

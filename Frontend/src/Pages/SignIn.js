@@ -52,13 +52,6 @@ const FormFormik = () => (
               saveToLocal("email", values.email);
               saveToLocal("full_name", nombre);
 
-  
-              axios
-                .post("http://localhost:5000/send", {
-                  to: getFromLocal("email"),
-                  full_name: getFromLocal("full_name")
-                })
-
               if (res.data.rows[0]["rol"] === 1) {
                 window.location.href = "administrador";
               } else if (res.data.rows[0]["rol"] === 2) {
