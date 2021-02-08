@@ -3,7 +3,6 @@ import { Container, Table } from "react-bootstrap";
 import InsertarGrupo from "./Modals/InsertarGrupo";
 import axios from "axios";
 import EditarGrupo from "./Modals/EditarGrupo";
-import EliminarGrupo from "./Modals/EliminarGrupo";
 
 function Grupo() {
   const [grupos, setGrupos] = useState([]);

@@ -70,7 +70,7 @@ administrador.patch("/editar-grupo/", (req, res) => {
 });
 
 administrador.delete("/eliminar-grupo/:id", (req, res) => {
-  console.log(req.params)
+  console.log(req.params);
   try {
     const id_grupo = req.params.id;
 
@@ -85,6 +85,45 @@ administrador.delete("/eliminar-grupo/:id", (req, res) => {
   } catch (error) {
     console.error(error.message);
   }
+});
+
+administrador.post("/registro-materia", (req, res) => {
+  console.log(req.body)
+  const {
+    codigo,
+    nombreMateria,
+    codProfesor,
+    seis,
+    siete,
+    ocho,
+    nueve,
+    diez,
+    once,
+  } = req.body;
+
+  cnn_postgreSQL.query(
+    `insert into materia values (nextval('grupo_id_seq'), $1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+    [codigo, nombreMateria, codProfesor, seis, siete, ocho, nueve, diez, once],
+    (err, rows, fields) => {
+      if (err) {
+        return res.status(500).json({ message: "Información Incorrecta" });
+      } else {
+        console.log(rows);
+        return res.json(rows);
+      }
+    }
+  );
+});
+
+administrador.get("/administrador-materias/", (req, res) => {
+  cnn_postgreSQL.query(`select * from materia`, (err, rows, fields) => {
+    if (err) {
+      return res.status(500).json({ message: "Información Incorrecta" });
+    } else {
+      console.log(rows);
+      return res.json(rows);
+    }
+  });
 });
 
 module.exports = administrador;
