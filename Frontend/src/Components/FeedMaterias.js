@@ -10,7 +10,7 @@ function FeedMateria() {
   console.log(materias)
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/administrador-materias/`).then((res) => {
+    axios.get(`http://localhost:5000/administrador-materia/`).then((res) => {
       setMaterias(res.data.rows);
       console.log(res.data);
     });

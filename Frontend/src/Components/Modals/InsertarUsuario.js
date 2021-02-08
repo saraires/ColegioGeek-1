@@ -102,7 +102,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Cod Usuario"
                                             onChange={(e) => {
                                                 setCodigo(e.target.value);
                                             }}
@@ -146,7 +146,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="# documento"
                                             onChange={(e) => {
                                                 setDocumento(e.target.value);
                                             }}
@@ -164,7 +164,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Nombre completo"
                                             onChange={(e) => {
                                                 setNombreCompleto(e.target.value);
                                             }}
@@ -182,7 +182,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Sexo"
                                             onChange={(e) => {
                                                 setSexo(e.target.value);
                                             }}
@@ -200,27 +200,9 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Fecha de Nacimiento"
                                             onChange={(e) => {
                                                 setFechaNacimiento(e.target.value);
-                                            }}
-                                        />
-                                    </Col>
-                                </Form.Group>
-                                <Form.Group
-                                    as={Row}
-                                    controlId="formPlaintextPassword"
-                                    className="d-flex justify-content-center"
-                                >
-                                    <Form.Label column sm="4">
-                                        direccion
-                                    </Form.Label>
-                                    <Col sm="5">
-                                        <Form.Control
-                                            type="number"
-                                            placeholder="Cod Grupo"
-                                            onChange={(e) => {
-                                                setDireccion(e.target.value);
                                             }}
                                         />
                                     </Col>
@@ -236,7 +218,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Dirección"
                                             onChange={(e) => {
                                                 setDireccion(e.target.value);
                                             }}
@@ -254,7 +236,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Ciudad"
                                             onChange={(e) => {
                                                 setCiudad(e.target.value);
                                             }}
@@ -272,7 +254,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Telefono"
                                             onChange={(e) => {
                                                 setTelefono(e.target.value);
                                             }}
@@ -290,7 +272,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Celular"
                                             onChange={(e) => {
                                                 setCelular(e.target.value);
                                             }}
@@ -308,7 +290,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Correo"
                                             onChange={(e) => {
                                                 setCorreo(e.target.value);
                                             }}
@@ -326,7 +308,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Contraseña"
                                             onChange={(e) => {
                                                 setContraseña(e.target.value);
                                             }}
@@ -344,7 +326,7 @@ function InsertarUsuario({ usuario }) {
                                     <Col sm="5">
                                         <Form.Control
                                             type="number"
-                                            placeholder="Cod Grupo"
+                                            placeholder="Rol"
                                             onChange={(e) => {
                                                 setRol(e.target.value);
                                             }}

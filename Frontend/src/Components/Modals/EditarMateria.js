@@ -7,12 +7,12 @@ function EditarMateria({ materias }) {
   const [codigo, setCodigo] = useState(materias.cod_materia);
   const [nombreMateria, setNombreMateria] = useState(materias.nombre_materia);
   const [codProfesor, setCodProfesor] = useState(materias.cod_profesor);
-  const [seis, setSeis] = useState(materias.Seis);
-  const [siete, setSiete] = useState(materias.Siete);
-  const [ocho, setOcho] = useState(materias.Ocho);
-  const [nueve, setNueve] = useState(materias.Nueve);
-  const [diez, setDiez] = useState(materias.Diez);
-  const [once, setOnce] = useState(materias.Once);
+  const [seis, setSeis] = useState(materias.sexto);
+  const [siete, setSiete] = useState(materias.septimo);
+  const [ocho, setOcho] = useState(materias.octavo);
+  const [nueve, setNueve] = useState(materias.noveno);
+  const [diez, setDiez] = useState(materias.decimo);
+  const [once, setOnce] = useState(materias.once);
   const [id_materia, setId_Materia] = useState(materias.id_materia)
 
   console.log(materias);
@@ -94,12 +94,12 @@ function EditarMateria({ materias }) {
                   setCodigo(materias.cod_materia);
                   setNombreMateria(materias.nombre_materia);
                   setCodProfesor(materias.cod_profesor);
-                  setSeis(materias.Seis);
-                  setSiete(materias.Siete);
-                  setOcho(materias.Ocho);
-                  setNueve(materias.Nueve);
-                  setDiez(materias.Diez);
-                  setOnce(materias.Once);
+                  setSeis(materias.sexto);
+                  setSiete(materias.septimo);
+                  setOcho(materias.octavo);
+                  setNueve(materias.noveno);
+                  setDiez(materias.decimo);
+                  setOnce(materias.once);
                 }}
               >
                 &times;
@@ -222,12 +222,12 @@ function EditarMateria({ materias }) {
                     setCodigo(materias.cod_materia);
                     setNombreMateria(materias.nombre_materia);
                     setCodProfesor(materias.cod_profesor);
-                    setSeis(materias.Seis);
-                    setSiete(materias.Siete);
-                    setOcho(materias.Ocho);
-                    setNueve(materias.Nueve);
-                    setDiez(materias.Diez);
-                    setOnce(materias.Once);
+                    setSeis(materias.sexto);
+                    setSiete(materias.septimo);
+                    setOcho(materias.octavo);
+                    setNueve(materias.noveno);
+                    setDiez(materias.decimo);
+                    setOnce(materias.once);
                   }}
               >
                 Cerrar
